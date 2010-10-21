@@ -20,6 +20,12 @@
           %li
             = link_to 'Users', root_path
           %li
+            = link_to 'Sign-up', '/signup'
+          %li
+            = link_to 'Login', '/login'
+          %li
+            = link_to 'Logout', '/logout'
+          %li
             = link_to 'About', '/about'
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
