@@ -13,7 +13,7 @@
     #container
       #logo
         = link_to image_tag('worlis-logo.png'), root_path
-        = p current_user.email if user_signed_in?
+        = p current_user.username if user_signed_in?
 
       #menu-navi
         %ul
