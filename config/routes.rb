@@ -6,6 +6,8 @@ Worklista::Application.routes.draw do
     get "logout", :to => "devise/sessions#destroy"
     get "signup", :to => "devise/registrations#new"
   end
+  
+  match "/users" => "users#index"
 
   root :to => "pages#home"
   match "/about" => "pages#about"
