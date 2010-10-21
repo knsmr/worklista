@@ -21,12 +21,16 @@
             = link_to 'Home', root_path
           %li
             = link_to 'Users', '/users'
-          %li
-            = link_to 'Sign-up', '/signup'
-          %li
-            = link_to 'Login', '/login'
-          %li
-            = link_to 'Logout', '/logout'
+          - if user_signed_in?
+            %li
+              = link_to 'My Account', edit_user_registration_path
+            %li
+              = link_to 'Logout', '/logout'
+          - else
+            %li
+              = link_to 'Sign-up', '/signup'
+            %li
+              = link_to 'Login', '/login'
           %li
             = link_to 'About', '/about'
       - flash.each do |name, msg|
