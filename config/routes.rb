@@ -1,6 +1,11 @@
 Worklista::Application.routes.draw do
 
   devise_for :users
+  devise_for :users do
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "signup", :to => "devise/registrations#new"
+  end
 
   root :to => "pages#home"
   match "/about" => "pages#about"
