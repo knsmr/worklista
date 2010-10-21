@@ -1,6 +1,8 @@
 Worklista::Application.routes.draw do
-
+  
   devise_for :users
+  match "users/:username" => "users#show"  
+  
   devise_for :users do
     get "login", :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"

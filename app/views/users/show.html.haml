@@ -1,0 +1,18 @@
+%h1 User Page
+#profile
+  #head
+    #name= @user.name
+    #title= @user.title
+    #username= @user.username
+    #website= @user.website
+  #body
+    #description=h @user.description
+
+%p
+  = link_to "Edit", edit_user_registration_path
+  |
+  = link_to "View All", users_path
+
+%hr
+
+
