@@ -1,0 +1,28 @@
+!!! 5
+%html
+  
+  %head
+    %title
+      = h(yield(:title) || "Untitled")
+    %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag 'application'
+    = yield(:head)
+  
+  %body
+    #container
+      #logo
+        = link_to image_tag('worlis-logo.png'), root_path
+      #menu-navi
+        %ul
+          %li
+            = link_to 'Home', root_path
+          %li
+            = link_to 'Users', root_path
+          %li
+            = link_to 'About', '/about'
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      
+      = yield
+  #footer Created by Ken Nishimura. This service is currently in private beta.  

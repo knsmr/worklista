@@ -1,0 +1,186 @@
+body {
+  background-color: #6b8c66;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px; }
+
+a {
+  color: blue; }
+  a img {
+    border: none; }
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden; }
+
+h2#entry {
+  background-color: #d9aa81;
+  border: 2px #757364 solid;
+  padding: 5px 5px;
+  display: block;
+  border-radius: 5px; }
+
+#menu-navi {
+  background-color: #d9aa81;
+  border: 2px #757364 solid;
+  display: block;
+  border-radius: 5px; }
+  #menu-navi ul {
+    margin: 8px;
+    padding: 3px;
+    list-style: none; }
+    #menu-navi ul li {
+      border-radius: 5px;
+      display: inline;
+      margin: 0em 1em 1em 1em;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      color: white;
+      background: #cbedff; }
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+  border-radius: 5px; }
+
+#footer {
+  width: 75%;
+  margin: 0 auto;
+  padding: 5px 20px;
+  font-size: 0.9em;
+  text-align: center;
+  color: #222222; }
+
+#profile {
+  margin: 10px 0px;
+  border: 1px solid black;
+  padding: 5px 5px 5px 5px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  overflow: auto; }
+  #profile #head {
+    float: left;
+    margin: 3px;
+    padding: 3px 0 0 0;
+    border-radius: 5px;
+    background-color: white;
+    width: 38%;
+    overflow: auto; }
+    #profile #head #photo {
+      float: left;
+      margin: 0px 10px 5px 5px; }
+    #profile #head #name {
+      font-size: 1.1em;
+      font-weight: bold; }
+    #profile #head #website {
+      font-size: 0.5em; }
+  #profile #body {
+    float: left;
+    width: 58%; }
+    #profile #body #description {
+      margin: 3px;
+      padding: 10px;
+      background-color: #dddddd;
+      border-radius: 5px;
+      font-size: 0.9em; }
+
+#article {
+  width: 95%;
+  margin: 3px 0px;
+  border: 1px solid black;
+  padding: 5px 5px 5px 5px;
+  background-color: #cbedff;
+  border-radius: 5px;
+  overflow: auto; }
+  #article #head {
+    margin: 3px; }
+    #article #head #title {
+      float: left;
+      font-size: 1.1em; }
+    #article #head #social {
+      float: left;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-left: 10px; }
+      #article #head #social #hatena {
+        float: left;
+        margin: 0.2em;
+        padding: 0 0.4em;
+        background-color: #ffcccc;
+        color: red; }
+        #article #head #social #hatena a {
+          color: red; }
+      #article #head #social #retweet {
+        float: left;
+        margin: 0.2em;
+        background-color: #ccffcc;
+        padding: 0 0.4em;
+        color: #00aa00; }
+        #article #head #social #retweet a {
+          color: green; }
+    #article #head #date {
+      float: right;
+      color: #111111;
+      font-size: 0.8em; }
+  #article #body {
+    clear: both;
+    padding-top: 0.5em; }
+  #article #edit {
+    font-size: 0.5em; }
+
+#pages {
+  background: #eeeeee;
+  width: 85%;
+  padding: 0.5em 3em;
+  margin: 2em auto;
+  border-radius: 5px; }
+  #pages p {
+    text-indent: 1em;
+    text-align: justify;
+    line-height: 1.4em;
+    width: 90%; }
+
+#flash_notice,
+#flash_error {
+  padding: 5px 8px;
+  margin: 10px 0; }
+
+#flash_notice {
+  background-color: #ccffcc;
+  border: solid 1px #66cc66; }
+
+#flash_error {
+  background-color: #ffcccc;
+  border: solid 1px #cc6666; }
+
+.fieldWithErrors {
+  display: inline; }
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #cf0000;
+  padding: 0;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #errorExplanation h2 {
+    text-align: left;
+    padding: 5px 5px 5px 15px;
+    margin: 0;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #cc0000;
+    color: white; }
+  #errorExplanation p {
+    color: #333333;
+    margin-bottom: 0;
+    padding: 8px; }
+  #errorExplanation ul {
+    margin: 2px 24px; }
+    #errorExplanation ul li {
+      font-size: 12px;
+      list-style: disc; }
