@@ -7,4 +7,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :username, :name, :title, :twitter_id, \
   :description, :website, :password, :password_confirmation, :remember_me
+
+  # Override login key to use username OR email
+  def self.find_for_database_authentication(conditions)
+    value = conditions[authentication_keys.first]
+    where(["username = :value OR email = :value", { :value => value }]).first
+  end
+
 end
