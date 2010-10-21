@@ -144,7 +144,7 @@ h2#entry {
     line-height: 1.4em;
     width: 90%; }
   #pages h2 {
-    border: solid 1px white; }
+    border-bottom: solid 1px black; }
 
 #flash_notice,
 #flash_error {
