@@ -1,6 +1,8 @@
 %h1 User Page
 #profile
   #head
+    #photo
+      = image_tag @user.photo.url(:thumb)
     #name= @user.name
     #title= @user.title
     #username= @user.username
