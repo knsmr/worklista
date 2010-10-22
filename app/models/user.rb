@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :username, :name, :title, :twitter_id, \
-  :description, :website, :password, :password_confirmation, :remember_me
+  :description, :website, :password, :password_confirmation, :remember_me,\
+  :photo
 
   validates_uniqueness_of :username
 
@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
     value = conditions[authentication_keys.first]
     where(["username = :value OR email = :value", { :value => value }]).first
   end
+
+  has_attached_file :photo,
+                    :styles => { :medium => "240x240", :thumb => "80x80"}, 
+                    :default_url => "/images/missing-:style.png"
+
 end
