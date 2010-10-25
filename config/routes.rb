@@ -1,10 +1,11 @@
 Worklista::Application.routes.draw do
   
+  match "me" => "users#me"
   match "users/:username" => "users#show"  
 
   # redirect when logged-in. need to comp up with /me or something. 
   namespace :user do
-    root :to => "users#index"
+    root :to => "users#me"
   end
   
   devise_for :users, :path => 'account' do
