@@ -3,7 +3,7 @@ Worklista::Application.routes.draw do
   match "me" => "users#me"
   match "users/:username" => "users#show"  
 
-  # redirect when logged-in. need to comp up with /me or something. 
+  # redirect when logged-in.
   namespace :user do
     root :to => "users#me"
   end
