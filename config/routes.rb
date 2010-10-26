@@ -1,6 +1,6 @@
 Worklista::Application.routes.draw do
   
-  match "me" => "users#me"
+  match "me" => "users#me", :as => "me"
   match "users/:username" => "users#show"  
 
   # redirect when logged-in.
@@ -15,6 +15,10 @@ Worklista::Application.routes.draw do
     get "edit",   :to => "devise/registrations#edit"
   end
   
+  resources :users do
+    resources :items
+  end
+
   match "/users" => "users#index"
 
   root :to => "pages#home"

@@ -10,6 +10,37 @@
   #body
     #description=h @user.description
 
+%hr
+- @user.items.each do |i|
+  #item
+    #head
+      #title
+        %a{:href => "#{i.url}"}
+          = i.title
+      #social
+        #hatena
+          %a{ :href => "#{i.url}"}
+            = 123.to_s + " users"
+        #retweet
+          %a{ :href => "http://bit.ly/"}
+            = 4321.to_s + "retweets"
+      #date= i.published_at
+    #body
+      #description
+
+
+%h2 Add an item of your work:
+= form_for([@user, @user.items.build]) do |f|
+  %p
+    = f.label :url
+    %br/
+    = f.text_field :url
+  %p
+    = f.label :title
+    %br/
+    = f.text_field :title
+  %p= f.submit "Post"
+
 %p
   = link_to "Edit", edit_user_registration_path
   |
