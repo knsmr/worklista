@@ -20,23 +20,23 @@
       #social
         #hatena
           %a{ :href => "#{i.url}"}
-            = 123.to_s + " users"
+            = i.hatena.to_s + " users"
         #retweet
-          %a{ :href => "http://bit.ly/"}
-            = 4321.to_s + "retweets"
+          - b = i.bitly_url ? i.bitly_url : ""
+          %a{ :href => b + "+"}
+            = i.retweet.to_s + "retweets"
       #date= i.published_at
     #body
       #description
 
-
 %h2 Add an item of your work:
 = form_for([@user, @user.items.build]) do |f|
   %p
-    = f.label :url
+    URL
     %br/
     = f.text_field :url
-  %p
-    = f.label :title
+    %br/
+    TITLE (optional)
     %br/
     = f.text_field :title
   %p= f.submit "Post"
