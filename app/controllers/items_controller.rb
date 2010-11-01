@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+
+  conf = APP_CONFIG["bitly"]
+  @@bitly = Bitly.new(conf["username"], conf["apikey"])
+
   def create
     @user = User.find(params[:user_id])
     @item = @user.items.create(params[:item])
@@ -41,10 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def populate_retweet(item)
-    conf = APP_CONFIG["bitly"]
-    bitly = Bitly.new(conf["username"], conf["apikey"])
-
-    url = bitly.shorten(item.url)
+    url = @@bitly.shorten(item.url)
     item.bitly_url = url.short_url
     item.retweet   = url.global_clicks
   end
