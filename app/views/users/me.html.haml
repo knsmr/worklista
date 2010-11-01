@@ -1,0 +1,51 @@
+%h1 User Page
+#profile
+  #head
+    #photo
+      = image_tag @user.photo.url(:thumb)
+    #name= @user.name
+    #title= @user.title
+    #username= @user.username
+    #website= @user.website
+  #body
+    #description=h @user.description
+
+%hr
+- @user.items.each do |i|
+  #item
+    #head
+      #title
+        %a{:href => "#{i.url}"}
+          = i.title
+      #social
+        #hatena
+          %a{ :href => "#{i.url}"}
+            = i.hatena.to_s + " users"
+        #retweet
+          - b = i.bitly_url ? i.bitly_url : ""
+          %a{ :href => b + "+"}
+            = i.retweet.to_s + "retweets"
+      #date= i.published_at
+    #body
+      #description
+
+%h2 Add an item of your work:
+= form_for([@user, @user.items.build]) do |f|
+  %p
+    URL
+    %br/
+    = f.text_field :url
+    %br/
+    TITLE (optional)
+    %br/
+    = f.text_field :title
+  %p= f.submit "Post"
+
+%p
+  = link_to "Edit", edit_user_registration_path
+  |
+  = link_to "View All", users_path
+
+%hr
+
+

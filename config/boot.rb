@@ -11,3 +11,10 @@ rescue Bundler::GemNotFound => e
   STDERR.puts "Try running `bundle install`."
   exit!
 end if File.exist?(gemfile)
+
+# load some libs
+
+require 'open-uri'
+require 'nkf'
+require 'bitly'
+Bitly.use_api_version_3

@@ -1,14 +1,24 @@
 Worklista::Application.routes.draw do
   
-  devise_for :users
+  match "me" => "users#me", :as => "me"
   match "users/:username" => "users#show"  
-  
-  devise_for :users do
-    get "login", :to => "devise/sessions#new"
-    get "logout", :to => "devise/sessions#destroy"
-    get "signup", :to => "devise/registrations#new"
+
+  # redirect when logged-in.
+  namespace :user do
+    root :to => "users#me"
   end
   
+  devise_for :users, :path => 'account' do
+    get "login",  :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "signup", :to => "devise/registrations#new"
+    get "edit",   :to => "devise/registrations#edit"
+  end
+  
+  resources :users do
+    resources :items
+  end
+
   match "/users" => "users#index"
 
   root :to => "pages#home"
