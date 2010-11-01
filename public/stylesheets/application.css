@@ -137,7 +137,8 @@ h2#entry {
   width: 85%;
   padding: 0.5em 3em;
   margin: 2em auto;
-  border-radius: 5px; }
+  border-radius: 5px;
+  overflow: auto; }
   #pages p {
     text-indent: 1em;
     text-align: justify;
