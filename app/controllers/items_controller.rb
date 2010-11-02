@@ -6,6 +6,13 @@ class ItemsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @item = @user.items.create(params[:item])
+
+    if @item.url !~ /^(#{URI::regexp(%w(http https))})$/ then
+      flash[:notice] = "Invalid URL!!"
+      redirect_to me_path
+      return
+    end
+
     populate @item
     if @item.save
       flash[:notice] = "Successfully created an item."
