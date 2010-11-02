@@ -1,8 +1,11 @@
+require 'open-uri'
+require 'nkf'
+
 class ItemsController < ApplicationController
 
   conf = APP_CONFIG["bitly"]
   @@bitly = Bitly.new(conf["username"], conf["apikey"])
-
+ 
   def create
     @user = User.find(params[:user_id])
     @item = @user.items.create(params[:item])
