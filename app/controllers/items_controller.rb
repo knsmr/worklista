@@ -39,8 +39,13 @@ class ItemsController < ApplicationController
   
   def populate_title(item)
     doc = open(item.url).read
-    title = doc.match(/<title>([^<]+)<\/title>/)[1]
-    item.title = NKF.nkf("--utf8", title)
+    item.title = item.url
+    doc.match(/<title>([^<]+)<\/title>/) do |m|
+      if m.size == 2 then 
+        title = m[1]
+        item.title = NKF.nkf("--utf8", title)
+      end
+    end
   end
   
   def populate_hatena(item)
