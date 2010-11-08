@@ -12,7 +12,7 @@
 
 %hr
 
-- @user.items.sort{|a, b| b.created_at <=> a.created_at}.each do |i|
+- @items.each do |i|
   #item
     #head
       #title
@@ -30,6 +30,8 @@
     #body
       #description
         =button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
+
+= will_paginate @items
 
 %h2 Add an item of your work:
 = form_for([@user, @user.items.build]) do |f|
