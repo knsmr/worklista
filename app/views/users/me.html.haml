@@ -16,11 +16,11 @@
   #item
     #head
       #title
-        %a{:href => "#{i.url}"}
+        %a{:href => i.url}
           = i.title
       #social
         #hatena
-          %a{ :href => "#{i.url}"}
+          %a{ :href => link_to_hatena(i.url) }
             = i.hatena.to_s + " users"
         #retweet
           - b = i.bitly_url ? i.bitly_url : ""
