@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   :photo
 
   validates_uniqueness_of :username
-  validates_presence_of :name
+#  validates_presence_of :name
 
   # Override login key to use username OR email
   def self.find_for_database_authentication(conditions)
