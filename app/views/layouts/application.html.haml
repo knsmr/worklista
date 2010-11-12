@@ -15,7 +15,8 @@
   %body
     #container
       #header
-        %h1 worklista
+        %h1
+          = link_to 'worklista', '/'
         #login
           - if user_signed_in?
             = p "Hi, #{current_user.username}! | "
