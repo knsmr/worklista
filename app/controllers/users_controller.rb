@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_username(params[:username])
+    @items = @user.items.paginate :page => params[:page], :per_page => 10
+    render "me"
   end
 
   def me
@@ -15,9 +17,6 @@ class UsersController < ApplicationController
       render "me"
     else
       redirect_to users_path
-#      @users = User.all
-#      render "index"
     end
   end
-
 end
