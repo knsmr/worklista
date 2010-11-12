@@ -14,9 +14,18 @@
   
   %body
     #container
-      #logo
-        = link_to image_tag('worlis-logo.png'), root_path
-        = p current_user.username if user_signed_in?
+      #header
+        %h1 worklista
+        #login
+          - if user_signed_in?
+            = p "Hi, #{current_user.username}! | "
+            = link_to 'Setting', '/edit'
+            = p " | "
+            = link_to 'Logout', '/logout'
+          - else
+            = link_to 'Login', '/login'
+            = p " | "
+            = link_to 'Sing up', '/signup'
 
       #menu-navi
         %ul
@@ -26,18 +35,7 @@
             = link_to 'Users', '/users'
           - if user_signed_in?
             %li
-              = link_to 'My Page', "/users/" + current_user.username
-            %li
               = link_to 'Me', "/me"
-            %li
-              = link_to 'My Account', '/edit'
-            %li
-              = link_to 'Logout', '/logout'
-          - else
-            %li
-              = link_to 'Sign-up', '/signup'
-            %li
-              = link_to 'Login', '/login'
           %li
             = link_to 'About', '/about'
       - flash.each do |name, msg|
