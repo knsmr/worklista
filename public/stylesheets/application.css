@@ -87,9 +87,9 @@ h2#entry {
   color: #222222; }
 
 #profile {
-  margin: 0px 0px;
+  margin: 10px 0px 0px 0px;
   border: 1px solid black;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   background-color: #dddddd;
   border-radius: 5px;
   overflow: auto; }
@@ -99,11 +99,11 @@ h2#entry {
     padding: 3px 0 0 0;
     border-radius: 5px;
     background-color: white;
-    width: 38%;
+    width: 40%;
     overflow: auto; }
     #profile #head #photo {
       float: left;
-      margin: 0px 10px 5px 5px; }
+      margin: 5px 10px 5px 6px; }
     #profile #head #name {
       font-size: 1.1em;
       font-weight: bold; }
