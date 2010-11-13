@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
  
   def create
     @user = User.find(params[:user_id])
-    @item = @user.items.create(params[:item])
+    @item = @user.items.new(params[:item])
 
     if @item.url !~ /^(#{URI::regexp(%w(http https))})$/ then
       flash[:notice] = "Invalid URL!!"
