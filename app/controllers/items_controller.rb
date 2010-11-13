@@ -16,7 +16,10 @@ class ItemsController < ApplicationController
       return
     end
 
+    @doc = open(@item.url).read
+    guess_date @item
     populate @item
+
     if @item.save
       flash[:notice] = "Successfully created an item."
       redirect_to me_path
@@ -48,6 +51,14 @@ class ItemsController < ApplicationController
 
   private
 
+  def guess_date(item)
+    item.published_at = Time.now
+    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/ then
+      date = Date.strptime($1, "%Y/%m/%d")
+    end
+    item.published_at = date if date
+  end
+
   def populate(item)
     populate_title(item)
     populate_hatena(item)
@@ -55,9 +66,8 @@ class ItemsController < ApplicationController
   end
   
   def populate_title(item)
-    doc = open(item.url).read
     item.title = item.url
-    doc.match(/<title>([^<]+)<\/title>/) do |m|
+    @doc.match(/<title>([^<]+)<\/title>/) do |m|
       if m.size == 2 then 
         title = m[1]
         item.title = NKF.nkf("--utf8", title)
