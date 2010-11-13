@@ -52,11 +52,14 @@ class ItemsController < ApplicationController
   private
 
   def guess_date(item)
-    item.published_at = Time.now
     if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/ then
       date = Date.strptime($1, "%Y/%m/%d")
     end
-    item.published_at = date if date
+    if date then
+      item.published_at = date
+    else
+      item.published_at = Time.now
+    end
   end
 
   def populate(item)
