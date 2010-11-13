@@ -70,6 +70,9 @@ h2#entry {
       #item-tab ul li a:hover {
         color: #a2bdcc; }
 #item-tab #url-form {
+  padding: 2px 10px;
+  border-radius: 3px;
+  background: #eeeeee;
   float: right; }
 
 #container {
