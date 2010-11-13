@@ -1,6 +1,7 @@
 Worklista::Application.routes.draw do
   
   match "me" => "users#me", :as => "me"
+  match "me/popular" => "users#me_popular", :as => "me_popular"
   match "users/:username" => "users#show"  
 
   # redirect when logged-in.
