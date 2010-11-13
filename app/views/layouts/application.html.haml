@@ -31,12 +31,12 @@
       #menu-navi
         %ul
           %li
+            = link_to 'About', '/about'
+          %li
             = link_to 'Users', '/users'
           - if user_signed_in?
             %li
               = link_to 'Me', "/me"
-          %li
-            = link_to 'About', '/about'
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       

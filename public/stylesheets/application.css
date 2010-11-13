@@ -35,16 +35,19 @@ h2#entry {
   background-color: #d9aa81;
   border: 2px #757364 solid;
   display: block;
-  border-radius: 5px; }
+  border-radius: 5px;
+  overflow: auto; }
   #menu-navi ul {
-    margin: 8px;
-    padding: 3px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
     list-style: none; }
     #menu-navi ul li {
+      float: right;
       border-radius: 5px;
       display: inline;
-      margin: 0em 1em 1em 1em;
-      padding: 0.5em 1em;
+      margin: 2px;
+      padding: 0.3em 0.5em;
       text-decoration: none;
       color: white;
       background: #cbedff; }
