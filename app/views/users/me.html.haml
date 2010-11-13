@@ -11,6 +11,15 @@
 
 %hr
 
+#item-tab
+  %ul
+    %li
+      = link_to 'Recent', '/me'
+    %li
+      = link_to 'Popular', '/me'
+    %li
+      = link_to 'Choice', '/me'
+
 - @items.each do |i|
   #item
     #head

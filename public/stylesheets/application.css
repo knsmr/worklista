@@ -49,6 +49,23 @@ h2#entry {
       color: white;
       background: #cbedff; }
 
+#item-tab ul {
+  margin: 10px 0px 8px 0px;
+  list-style: none; }
+  #item-tab ul li {
+    border-radius: 4px;
+    display: inline;
+    margin: 0em 1em 0em 0em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+    background: #eeeeee; }
+    #item-tab ul li a {
+      color: #999999;
+      text-decoration: none;
+      text-shadow: 1px 1px black; }
+      #item-tab ul li a:hover {
+        color: #a2bdcc; }
+
 #container {
   width: 75%;
   margin: 0 auto;
