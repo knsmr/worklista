@@ -1,0 +1,13 @@
+- form_for(@item, :url => user_item_path) do |f|
+  %hr
+  #item
+    %h2 Edit this item:
+    %p
+      = f.text_field :title, :size => 80
+    %p
+      = f.text_field :url, :size => 80
+    %p
+      = f.date_select :published_at
+    %p= f.submit "Update"
+
+= link_to "Back", :back

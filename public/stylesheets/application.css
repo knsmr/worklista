@@ -186,8 +186,8 @@ h2#entry {
   #item #body {
     clear: both;
     padding-top: 0.5em; }
-  #item #edit {
-    font-size: 0.5em; }
+    #item #body #description form {
+      float: right; }
 
 #pages {
   background: #eeeeee;

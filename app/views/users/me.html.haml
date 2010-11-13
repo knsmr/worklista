@@ -42,7 +42,8 @@
       #date= i.published_at
     #body
       #description
-        =button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
-
+        - if user_signed_in? && current_user.id == @user.id
+          = button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
+          = button_to "Edit", "/users/#{@user.id}/items/#{i.id}/edit", :method => :get
 = will_paginate @items
 

@@ -32,6 +32,20 @@ class ItemsController < ApplicationController
     redirect_to me_path
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(params[:item])
+      flash[:notice] = "Successfully updated item."
+      redirect_to '/me'
+    else
+      render :action => 'edit'
+    end
+  end
+
   private
 
   def populate(item)
