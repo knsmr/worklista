@@ -19,6 +19,11 @@
       = link_to 'Popular', '/me'
     %li
       = link_to 'Choice', '/me'
+  #url-form
+    = form_for([@user, @user.items.build]) do |f|
+      URL:
+      = f.text_field :url, :size => 60
+      = f.submit "Add"
 
 - @items.each do |i|
   #item
@@ -40,13 +45,4 @@
         =button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
 
 = will_paginate @items
-
-= form_for([@user, @user.items.build]) do |f|
-  %p
-    Add URL:
-    %br/
-    = f.text_field :url
-    = f.submit "Post"
-
-
 

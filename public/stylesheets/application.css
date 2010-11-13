@@ -54,7 +54,8 @@ h2#entry {
 
 #item-tab ul {
   margin: 10px 0px 8px 0px;
-  list-style: none; }
+  list-style: none;
+  float: left; }
   #item-tab ul li {
     border-radius: 4px;
     display: inline;
@@ -68,6 +69,8 @@ h2#entry {
       text-shadow: 1px 1px black; }
       #item-tab ul li a:hover {
         color: #a2bdcc; }
+#item-tab #url-form {
+  float: right; }
 
 #container {
   width: 75%;
