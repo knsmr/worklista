@@ -16,7 +16,11 @@
     #container
       #header
         %h1
-          = link_to 'worklista', '/'
+          - if user_signed_in?
+            = link_to 'worklista', '/me'
+          - else
+            = link_to 'worklista', '/'
+
         #login
           - if user_signed_in?
             = p "Hi, #{current_user.username}! | "
