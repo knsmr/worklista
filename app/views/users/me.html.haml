@@ -41,17 +41,12 @@
 
 = will_paginate @items
 
-%h2 Add an item of your work:
 = form_for([@user, @user.items.build]) do |f|
   %p
-    URL
+    Add a URL:
     %br/
     = f.text_field :url
-    %br/
-    TITLE (optional)
-    %br/
-    = f.text_field :title
-  %p= f.submit "Post"
+    = f.submit "Post"
 
 
 
