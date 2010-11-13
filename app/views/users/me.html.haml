@@ -19,11 +19,12 @@
       = link_to 'Popular', '/me/popular'
     %li
       = link_to 'Choice', '/me'
-  #url-form
-    = form_for([@user, @user.items.build]) do |f|
-      URL:
-      = f.text_field :url, :size => 60
-      = f.submit "Add"
+  - if user_signed_in? && current_user.id == @user.id
+    #url-form
+      = form_for([@user, @user.items.build]) do |f|
+        URL:
+        = f.text_field :url, :size => 60
+        = f.submit "Add"
 
 - @items.each do |i|
   #item
