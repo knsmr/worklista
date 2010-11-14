@@ -1,7 +1,8 @@
 - @users.each do |user|
   #profile
     #body
-      #name= user.username
-      #description= user.description
-      = image_tag user.photo.url(:thumb)
-
+      #name
+        = link_to user.username, "/users/#{user.username}"
+      #description
+        = user.description
+        = link_to raw("#{image_tag user.photo.url(:thumb)}"), "/users/#{user.username}"

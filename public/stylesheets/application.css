@@ -92,6 +92,7 @@ h2#entry {
   #container #header {
     height: 58px; }
     #container #header h1 {
+      margin: 2px 0px 6px 8px;
       float: left; }
       #container #header h1 a {
         display: block;
