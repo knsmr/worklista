@@ -5,16 +5,17 @@
   = devise_error_messages!
   %p
     = f.label :email
-    %br/
     = f.text_field :email
-  %p
     = f.label :username
-    %br/
     = f.text_field :username
-  %p
-    = f.label :name
     %br/
+    = f.label :name
     = f.text_field :name
+    Web site
+    = f.text_field :website
+    %br/
+    Twitter
+    = f.text_field :twitter_id
   %p
     = image_tag @user.photo.url(:medium)
     %br/
@@ -22,7 +23,7 @@
   %p
     = f.label :description
     %br/
-    = f.text_area :description
+    = f.text_area :description, :cols => 60, :rows => 12
   %p
     = f.label :password
     %i (leave blank if you don't want to change it)
