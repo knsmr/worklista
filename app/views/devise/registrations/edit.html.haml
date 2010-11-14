@@ -12,6 +12,10 @@
     %br/
     = f.text_field :username
   %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
     = image_tag @user.photo.url(:medium)
     %br/
     = f.file_field :photo
