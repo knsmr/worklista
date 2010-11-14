@@ -122,7 +122,7 @@ h2#entry {
   margin: 10px 0px 0px 0px;
   border: 1px solid black;
   padding: 5px;
-  background-color: #dddddd;
+  background-color: #eeeeee;
   -moz-border-radius: 5px;
   border-radius: 5px;
   overflow: auto; }
@@ -132,7 +132,7 @@ h2#entry {
     padding: 3px 0 0 0;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    background-color: white;
+    background-color: #dddddd;
     width: 40%;
     overflow: auto; }
     #profile #head #photo {
@@ -149,7 +149,6 @@ h2#entry {
     #profile #body #description {
       margin: 3px;
       padding: 10px;
-      background-color: #dddddd;
       -moz-border-radius: 5px;
       border-radius: 5px;
       font-size: 0.9em; }
