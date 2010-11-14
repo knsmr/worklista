@@ -18,7 +18,7 @@
     %li
       = link_to 'Popular', '/me/popular'
     %li
-      = link_to 'Choice', '/me'
+      = link_to 'My Pickup', '/me/pickup'
   - if user_signed_in? && current_user.id == @user.id
     #url-form
       = form_for([@user, @user.items.build]) do |f|
@@ -46,5 +46,6 @@
         - if user_signed_in? && current_user.id == @user.id
           = button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
           = button_to "Edit", "/users/#{@user.id}/items/#{i.id}/edit", :method => :get
+          = button_to "Pick", "/users/#{@user.id}/items/#{i.id}", :method => :put
 = will_paginate @items
 
