@@ -44,8 +44,12 @@
     #body
       #description
         - if user_signed_in? && current_user.id == @user.id
-          = button_to "Delete", "/users/#{@user.id}/items/#{i.id}", :confirm => "Are you sure?", :method => :delete
-          = button_to "Edit", "/users/#{@user.id}/items/#{i.id}/edit", :method => :get
-          = button_to "Pick", "/users/#{@user.id}/items/#{i.id}", :method => :put
+          = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete
+          = button_to "Edit", edit_user_item_path(@user, i), :method => :get
+          - if i.pick?
+            = button_to "Unpick", user_item_path(@user, i, :item => {:pick => false}), :method => :put
+          - else
+            = button_to "Pick", user_item_path(@user, i, :item => {:pick => true}), :method => :put
+
 = will_paginate @items
 
