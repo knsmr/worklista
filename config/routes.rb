@@ -1,8 +1,10 @@
 Worklista::Application.routes.draw do
   
   match "me" => "users#me", :as => "me"
-  match "me/popular" => "users#me_popular", :as => "me_popular"
-  match "me/pickup" => "users#pickup", :as => "me_pickup"
+
+  match "users/:username/popular" => "users#popular"
+  match "users/:username/pickup" => "users#pickup"
+
   match "users/:username" => "users#show"  
 
   # redirect when logged-in.

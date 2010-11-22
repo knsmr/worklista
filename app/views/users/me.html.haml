@@ -14,11 +14,11 @@
 #item-tab
   %ul
     %li
-      = link_to 'Recent', '/me'
+      = link_to 'Recent', "/users/#{@user.username}"
     %li
-      = link_to 'Popular', '/me/popular'
+      = link_to 'Popular', "/users/#{@user.username}/popular"
     %li
-      = link_to 'My Pickup', '/me/pickup'
+      = link_to 'My Pickup', "/users/#{@user.username}/pickup"
   - if user_signed_in? && current_user.id == @user.id
     #url-form
       = form_for([@user, @user.items.build]) do |f|
