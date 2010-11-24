@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  PAGINATION = 12
 
   def index
     @users = User.all
@@ -6,8 +7,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_username(params[:username])
-    @items = @user.items.reverse.paginate :page => params[:page],
-                                          :per_page => 10
+    @items = @user.items
+                  .order("published_at").reverse
+                  .paginate :page => params[:page], :per_page => PAGINATION
     render "me"
   end
 
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @items = @user.items
                   .order("hatena").reverse
-                  .paginate :page => params[:page], :per_page => 10
+                  .paginate :page => params[:page], :per_page => PAGINATION
     render "me"
   end
 
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @items = @user.items
                   .find_all{|i| i.pick}
-                  .paginate :page => params[:page], :per_page => 10
+                  .paginate :page => params[:page], :per_page => PAGINATION
     render "me"
   end
 
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
       @user = current_user
       @items = @user.items
                     .order("published_at").reverse
-                    .paginate :page => params[:page], :per_page => 10
+                    .paginate :page => params[:page], :per_page => PAGINATION
 
       render "me"
     else
