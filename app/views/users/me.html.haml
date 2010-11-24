@@ -26,6 +26,10 @@
         = f.text_field :url, :size => 60
         = f.submit "Add"
 
+- if @items.size == 0
+  .item
+    %p No items
+
 - @items.each do |i|
   .item
     #head
