@@ -6,6 +6,10 @@
 !grey       = #757364
 !blue       = #CBEDFF
 
+@mixin round-corner
+  :-moz-border-radius 5px
+  :border-radius 5px
+
 body
   :background-color = !darkgreen
   :font
@@ -37,16 +41,14 @@ h2#entry
   :border 2px !grey solid
   :padding 5px 5px
   :display block
-  :-moz-border-radius 5px
-  :border-radius 5px
+  @include round-corner
   
 #menu-navi
   :clear both
   :background-color = !brown
   :border 2px !grey solid
   :display block
-  :-moz-border-radius 5px
-  :border-radius 5px
+  @include round-corner
   :overflow auto
   ul
     :margin 0px
@@ -55,8 +57,7 @@ h2#entry
     :list-style none
     li
       :float right
-      :-moz-border-radius 5px
-      :border-radius 5px
+      @include round-corner
       :display inline
       :margin 2px
       :padding 0.3em 0.5em
@@ -70,8 +71,7 @@ h2#entry
     :list-style none
     :float left
     li
-      :-moz-border-radius 4px
-      :border-radius 4px
+      @include round-corner
       :display inline
       :margin 0em 1em 0em 0em
       :padding 0.5em 0.5em
@@ -97,8 +97,7 @@ h2#entry
   :padding 20px 40px
   :border solid 1px black
   :margin-top 20px
-  :-moz-border-radius 5px
-  :border-radius 5px
+  @include round-corner
   #header
     :height 58px
     h1
@@ -136,15 +135,13 @@ h2#entry
   border: 1px solid #000
   padding: 5px
   background-color: #eee
-  -moz-border-radius: 5px
-  border-radius: 5px
+  @include round-corner
   overflow: auto
   #head
     float: left
     margin: 3px
     padding: 3px 0 0 0
-    -moz-border-radius: 5px
-    border-radius: 5px
+    @include round-corner
     background-color: #ddd
     width: 40%
     overflow: auto
@@ -162,18 +159,16 @@ h2#entry
     #description
       margin: 3px
       padding: 10px
-      -moz-border-radius: 5px
-      border-radius: 5px
+      @include round-corner
       font-size: 0.9em
 
-#item
+.item
   clear: both
   margin: 3px 0px
   border: 1px solid #000
   padding: 5px 5px 5px 5px
   background-color: !blue
-  -moz-border-radius: 5px
-  border-radius: 5px
+  @include round-corner
   overflow: auto
   #head
     margin: 3px
@@ -217,8 +212,7 @@ h2#entry
   :width 85%
   :padding 0.5em 3em
   :margin 2em auto
-  :-moz-border-radius 5px
-  :border-radius 5px
+  @include round-corner
   :overflow auto
   p
     :text-indent 1em

@@ -60,8 +60,8 @@ h2#entry {
   list-style: none;
   float: left; }
   #item-tab ul li {
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     display: inline;
     margin: 0em 1em 0em 0em;
     padding: 0.5em 0.5em;
@@ -154,7 +154,7 @@ h2#entry {
       border-radius: 5px;
       font-size: 0.9em; }
 
-#item {
+.item {
   clear: both;
   margin: 3px 0px;
   border: 1px solid black;
@@ -163,40 +163,40 @@ h2#entry {
   -moz-border-radius: 5px;
   border-radius: 5px;
   overflow: auto; }
-  #item #head {
+  .item #head {
     margin: 3px; }
-    #item #head #title {
+    .item #head #title {
       float: left;
       font-size: 1.1em; }
-    #item #head #social {
+    .item #head #social {
       float: left;
       font-size: 0.8em;
       font-weight: bold;
       margin-left: 10px; }
-      #item #head #social #hatena {
+      .item #head #social #hatena {
         float: left;
         margin: 0.2em;
         padding: 0 0.4em;
         background-color: #ffcccc;
         color: red; }
-        #item #head #social #hatena a {
+        .item #head #social #hatena a {
           color: red; }
-      #item #head #social #retweet {
+      .item #head #social #retweet {
         float: left;
         margin: 0.2em;
         background-color: #ccffcc;
         padding: 0 0.4em;
         color: #00aa00; }
-        #item #head #social #retweet a {
+        .item #head #social #retweet a {
           color: green; }
-    #item #head #date {
+    .item #head #date {
       float: right;
       color: #111111;
       font-size: 0.8em; }
-  #item #body {
+  .item #body {
     clear: both;
     padding-top: 0.5em; }
-    #item #body #description form {
+    .item #body #description form {
       float: right; }
 
 #pages {
