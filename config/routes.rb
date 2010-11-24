@@ -2,8 +2,8 @@ Worklista::Application.routes.draw do
   
   match "me" => "users#me", :as => "me"
 
-  match "users/:username/popular" => "users#popular"
-  match "users/:username/pickup" => "users#pickup"
+  match "users/:username/popular" => "users#popular", :as => "user_popular", :via => "get"
+  match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
 
   match "users/:username" => "users#show"  
 
