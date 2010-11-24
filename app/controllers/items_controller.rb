@@ -41,6 +41,8 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    populate_hatena @item
+    populate_retweet @item
     if @item.update_attributes(params[:item])
       flash[:notice] = "Successfully updated item."
       redirect_to '/me'
