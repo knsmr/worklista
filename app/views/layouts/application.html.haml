@@ -17,7 +17,7 @@
       #header
         %h1
           - if user_signed_in?
-            = link_to 'worklista', "/users/#{@user.username}"
+            = link_to 'worklista', "/users/#{current_user.username}"
           - else
             = link_to 'worklista', '/'
 
