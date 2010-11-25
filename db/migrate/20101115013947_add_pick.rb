@@ -1,6 +1,6 @@
 class AddPick < ActiveRecord::Migration
   def self.up
-    add_column :items, :pick, :boolean, :default => 0
+    add_column :items, :pick, :boolean, :default => false
   end
 
   def self.down
