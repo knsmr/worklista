@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   if Rails.env.production?
     has_attached_file :photo,
                       :storage => :s3,
+                      :url => ":s3_domain_url",
                       :styles => { :medium => "240x240", :thumb => "80x80",
                                    :original => "300x300"}, 
                       :default_url => "/images/missing-:style.png",
