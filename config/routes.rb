@@ -5,13 +5,8 @@ Worklista::Application.routes.draw do
   match "users/:username/popular" => "users#popular", :as => "user_popular", :via => "get"
   match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
 
-  match "users/:username" => "users#show"  
+  match "users/:username" => "users#show", :as => "user_recent", :via => "get"
 
-  # redirect when logged-in.
-  namespace :user do
-    root :to => "users#me"
-  end
-  
   devise_for :users, :path => 'account' do
     get "login",  :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"
