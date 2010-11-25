@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mikel/right_aws.git
+  revision: 43e26f0dfdb7a3215a0db1a7b5e6b3c6a5781d86
+  specs:
+    right_aws (2.0.0.1)
+      right_http_connection (>= 1.2.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -83,8 +90,6 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    right_aws (2.0.0)
-      right_http_connection (>= 1.2.1)
     right_http_connection (1.2.4)
     ruby_parser (2.0.5)
       sexp_processor (~> 3.0)
@@ -111,7 +116,7 @@ DEPENDENCIES
   hpricot
   paperclip
   rails (= 3.0.1)
-  right_aws
+  right_aws!
   ruby_parser
   sqlite3-ruby
   will_paginate (= 3.0.pre2)
