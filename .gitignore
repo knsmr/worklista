@@ -3,4 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 public/system/*
+config/s3.yml
+config/config.yml
+
 
