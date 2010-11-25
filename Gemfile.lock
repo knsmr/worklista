@@ -30,6 +30,10 @@ GEM
     activesupport (3.0.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.2)
     bitly (0.5.3)
       crack (>= 0.1.4)
@@ -90,11 +94,13 @@ GEM
     warden (0.10.7)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    xml-simple (1.0.12)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-s3
   bitly
   devise
   haml
