@@ -1,46 +1,45 @@
 %h2
-  / Edit #{resource_name.to_s.humanize}
   Account settings
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
-  = devise_error_messages!
-  %p
-    = f.label :email
-    = f.text_field :email
-    = f.label :username
-    = f.text_field :username
-    %br/
-    = f.label :name
-    = f.text_field :name
-    Web site
-    = f.text_field :website
-    %br/
-    Twitter
-    = f.text_field :twitter_id
-  %p
-    = image_tag @user.photo.url(:medium)
-    %br/
-    = f.file_field :photo
-  %p
-    = f.label :description
-    %br/
-    = f.text_area :description, :cols => 60, :rows => 12
-  %p
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password
-  %p= f.submit "Update"
-%h3 Cancel my account
+.item
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
+    = devise_error_messages!
+    %p
+      = f.label :email
+      = f.text_field :email
+      = f.label :username
+      = f.text_field :username
+      %br/
+      = f.label :name
+      = f.text_field :name
+      Web site
+      = f.text_field :website
+      %br/
+      Twitter
+      = f.text_field :twitter_id
+    %p
+      %a{:href => "#{@user.photo.url(:medium)}"}
+        = image_tag @user.photo.url(:thumb)
+      %br/
+      = f.file_field :photo
+    %p
+      = f.label :description
+      %br/
+      = f.text_area :description, :cols => 60, :rows => 12
+    %p
+      = f.label :password
+      %i (leave blank if you don't want to change it)
+      %br/
+      = f.password_field :password
+    %p
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation
+    %p
+      = f.label :current_password
+      %i (we need your current password to confirm your changes)
+      %br/
+      = f.password_field :current_password
+    %p= f.submit "Update"
 %p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-  
+  Unhappy? #{link_to "Deactivate my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
 = link_to "Back", :back

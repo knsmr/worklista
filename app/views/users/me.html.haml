@@ -1,7 +1,8 @@
 #profile
   #head
     #photo
-      = image_tag @user.photo.url(:thumb)
+      %a{:href => "#{@user.photo.url(:medium)}"}
+        = image_tag @user.photo.url(:thumb)
     #name= @user.name
     #title= @user.title
     #username= @user.username
