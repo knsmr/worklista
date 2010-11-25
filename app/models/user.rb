@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   end
 
   has_attached_file :photo,
-                    :styles => { :medium => "240x240", :thumb => "80x80"}, 
+                    :styles => { :medium => "240x240", :thumb => "80x80",
+                                 :original => "300x300"}, 
                     :default_url => "/images/missing-:style.png"
 
   validates_attachment_size :photo, :less_than => 2.megabytes
