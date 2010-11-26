@@ -19,22 +19,10 @@ class User < ActiveRecord::Base
     where(["username = :value OR email = :value", { :value => value }]).first
   end
 
-  if Rails.env.production?
-    has_attached_file :photo,
-                      :storage => :s3,
-                      :url => ":s3_domain_url",
-                      :styles => { :medium => "240x240", :thumb => "80x80",
-                                   :original => "300x300"}, 
-                      :default_url => "/images/missing-:style.png",
-                      :s3_credentials => "#{Rails.root}/config/s3.yml",
-                      :bucket => "worklista-dev"
-  else
-    has_attached_file :photo,
-                      :styles => { :medium => "240x240", :thumb => "80x80",
-                                   :original => "300x300"}, 
-                      :default_url => "/images/missing-:style.png"
-  end
-
+  has_attached_file :photo,
+                    :styles => { :medium => "240x240", :thumb => "80x80",
+                                 :original => "300x300"}, 
+                    :default_url => "/images/missing-:style.png"
 
   validates_attachment_size :photo, :less_than => 2.megabytes
 
