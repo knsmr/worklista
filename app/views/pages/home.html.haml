@@ -4,10 +4,10 @@
 
   %p Do you publish your work such as articles, photos, software programs, anything that has a URL? Would you like to maintain a decent URL list of them? If so, Worklista may help you a lot!
 
-  %ul
+  %ul{:style => "text-align: center;"}
     - unless user_signed_in?
-      %li
+      %li{:class => "button"}
         = link_to 'Sign up!!', '/signup'
-      %li
-        = link_to 'A sample page', user_recent_path("knsmr")
+      %li{:class => "button"}
+        = link_to 'Sample page', user_recent_path("knsmr")
 

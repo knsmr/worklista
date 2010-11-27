@@ -13,6 +13,17 @@ a {
   height: 0;
   overflow: hidden; }
 
+.button {
+  background-color: #d9aa81;
+  border: 2px #757364 solid;
+  display: block;
+  padding: 3px;
+  margin: 10px;
+  font-size: 1.5em;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  overflow: auto; }
+
 .pagination {
   margin-top: 1em;
   margin-left: auto;
