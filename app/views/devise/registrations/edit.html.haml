@@ -1,45 +1,93 @@
 %h2
   Your account settings
-.item
+.settings
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
     = devise_error_messages!
-    %p
-      = f.label :email
-      = f.text_field :email
-      = f.label :username
-      = f.text_field :username
-      %br/
-      = f.label :name
-      = f.text_field :name
-      Web site
-      = f.text_field :website, :value => "http://"
-      %br/
-      Twitter
-      = f.text_field :twitter_id
-    %p
-      %a{:href => "#{@user.photo.url(:medium)}"}
-        = image_tag @user.photo.url(:thumb)
-      %br/
-      = f.file_field :photo
-    %p
-      = f.label :description
-      %br/
-      = f.text_area :description, :cols => 60, :rows => 6
-    %p
-      = f.label :password
-      %i (leave blank if you don't want to change it)
-      %br/
-      = f.password_field :password
-    %p
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation
-    %p
-      = f.label :current_password
-      %i (we need your current password to confirm your changes)
-      %br/
-      = f.password_field :current_password
-    %p= f.submit "Update"
+    #left-settings
+      .entry
+        .property
+          Email
+        .field
+          = f.text_field :email
+          %br/
+          Your email address will not be publicly displayed or linked. 
+      .entry
+        .property
+          Username
+        .field
+          = f.text_field :username
+          %br/
+          Your public work list: http://worklista.com/users/USERNAME. Please use only alphabets and numbers. No spaces allowed. 
+
+      .entry
+        .property
+          Name
+        .field
+          = f.text_field :name
+          %br/
+          Enter your real name. It should be less than x characters. 
+
+      .entry
+        .property
+          Web site
+        .field
+          = f.text_field :website, :value => "http://"
+          %br/
+          Your public web site or a blog, if there's any. 
+
+      .entry
+        .property
+          Twitter ID
+        .field
+          = f.text_field :twitter_id
+          %br/
+          Your profile will have twitter link if you provide this. 
+
+      .entry
+        .property
+          Picture
+        .field
+          %a{:href => "#{@user.photo.url(:medium)}", :style => "float:left; margin-right: 10px;"}
+            = image_tag @user.photo.url(:thumb)
+          = f.file_field :photo
+          %br/
+          Up to 1MB, JPG, GIF and PNG. 
+
+      .entry
+        .property
+          Profile
+        .field
+          = f.text_area :description, :cols => 45, :rows => 5
+          %br/
+          What do you do? What are your interests? (max: x characters)
+
+      .entry
+        .property
+          Password
+        .field
+          = f.password_field :password
+          %br/
+          %i (leave blank if you don't want to change it)
+
+      .entry
+        .property
+          Password Confirmation
+        .field
+          = f.password_field :password_confirmation
+
+      .entry
+        .property
+          Current Password
+        .field
+          = f.password_field :current_password
+          %br/
+          %i (we need your current password to confirm your changes)
+
+      .entry
+        .property
+        .field
+          = f.submit "Update"
+
 %p{:style => "font-size: 0.9em;"}
   #{link_to "Deactivate my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
 

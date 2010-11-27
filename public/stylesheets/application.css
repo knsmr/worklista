@@ -204,6 +204,33 @@ h2#entry {
     .item #body #description form {
       float: right; }
 
+.settings {
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 30px 5px 5px 5px;
+  background: #cbedff;
+  margin: 3px 0px;
+  border: 1px solid black;
+  overflow: auto; }
+  .settings #left-settings {
+    float: left;
+    width: 70%;
+    padding-left: 20px; }
+    .settings #left-settings .entry {
+      padding-bottom: 30px;
+      overflow: auto; }
+      .settings #left-settings .entry .property {
+        width: 30%;
+        float: left;
+        padding: 5px;
+        padding-left: 20px;
+        font-weight: bold; }
+      .settings #left-settings .entry .field {
+        width: 65%;
+        float: right;
+        color: #888888;
+        font-size: 0.8em; }
+
 #pages {
   background: #eeeeee;
   width: 85%;
