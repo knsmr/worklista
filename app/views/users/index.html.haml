@@ -1,8 +1,19 @@
 - @users.each do |user|
-  #profile
-    #body
-      #name
-        = link_to user.username, "/users/#{user.username}"
-      #description
-        = user.description
+  .profile
+    .head
+      .photo
         = link_to raw("#{image_tag user.photo.url(:thumb)}"), "/users/#{user.username}"
+      .name
+        = user.name
+      .username
+        = link_to user.username, "/users/#{user.username}"
+      .twitter
+        - if user.twitter_id
+          = link_to(image_tag("twitter-icon.png"), "http://twitter.com/#{user.twitter_id}")
+      .website
+        - if user.website
+          = link_to user.website, user.website
+    .body
+      .description
+        = user.description
+

@@ -119,35 +119,40 @@ h2#entry {
   text-align: center;
   color: #222222; }
 
-#profile {
+.profile {
   margin: 10px 0px 0px 0px;
   border: 1px solid black;
-  padding: 5px;
+  padding: 10px;
   background-color: #eeeeee;
+  overflow: auto;
   -moz-border-radius: 5px;
-  border-radius: 5px;
-  overflow: auto; }
-  #profile #head {
+  border-radius: 5px; }
+  .profile .head {
     float: left;
     margin: 3px;
     padding: 3px 0 0 0;
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: #dddddd;
-    width: 40%;
+    width: 45%;
     overflow: auto; }
-    #profile #head #photo {
+    .profile .head .photo {
       float: left;
       margin: 5px 10px 5px 6px; }
-    #profile #head #name {
-      font-size: 1.1em;
+    .profile .head .name {
+      font-size: 1.3em;
       font-weight: bold; }
-    #profile #head #website {
-      font-size: 0.5em; }
-  #profile #body {
+    .profile .head .username {
+      font-size: 1em; }
+    .profile .head .twitter {
+      margin-top: 3px;
+      font-size: 1em; }
+    .profile .head .website {
+      font-size: 0.8em; }
+  .profile .body {
     float: left;
-    width: 58%; }
-    #profile #body #description {
+    width: 53%; }
+    .profile .body .description {
       margin: 3px;
       padding: 10px;
       -moz-border-radius: 5px;
