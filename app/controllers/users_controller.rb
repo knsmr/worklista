@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def pickup
     @user = User.find_by_username(params[:username])
-    @items = @user.items.find_all{|i| i.pick}.paginate :page => params[:page], :per_page => PAGINATION
+    @items = @user.items.order("published_at").reverse.find_all{|i| i.pick}.paginate :page => params[:page], :per_page => PAGINATION
     render "me"
   end
 
