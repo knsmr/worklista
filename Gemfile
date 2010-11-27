@@ -37,6 +37,6 @@ gem 'will_paginate', '3.0.pre2'
 gem 'hpricot'
 gem 'ruby_parser'
 gem 'bitly'
-gem 'aws-s3'
-gem 'right_aws', :git => 'https://github.com/mikel/right_aws.git'
+# gem 'aws-s3'
+# gem 'right_aws', :git => 'https://github.com/mikel/right_aws.git'
 
