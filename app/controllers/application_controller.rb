@@ -17,4 +17,8 @@ private
   def after_sign_out_path_for(resource_or_scope)
     users_path
   end
+
+  def after_update_path_for(resource)
+    user_recent_path(current_user.username)
+  end
 end
