@@ -1,148 +1,146 @@
-!primary_color = #4B7399
+$primary_color: #4b7399
 
-!darkgreen  = #6B8C66
-!lightgreen = #C3F75C
-!brown      = #D9AA81
-!grey       = #757364
-!blue       = #CBEDFF
+$darkgreen: #6b8c66
+$lightgreen: #c3f75c
+$brown: #d9aa81
+$grey: #757364
+$blue: #cbedff
 
-@mixin round-corner
-  :-moz-border-radius 5px
-  :border-radius 5px
+=round-corner
+  -moz-border-radius: 5px
+  border-radius: 5px
 
 body
-  :background-color = !darkgreen
-  :font
-    :family Verdana, Helvetica, Arial
-    :size 14px
+  background-color: $darkgreen
+  font:
+    family: Verdana, Helvetica, Arial
+    size: 14px
 
 a
-  :color #0000FF
+  color: blue
   img
-    :border none
+    border: none
 
 .clear
-  :clear both
-  :height 0
-  :overflow hidden
+  clear: both
+  height: 0
+  overflow: hidden
 
 .pagination
-  :margin-top 1em
-  :margin-left auto
-  :margin-right auto
-  :border 1px solid 
-  :text-align center
-  :font-weight bold
-  :font-size 1.2em
-  :background-color #ddd
+  margin-top: 1em
+  margin-left: auto
+  margin-right: auto
+  border: 1px solid
+  text-align: center
+  font-weight: bold
+  font-size: 1.2em
+  background-color: #dddddd
 
 h2#entry
-  :background-color = !brown
-  :border 2px !grey solid
-  :padding 5px 5px
-  :display block
-  @include round-corner
-  
+  background-color: $brown
+  border: 2px $grey solid
+  padding: 5px 5px
+  display: block
+  +round-corner
+
 #menu-navi
-  :clear both
-  :background-color = !brown
-  :border 2px !grey solid
-  :display block
-  @include round-corner
-  :overflow auto
+  clear: both
+  background-color: $brown
+  border: 2px $grey solid
+  display: block
+  +round-corner
+  overflow: auto
   ul
-    :margin 0px
-    :padding 0px
-    :padding-left 10px
-    :list-style none
+    margin: 0px
+    padding: 0px
+    padding-left: 10px
+    list-style: none
     li
-      :float right
-      @include round-corner
-      :display inline
-      :margin 2px
-      :padding 0.3em 0.5em
-      :text-decoration none  
-      :color white  
-      :background = !blue
+      float: right
+      +round-corner
+      display: inline
+      margin: 2px
+      padding: 0.3em 0.5em
+      text-decoration: none
+      color: white
+      background: $blue
 
 #item-tab
   ul
-    :margin 10px 0px 8px 0px
-    :list-style none
-    :float left
+    margin: 10px 0px 8px 0px
+    list-style: none
+    float: left
     li
-      @include round-corner
-      :display inline
-      :margin 0em 1em 0em 0em
-      :padding 0.5em 0.5em
-      :text-decoration none  
-      :background #eee
+      +round-corner
+      display: inline
+      margin: 0em 1em 0em 0em
+      padding: 0.5em 0.5em
+      text-decoration: none
+      background: #eeeeee
       a
-        :color #999
-        :text-decoration none
-        :text-shadow 1px 1px #000
+        color: #999999
+        text-decoration: none
+        text-shadow: 1px 1px black
         &:hover
-          :color = !blue * 0.9
+          color: $blue * 0.9
   #url-form
-    :padding 2px 10px
-    :-moz-border-radius 3px
-    :border-radius 3px
-    :background #eee
-    :float right
+    padding: 2px 10px
+    -moz-border-radius: 3px
+    border-radius: 3px
+    background: #eeeeee
+    float: right
 
 #container
-  :width 75%
-  :margin 0 auto
-  :background #fff
-  :padding 20px 40px
-  :border solid 1px black
-  :margin-top 20px
-  @include round-corner
+  width: 75%
+  margin: 0 auto
+  background: white
+  padding: 20px 40px
+  border: solid 1px black
+  margin-top: 20px
+  +round-corner
   #header
-    :height 58px
+    height: 58px
     h1
-      :margin 2px 0px 6px 8px
-      :float left
+      margin: 2px 0px 6px 8px
+      float: left
       a
-        :display block
-        :background-image url(/images/worlis-logo.png)
-        :background-repeat no-repeat
-        :text-indent -999em
-        :padding 0px
-        :margin 0px
-        :width 260px
-        :height 58px
-
-
+        display: block
+        background-image: url(/images/worlis-logo.png)
+        background-repeat: no-repeat
+        text-indent: -999em
+        padding: 0px
+        margin: 0px
+        width: 260px
+        height: 58px
     #login
-      :background #fff
-      :float right
-      :margin 4px 8px
-      :padding 4px
-      :font-weight bold
-      :font-size 0.9em
+      background: white
+      float: right
+      margin: 4px 8px
+      padding: 4px
+      font-weight: bold
+      font-size: 0.9em
 
 #footer
-  :width 75%
-  :margin 0 auto
-  :padding 5px 20px
-  :font-size 0.9em
-  :text-align center
-  :color #222
+  width: 75%
+  margin: 0 auto
+  padding: 5px 20px
+  font-size: 0.9em
+  text-align: center
+  color: #222222
 
 #profile
   margin: 10px 0px 0px 0px
-  border: 1px solid #000
+  border: 1px solid black
   padding: 5px
-  background-color: #eee
-  @include round-corner
+  background-color: #eeeeee
+  +round-corner
   overflow: auto
   #head
     float: left
     margin: 3px
     padding: 3px 0 0 0
-    @include round-corner
-    background-color: #ddd
+    +round-corner
+    background-color: #dddddd
     width: 40%
     overflow: auto
     #photo
@@ -159,16 +157,16 @@ h2#entry
     #description
       margin: 3px
       padding: 10px
-      @include round-corner
+      +round-corner
       font-size: 0.9em
 
 .item
   clear: both
   margin: 3px 0px
-  border: 1px solid #000
+  border: 1px solid black
   padding: 5px 5px 5px 5px
-  background-color: !blue
-  @include round-corner
+  background-color: $blue
+  +round-corner
   overflow: auto
   #head
     margin: 3px
@@ -184,21 +182,21 @@ h2#entry
         float: left
         margin: 0.2em
         padding: 0 0.4em
-        background-color: #fcc
-        color: #f00
+        background-color: #ffcccc
+        color: red
         a
           color: red
       #retweet
         float: left
         margin: 0.2em
-        background-color: #cfc
+        background-color: #ccffcc
         padding: 0 0.4em
-        color: #0a0
+        color: #00aa00
         a
           color: green
     #date
       float: right
-      color: #111
+      color: #111111
       font-size: 0.8em
   #body
     clear: both
@@ -208,58 +206,58 @@ h2#entry
         float: right
 
 #pages
-  :background #eee
-  :width 85%
-  :padding 0.5em 3em
-  :margin 2em auto
-  @include round-corner
-  :overflow auto
+  background: #eeeeee
+  width: 85%
+  padding: 0.5em 3em
+  margin: 2em auto
+  +round-corner
+  overflow: auto
   p
-    :text-indent 1em
-    :text-align justify
-    :line-height 1.4em
-    :width 90%
+    text-indent: 1em
+    text-align: justify
+    line-height: 1.4em
+    width: 90%
   h2
-    :border-bottom solid 1px #000
+    border-bottom: solid 1px black
 
 #flash_notice,
 #flash_error
-  :padding 5px 8px
-  :margin 10px 0
+  padding: 5px 8px
+  margin: 10px 0
 
 #flash_notice
-  :background-color #CFC
-  :border solid 1px #6C6
+  background-color: #ccffcc
+  border: solid 1px #66cc66
 
 #flash_error
-  :background-color #FCC
-  :border solid 1px #C66
+  background-color: #ffcccc
+  border: solid 1px #cc6666
 
 .fieldWithErrors
-  :display inline
+  display: inline
 
 #errorExplanation
-  :width 400px
-  :border 2px solid #CF0000
-  :padding 0
-  :padding-bottom 12px
-  :margin-bottom 20px
-  :background-color #f0f0f0
+  width: 400px
+  border: 2px solid #cf0000
+  padding: 0
+  padding-bottom: 12px
+  margin-bottom: 20px
+  background-color: #f0f0f0
   h2
-    :text-align left
-    :padding 5px 5px 5px 15px
-    :margin 0
-    :font
-      :weight bold
-      :size 12px
-    :background-color #c00
-    :color #fff
+    text-align: left
+    padding: 5px 5px 5px 15px
+    margin: 0
+    font:
+      weight: bold
+      size: 12px
+    background-color: #cc0000
+    color: white
   p
-    :color #333
-    :margin-bottom 0
-    :padding 8px
+    color: #333333
+    margin-bottom: 0
+    padding: 8px
   ul
-    :margin 2px 24px
+    margin: 2px 24px
     li
-      :font-size 12px
-      :list-style disc
+      font-size: 12px
+      list-style: disc
