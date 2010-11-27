@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
                                  :original => "300x300"}, 
                     :default_url => "/images/missing-:style.png"
 
-  validates_attachment_size :photo, :less_than => 2.megabytes
+  validates_attachment_size :photo, :less_than => 1.megabytes
 
 # to allow users to edit their accout without providing a password
 
