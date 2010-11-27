@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nkf'
 
 class ItemsController < ApplicationController
+  before_filter :authorise_as_owner
 
   conf = APP_CONFIG["bitly"]
   @@bitly = Bitly.new(conf["username"], conf["apikey"])
@@ -51,7 +52,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
+private
+
+  def authorise_as_owner
+    @user = User.find(params[:user_id])
+    unless @user == current_user
+      # You are not the owner of this item!
+      flash[:notice] = "Oops, something went wrong!"
+      redirect_to users_path
+    end
+  end
 
   def guess_date(item)
     if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/ then
