@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
     if @item.url !~ /^(#{URI::regexp(%w(http https))})$/ then
       flash[:notice] = "Invalid URL!!"
-      redirect_to me_path
+      redirect_to user_recent_path(current_user.username)
       return
     end
 
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
     if @item.save
       flash[:notice] = "Successfully created an item."
-      redirect_to me_path
+      redirect_to user_recent_path(current_user.username)
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     flash[:notice] = "Successfully destroyed an item."
-    redirect_to me_path
+    redirect_to user_recent_path(current_user.username)
   end
 
   def edit
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     populate_retweet @item
     if @item.update_attributes(params[:item])
       flash[:notice] = "Successfully updated item."
-      redirect_to '/me'
+      redirect_to user_recent_path(current_user.username)
     else
       render :action => 'edit'
     end
