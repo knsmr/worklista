@@ -6,11 +6,12 @@
     #left-settings
       .entry
         .property
-          Email
+          Name
         .field
-          = f.text_field :email
+          = f.text_field :name
           %br/
-          Your email address will not be publicly displayed or linked. 
+          Enter your real name. It should be less than x characters. 
+
       .entry
         .property
           Username
@@ -21,11 +22,11 @@
 
       .entry
         .property
-          Name
+          Email
         .field
-          = f.text_field :name
+          = f.text_field :email
           %br/
-          Enter your real name. It should be less than x characters. 
+          Your email address will not be publicly displayed or linked. 
 
       .entry
         .property
