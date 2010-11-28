@@ -56,7 +56,7 @@ private
 
   def authorise_as_owner
     @user = User.find(params[:user_id])
-    unless @user == current_user
+    unless (user_signed_in? && @user == current_user)
       # You are not the owner of this item!
       flash[:notice] = "Oops, something went wrong!"
       redirect_to users_path
