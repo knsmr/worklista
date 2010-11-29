@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   :photo
 
   validates_uniqueness_of :username
+  validates_length_of :username,    :within  => 3..24
+  validates_length_of :description, :maximum => 120
 
   has_attached_file :photo,
                     :styles => { :medium => "240x240", :thumb => "80x80",
