@@ -76,14 +76,17 @@ h2#entry {
     display: inline;
     margin: 0em 1em 0em 0em;
     padding: 0.5em 0.5em;
+    font-size: 1.1em;
     text-decoration: none;
-    background: #eeeeee; }
+    background: #bbbbbb; }
     #item-tab ul li a {
-      color: #999999;
+      color: #666666;
       text-decoration: none;
       text-shadow: 1px 1px black; }
       #item-tab ul li a:hover {
-        color: #b6d5e5; }
+        color: #cbedff; }
+  #item-tab ul #selected {
+    background: #eeeeee; }
 #item-tab #url-form {
   padding: 2px 10px;
   -moz-border-radius: 3px;
