@@ -30,8 +30,13 @@
 
       .entry
         .property
+          Invite code
+        .field
+          = f.text_field :invite_code
+
+      .entry
+        .property
         .field
           = f.submit "Sign up"
-
       
 = render :partial => "devise/shared/links"

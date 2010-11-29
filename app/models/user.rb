@@ -8,13 +8,19 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :username, :name, :title, :twitter_id, \
   :description, :website, :password, :password_confirmation, :remember_me,\
-  :photo
+  :photo, :invite_code
+  attr_accessor :invite_code
 
   validates_uniqueness_of :username
   validates_length_of :username,    :within  => 3..24
   validates_format_of :username,    :with    => /[_a-zA-Z0-9]+/
-  validates_format_of :twitter_id,  :with    => /[_a-zA-Z0-9]+/
+  validates_format_of :twitter_id,  :with    => /[_a-zA-Z0-9]+/, :allow_nil => true
   validates_length_of :description, :maximum => 120
+
+  validates_each :invite_code, :on => :create do |record, attr, value|
+    record.errors.add attr, "#{value} was invalid" unless
+      (value && value == "dummy_code")
+  end
 
   has_attached_file :photo,
                     :styles => { :medium => "240x240", :thumb => "80x80",
