@@ -29,14 +29,4 @@ class UsersController < ApplicationController
     render "me"
   end
 
-  def me
-    if user_signed_in?
-      @user = current_user
-      @items = @user.items.order("published_at").reverse.paginate :page => params[:page], :per_page => PAGINATION
-
-      render "me"
-    else
-      redirect_to users_path
-    end
-  end
 end
