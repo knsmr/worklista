@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates_length_of :username,    :within  => 3..24
+  validates_format_of :username,    :with    => /[_a-zA-Z0-9]+/
+  validates_format_of :twitter_id,  :with    => /[_a-zA-Z0-9]+/
   validates_length_of :description, :maximum => 120
 
   has_attached_file :photo,
