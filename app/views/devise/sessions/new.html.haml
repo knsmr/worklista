@@ -1,17 +1,23 @@
 %h2 Sign in
-.item
+.settings
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %p
-      Email or Username
-      %br/
-      = f.text_field :email
-    %p
-      = f.label :password
-      %br/
-      = f.password_field :password
-    - if devise_mapping.rememberable?
-      %p
-        = f.check_box :remember_me
-        = f.label :remember_me
-    %p= f.submit "Sign in"
+    #left-settings
+      .entry
+        .property
+          Email or Username
+        .field
+          = f.text_field :email
+      .entry
+        .property
+          Password
+        .field
+          = f.password_field :password
+      - if devise_mapping.rememberable?
+      .entry
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .entry
+        .field
+          = f.submit "Sign in"
 = render :partial => "devise/shared/links"
