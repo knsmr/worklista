@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     end
 
     begin 
-      Timeout::timeout(1){
+      Timeout::timeout(8){
         @doc = open(@item.url).read
       }
     rescue Timeout::Error
