@@ -1,5 +1,7 @@
 require 'open-uri'
 require 'nkf'
+require 'timeout'
+require 'resolv-replace'
 
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
@@ -17,7 +19,16 @@ class ItemsController < ApplicationController
       return
     end
 
-    @doc = open(@item.url).read
+    begin 
+      Timeout::timeout(1){
+        @doc = open(@item.url).read
+      }
+    rescue Timeout::Error
+      flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
+      redirect_to user_recent_path(current_user.username)
+      return
+    end
+
     guess_date @item
     populate @item
 
