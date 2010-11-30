@@ -55,7 +55,8 @@
       #tags
         - if i.tags
           - i.tags.each do |tag|
-            = tag.name
+            %a{:href => user_tag_path(:tag => tag.name)}
+              = tag.name
 
       #description
         - if user_signed_in? && current_user.id == @user.id

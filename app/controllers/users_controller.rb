@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def tag
+    @user = User.find_by_username(params[:username])
+    @items = @user.items.order("published_at").reverse.find_all{|i| i.tag_names.include?(params[:tag])}.paginate :page => params[:page], :per_page => PAGINATION
+
+    @select = :recent
+    render "me"
+  end
   
   def show
     @user = User.find_by_username(params[:username])

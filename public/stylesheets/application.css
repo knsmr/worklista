@@ -218,6 +218,12 @@ h2#entry {
     .item #body #tags {
       float: left;
       font-size: 0.9em; }
+      .item #body #tags a {
+        text-decoration: none;
+        text-size: 0.8em;
+        color: #999999; }
+        .item #body #tags a:hover {
+          color: #333333; }
     .item #body #description form {
       float: right; }
 

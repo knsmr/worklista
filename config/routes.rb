@@ -2,8 +2,9 @@ Worklista::Application.routes.draw do
   
   match "users/:username/popular" => "users#popular", :as => "user_popular", :via => "get"
   match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
-
   match "users/:username" => "users#show", :as => "user_recent", :via => "get"
+  match "users/:username/tag/:tag" => "users#tag", :as => "user_tag", :via => "get"
+#  match "tag/:tag" => "users#show_tag", :as => "user_tag", :via => "get"
 
   devise_for :users, :path => 'account' do
     get "login",  :to => "devise/sessions#new"
