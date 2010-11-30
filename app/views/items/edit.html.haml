@@ -7,6 +7,9 @@
     %p
       = f.text_field :url, :size => 80
     %p
+      Tags
+      = f.text_field :tag_names
+    %p
       = f.date_select :published_at
     %p= f.submit "Update"
 

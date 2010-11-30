@@ -52,6 +52,11 @@
             = i.retweet.to_s + "retweets"
       #date= i.published_at
     #body
+      #tags
+        - if i.tags
+          - i.tags.each do |tag|
+            = tag.name
+
       #description
         - if user_signed_in? && current_user.id == @user.id
           = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete

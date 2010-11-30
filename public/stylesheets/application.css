@@ -215,6 +215,9 @@ h2#entry {
   .item #body {
     clear: both;
     padding-top: 0.5em; }
+    .item #body #tags {
+      float: left;
+      font-size: 0.9em; }
     .item #body #description form {
       float: right; }
 
