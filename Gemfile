@@ -38,7 +38,3 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'bitly'
 
-group :production do
-  gem 'mysql'
-end
-
