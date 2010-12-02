@@ -33,8 +33,8 @@ class ItemsController < ApplicationController
     populate @item
 
     if @item.save
-      flash[:notice] = "Successfully created an item."
-      redirect_to user_recent_path(current_user.username)
+      flash[:notice] = "Created an item. Any changes?"
+      redirect_to edit_user_item_path(current_user, @item)
     else
       render :action => 'new'
     end
