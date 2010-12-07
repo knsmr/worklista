@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def tag
     @user = User.find_by_username(params[:username])
     @items = @user.items.order("published_at").reverse.find_all do |i|
-      i.tag_names.force_encoding("UTF-8").split(" ").include?(params[:tag])
+      i.tag_names.split(" ").include?(params[:tag])
     end.paginate :page => params[:page], :per_page => PAGINATION
 
     @select = :recent
