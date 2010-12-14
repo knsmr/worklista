@@ -18,6 +18,12 @@
 %hr
 
 #item-tab
+  - if user_signed_in? && current_user.id == @user.id
+    #url-form
+      = form_for([@user, @user.items.build]) do |f|
+        URL:
+        = f.text_field :url, :size => 60
+        = f.submit "Add"
   %ul
     %li{:id => ('selected' if @select == :recent)}
       = link_to 'Recent', user_path(@user.username)
@@ -25,12 +31,6 @@
       = link_to 'Popular', user_popular_path(@user.username)
     %li{:id => ('selected' if @select == :pickup)}
       = link_to 'My Pickup', user_pickup_path(@user.username)
-  - if user_signed_in? && current_user.id == @user.id
-    #url-form
-      = form_for([@user, @user.items.build]) do |f|
-        URL:
-        = f.text_field :url, :size => 60
-        = f.submit "Add"
 
 - if @items.size == 0
   .item

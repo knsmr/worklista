@@ -69,7 +69,7 @@ h2#entry {
 #item-tab ul {
   margin: 10px 0px 8px 0px;
   list-style: none;
-  float: left; }
+  float: right; }
   #item-tab ul li {
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -92,7 +92,7 @@ h2#entry {
   -moz-border-radius: 3px;
   border-radius: 3px;
   background: #eeeeee;
-  float: right; }
+  float: left; }
 
 #container {
   width: 75%;
