@@ -1,0 +1,3 @@
+bitly:
+ username: foo
+ apikey: bar
