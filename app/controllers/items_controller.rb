@@ -6,9 +6,6 @@ require 'resolv-replace'
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
 
-  p "HELLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-  conf = APP_CONFIG["bitly"]
-  @@bitly = Bitly.new(conf["username"], conf["apikey"])
  
   def create
     @user = User.find(params[:user_id])
