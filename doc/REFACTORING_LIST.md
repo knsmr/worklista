@@ -13,3 +13,4 @@ DONE - @@bitly why class variable ?  => They are instantiated every time control
 - return what ?
 - Is current_user and @user same thing?
 DONE - "then" is not necessary
+- No validation on item url uniqueness
