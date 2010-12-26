@@ -22,6 +22,5 @@ group :test, :development do
    gem 'cucumber', "~> 0.9.4"
    gem 'factory_girl_rails'
    gem 'spork'
-   gem 'factory_girl_rails'
    gem 'launchy'    # So you can do Then show me the page
 end
