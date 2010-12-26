@@ -1,5 +1,7 @@
 Worklista::Application.routes.draw do
   
+  resources :items
+
   match "users/:username/popular" => "users#popular", :as => "user_popular", :via => "get"
   match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
   match "users/:username" => "users#show", :as => "user_recent", :via => "get"
