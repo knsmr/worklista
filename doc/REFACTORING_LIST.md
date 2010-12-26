@@ -12,4 +12,4 @@ Bad
 DONE - @@bitly why class variable ?  => They are instantiated every time controller is hi
 - return what ?
 - Is current_user and @user same thing?
-- "then" is not necessary
+DONE - "then" is not necessary

@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     @user = User.find(params[:user_id])
     @item = @user.items.new(params[:item])
 
-    if @item.url !~ /^(#{URI::regexp(%w(http https))})$/ then
+    if @item.url !~ /^(#{URI::regexp(%w(http https))})$/
       flash[:notice] = "Invalid URL!!"
       redirect_to user_recent_path(current_user.username)
       return
@@ -72,10 +72,10 @@ private
   end
 
   def guess_date(item)
-    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/ then
+    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
       date = Date.strptime($1, "%Y/%m/%d")
     end
-    if date then
+    if date
       item.published_at = date
     else
       item.published_at = Time.now
@@ -91,7 +91,7 @@ private
   def populate_title(item)
     item.title = item.url
     @doc.match(/<title>([^<]+)<\/title>/) do |m|
-      if m.size == 2 then 
+      if m.size == 2
         title = m[1]
         item.title = NKF.nkf("--utf8", title)
       end
