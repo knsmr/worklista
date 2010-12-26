@@ -13,3 +13,6 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'bitly'
 
+group :test, :development do
+  gem "rspec-rails"
+end
