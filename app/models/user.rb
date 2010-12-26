@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_length_of :username,    :within  => 3..24
   validates_format_of :username,    :with    => /[_a-zA-Z0-9]+/
-  validates_format_of :twitter_id,  :with    => /[_a-zA-Z0-9]+/, :allow_nil => true
+  validates_format_of :twitter_id,  :with    => /[_a-zA-Z0-9]+/, :allow_nil => true, :allow_blank => true
+
   validates_length_of :description, :maximum => 120
 
   validates_each :invite_code, :on => :create do |record, attr, value|
