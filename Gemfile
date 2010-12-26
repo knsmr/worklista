@@ -14,5 +14,13 @@ gem 'ruby_parser'
 gem 'bitly'
 
 group :test, :development do
-  gem "rspec-rails"
+   gem "rspec-rails", "~> 2.0.1"
+   gem 'capybara', "0.3.9"
+   gem 'database_cleaner'
+   gem 'cucumber-rails'
+   gem 'cucumber', "~> 0.9.4"
+   gem 'factory_girl_rails'
+   gem 'spork'
+   gem 'factory_girl_rails'
+   gem 'launchy'    # So you can do Then show me the page
 end
