@@ -5,7 +5,6 @@ require 'resolv-replace'
 
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
-
  
   def create
     @user = User.find(params[:user_id])
@@ -108,7 +107,7 @@ private
   end
 
   def populate_retweet(item)
-    url = @@bitly.shorten(item.url)
+    url = BITLY.shorten(item.url)
     item.bitly_url = url.short_url
     item.retweet   = url.global_clicks
   end
