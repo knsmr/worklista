@@ -51,15 +51,15 @@ describe Item do
     end
 
     it "should set hatena" do
-      @item.hatena.should_not be_nil
+      @item.hatena.should > 0
     end
 
     it "should set bitly_url" do
-      @item.bitly_url.should_not be_nil
+      @item.bitly_url.should match(/bit.ly/)
     end
 
     it "should set retweet" do
-      @item.retweet.should_not be_nil
+      @item.retweet.should > 0
     end
   end
 end

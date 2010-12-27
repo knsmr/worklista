@@ -1,3 +1,8 @@
+require 'open-uri'
+require 'nkf'
+require 'timeout'
+require 'resolv-replace'
+
 class Item < ActiveRecord::Base
   belongs_to :user
   has_many :taggings, :dependent => :destroy
@@ -52,7 +57,6 @@ class Item < ActiveRecord::Base
 
   def set_hatena
     hatena_api = "http://api.b.st-hatena.com/entry.count?url="
-    url = self.url
     num = open(hatena_api+url).read
     num = 0 if num == ""
     self.hatena = num

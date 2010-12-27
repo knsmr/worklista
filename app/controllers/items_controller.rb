@@ -1,7 +1,3 @@
-require 'open-uri'
-require 'nkf'
-require 'timeout'
-require 'resolv-replace'
 
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
