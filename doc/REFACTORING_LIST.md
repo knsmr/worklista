@@ -13,3 +13,5 @@ DONE - @@bitly why class variable ?  => They are instantiated every time control
 - return what ?
 DONE - "then" is not necessary
 - No validation on item url uniqueness
+- @item = Item.find(params[:id]) is duplicate
+- pupulate_hatena and pupulate_retweet are not catching timeout
