@@ -66,19 +66,8 @@ private
   def owner?; user_signed_in? && @user == current_user; end
 
   def populate(item)
-    populate_title(item)
     populate_hatena(item)
     populate_retweet(item)
-  end
-  
-  def populate_title(item)
-    item.title = item.url
-    @doc.match(/<title>([^<]+)<\/title>/) do |m|
-      if m.size == 2
-        title = m[1]
-        item.title = NKF.nkf("--utf8", title)
-      end
-    end
   end
   
   def populate_hatena(item)
