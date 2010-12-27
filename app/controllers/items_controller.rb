@@ -4,24 +4,16 @@ class ItemsController < ApplicationController
  
   def create
     @item = @user.items.new(params[:item])
-    unless @item.valid?
-      flash[:notice] = "Invalid URL!!"
-      return redirect_to user_recent_path(current_user.username)
-    end
-
-    begin
-      @item.fetch
-    rescue Timeout::Error
-      flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
-      return redirect_to user_recent_path(current_user.username)
-    end
-
-    if @item.save
+    if @item.valid? && @item.fetch && @item.save
       flash[:notice] = "Created an item. Any changes?"
       redirect_to edit_user_item_path(current_user, @item)
     else
-      render :action => 'new'
+      flash[:notice] = "Invalid URL!!"
+      return redirect_to user_recent_path(current_user.username)
     end
+  rescue Timeout::Error
+    flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
+    redirect_to user_recent_path(current_user.username)
   end
 
   def destroy
