@@ -54,6 +54,7 @@ describe ItemsController do
 
     describe "when invalid url is passed" do
       before(:each) do
+        sign_in :user, @user
         @params[:item] = {:url => 'wrongurl'}
       end
       it "should not create new item" do
@@ -64,7 +65,7 @@ describe ItemsController do
 
       it "should render error" do
         post :create, @params
-        response.should render_template('new')
+        response.should render_template('users/show')
         assigns[:item].errors[:url].should_not be_empty
       end
     end
