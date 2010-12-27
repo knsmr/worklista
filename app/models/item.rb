@@ -16,6 +16,10 @@ class Item < ActiveRecord::Base
   attr_accessor :doc
   before_create :guess_published_at, :set_title
   
+  def load
+    valid? && fetch && save!
+  end
+
   def fetch
     Timeout::timeout(8) do
       set_hatena

@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
  
   def create
     @item = @user.items.new(params[:item])
-    if @item.valid? && @item.fetch && @item.save
+    if @item.load
       flash[:notice] = "Created an item. Any changes?"
       redirect_to edit_user_item_path(current_user, @item)
     else
