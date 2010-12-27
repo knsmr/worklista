@@ -9,6 +9,12 @@ class Item < ActiveRecord::Base
   attr_writer :tag_names
   after_save :assign_tags
 
+  def fetch
+    Timeout::timeout(8) do
+      @doc = open(url).read
+    end
+  end
+
   def tag_names
     @tag_names || tags.map(&:name).join(' ')
   end
@@ -21,6 +27,4 @@ private
       end
     end
   end
-
-
 end
