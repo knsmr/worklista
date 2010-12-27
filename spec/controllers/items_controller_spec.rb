@@ -62,9 +62,10 @@ describe ItemsController do
         }.to change(Item, :count).by(0)
       end
 
-      it "should redirect to users page" do
+      it "should render error" do
         post :create, @params
-        response.should redirect_to users_path
+        response.should render_template('new')
+        assigns[:item].errors[:url].should_not be_empty
       end
     end
   end
