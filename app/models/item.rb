@@ -21,13 +21,10 @@ class Item < ActiveRecord::Base
   end
 
   def guess_date
-    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
-      date = Date.strptime($1, "%Y/%m/%d")
-    end
-    if date
-      self.published_at = date
+    self.published_at = if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
+      Date.strptime($1, "%Y/%m/%d")
     else
-      self.published_at = Date.today
+      Date.today
     end
   end
 
