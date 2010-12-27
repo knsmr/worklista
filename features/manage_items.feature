@@ -12,5 +12,6 @@ Feature: Manage items
     And I fill in "http://www.google.com" for "item_url"
     And I press "Add"
     Then I should see "Created an item"
+    And the "item_title" field should contain "Google"
     And I should have one item
 
