@@ -14,11 +14,11 @@ class ItemsController < ApplicationController
     end
 
     begin
-      Timeout::timeout(8){
+      Timeout::timeout(8) do
         @doc = open(@item.url).read
         guess_date @item
         populate @item
-      }
+      end
     rescue Timeout::Error
       flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
       redirect_to user_recent_path(current_user.username)
