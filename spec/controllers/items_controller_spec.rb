@@ -50,7 +50,22 @@ describe ItemsController do
         post :create, @params
         response.should redirect_to users_path
       end
+    end
 
+    describe "when invalid url is passed" do
+      before(:each) do
+        @params[:item] = {:url => 'wrongurl'}
+      end
+      it "should not create new item" do
+        expect{
+          post :create, @params
+        }.to change(Item, :count).by(0)
+      end
+
+      it "should redirect to users page" do
+        post :create, @params
+        response.should redirect_to users_path
+      end
     end
   end
 end
