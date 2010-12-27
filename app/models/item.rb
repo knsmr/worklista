@@ -18,7 +18,6 @@ class Item < ActiveRecord::Base
   
   def fetch
     Timeout::timeout(8) do
-      @doc = open(url).read
       set_hatena
       set_retweet_and_bitly_url
     end
@@ -26,6 +25,10 @@ class Item < ActiveRecord::Base
 
   def tag_names
     @tag_names || tags.map(&:name).join(' ')
+  end
+
+  def doc
+    @doc ||= open(url).read
   end
 
   private
@@ -38,7 +41,7 @@ class Item < ActiveRecord::Base
   end
 
   def guess_published_at
-    self.published_at = if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
+    self.published_at = if doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
       Date.strptime($1, "%Y/%m/%d")
     else
       Date.today
@@ -47,7 +50,7 @@ class Item < ActiveRecord::Base
 
   def set_title
     self.title = url
-    @doc.match(/<title>([^<]+)<\/title>/) do |m|
+    doc.match(/<title>([^<]+)<\/title>/) do |m|
       if m.size == 2
         title = m[1]
         self.title = NKF.nkf("--utf8", title)
