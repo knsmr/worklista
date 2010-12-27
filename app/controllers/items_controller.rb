@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     begin
       Timeout::timeout(8){
         @doc = open(@item.url).read
+        guess_date @item
+        populate @item
       }
     rescue Timeout::Error
       flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
@@ -23,8 +25,6 @@ class ItemsController < ApplicationController
       return
     end
 
-    guess_date @item
-    populate @item
 
     if @item.save
       flash[:notice] = "Created an item. Any changes?"
