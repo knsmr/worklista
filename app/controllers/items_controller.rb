@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
       redirect_to edit_user_item_path(current_user, @item)
     else
       flash[:notice] = "Invalid URL!!"
-      return redirect_to user_recent_path(current_user.username)
+      redirect_to user_recent_path(current_user.username)
     end
   rescue Timeout::Error
     flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
