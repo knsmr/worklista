@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     end
 
     begin
-      @doc = @item.fetch
+      @item.fetch
     rescue Timeout::Error
       flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
       return redirect_to user_recent_path(current_user.username)
