@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def create
     @item = @user.items.new(params[:item])
 
-    if @item.url !~ /^(#{URI::regexp(%w(http https))})$/
+    unless @item.valid?
       flash[:notice] = "Invalid URL!!"
       redirect_to user_recent_path(current_user.username)
       return

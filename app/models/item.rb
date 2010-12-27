@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
+  validates :url, :format => { :with => /^(#{URI::regexp(%w(http https))})$/}
 
   # let us do the url validation in the contorller
 
