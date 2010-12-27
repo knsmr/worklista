@@ -63,12 +63,13 @@ private
 
   def authorise_as_owner
     @user = User.find(params[:user_id])
-    unless (user_signed_in? && @user == current_user)
-      # You are not the owner of this item!
+    unless owner?
       flash[:notice] = "Oops, something went wrong!"
       redirect_to users_path
     end
   end
+  
+  def owner?; user_signed_in? && @user == current_user; end
 
   def guess_date(item)
     if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
