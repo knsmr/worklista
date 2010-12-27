@@ -9,26 +9,48 @@ describe ItemsController do
       :user_id => @user.id,
       :item => {:url => 'http://www.google.com'}
     }
-    sign_in :user, @user
   end
 
   describe "#create" do
-    it "should create new item" do
-      expect{
-        post :create, @params
-      }.to change(Item, :count).by(1)
-    end
+    describe "when successful" do
+      before(:each) do
+        sign_in :user, @user
+      end
+      it "should create new item" do
+        expect{
+          post :create, @params
+        }.to change(Item, :count).by(1)
+      end
 
-    it "should redirect to edit page" do
-      post :create, @params
-      response.should redirect_to edit_user_item_path(@user, Item.last)
+      it "should redirect to edit page" do
+        post :create, @params
+        response.should redirect_to edit_user_item_path(@user, Item.last)
+      end
+
+      it "should assign variables" do
+        post :create, @params
+        flash[:notice].should == "Created an item. Any changes?"
+        assigns[:user].should == @user
+        assigns[:item].should_not be_nil
+      end
     end
     
-    it "should assign variables" do
-      post :create, @params
-      flash[:notice].should == "Created an item. Any changes?"
-      assigns[:user].should == @user
-      assigns[:item].should_not be_nil
+    describe "when non author accessed" do
+      before(:each) do
+        different_user = Factory(:user)
+        sign_in :user, different_user
+      end
+      it "should not create new item" do
+        expect{
+          post :create, @params
+        }.to change(Item, :count).by(0)
+      end
+
+      it "should redirect to users page" do
+        post :create, @params
+        response.should redirect_to users_path
+      end
+
     end
   end
 end
