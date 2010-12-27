@@ -10,8 +10,7 @@ class ItemsController < ApplicationController
     @item = @user.items.new(params[:item])
     unless @item.valid?
       flash[:notice] = "Invalid URL!!"
-      redirect_to user_recent_path(current_user.username)
-      return
+      return redirect_to user_recent_path(current_user.username)
     end
 
     begin
