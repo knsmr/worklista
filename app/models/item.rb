@@ -8,7 +8,8 @@ class Item < ActiveRecord::Base
 
   attr_writer :tag_names
   after_save :assign_tags
-
+  attr_accessor :doc
+  
   def fetch
     Timeout::timeout(8) do
       @doc = open(url).read
@@ -17,6 +18,17 @@ class Item < ActiveRecord::Base
 
   def tag_names
     @tag_names || tags.map(&:name).join(' ')
+  end
+
+  def guess_date
+    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
+      date = Date.strptime($1, "%Y/%m/%d")
+    end
+    if date
+      self.published_at = date
+    else
+      self.published_at = Date.today
+    end
   end
 
 private

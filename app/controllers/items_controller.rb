@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       return redirect_to user_recent_path(current_user.username)
     end
 
-    guess_date @item
+    @item.guess_date
     populate @item
 
     if @item.save
@@ -65,17 +65,6 @@ private
   end
   
   def owner?; user_signed_in? && @user == current_user; end
-
-  def guess_date(item)
-    if @doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
-      date = Date.strptime($1, "%Y/%m/%d")
-    end
-    if date
-      item.published_at = date
-    else
-      item.published_at = Time.now
-    end
-  end
 
   def populate(item)
     populate_title(item)
