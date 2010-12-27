@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   before_filter :authorise_as_owner
  
   def create
-    @user = User.find(params[:user_id])
     @item = @user.items.new(params[:item])
 
     if @item.url !~ /^(#{URI::regexp(%w(http https))})$/
