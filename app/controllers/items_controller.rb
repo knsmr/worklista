@@ -9,24 +9,24 @@ class ItemsController < ApplicationController
   def create
     @item = @user.items.new(params[:item])
 
-    # if @item.url !~ /^(#{URI::regexp(%w(http https))})$/
-    #   flash[:notice] = "Invalid URL!!"
-    #   redirect_to user_recent_path(current_user.username)
-    #   return
-    # end
-    # 
-    # begin 
-    #   Timeout::timeout(8){
-    #     @doc = open(@item.url).read
-    #   }
-    # rescue Timeout::Error
-    #   flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
-    #   redirect_to user_recent_path(current_user.username)
-    #   return
-    # end
-    # 
-    # guess_date @item
-    # populate @item
+    if @item.url !~ /^(#{URI::regexp(%w(http https))})$/
+      flash[:notice] = "Invalid URL!!"
+      redirect_to user_recent_path(current_user.username)
+      return
+    end
+
+    begin
+      Timeout::timeout(8){
+        @doc = open(@item.url).read
+      }
+    rescue Timeout::Error
+      flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
+      redirect_to user_recent_path(current_user.username)
+      return
+    end
+
+    guess_date @item
+    populate @item
 
     if @item.save
       flash[:notice] = "Created an item. Any changes?"
