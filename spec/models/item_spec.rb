@@ -12,7 +12,7 @@ describe Item do
         @item.published_at.should == Date.parse('2010/09/13')
       end
     end
-    
+
     describe "when document does not includes date" do
       it "should set today's date" do
         @item.doc = ''
@@ -38,6 +38,28 @@ describe Item do
         @item.save!
         @item.title.should == 'http://www.google.com'
       end
+    end
+  end
+
+  describe "#fetch" do
+    before(:each) do
+      @item.url = 'http://www.google.com'
+      @item.fetch
+    end
+    it "should set doc" do
+      @item.doc.should_not be_nil
+    end
+
+    it "should set hatena" do
+      @item.hatena.should_not be_nil
+    end
+
+    it "should set bitly_url" do
+      @item.bitly_url.should_not be_nil
+    end
+
+    it "should set retweet" do
+      @item.retweet.should_not be_nil
     end
   end
 end

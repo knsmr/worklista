@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   def fetch
     Timeout::timeout(8) do
       @doc = open(url).read
+      set_hatena
+      set_retweet_and_bitly_url
     end
   end
 
@@ -46,5 +48,19 @@ class Item < ActiveRecord::Base
         self.title = NKF.nkf("--utf8", title)
       end
     end
+  end
+
+  def set_hatena
+    hatena_api = "http://api.b.st-hatena.com/entry.count?url="
+    url = self.url
+    num = open(hatena_api+url).read
+    num = 0 if num == ""
+    self.hatena = num
+  end
+
+  def set_retweet_and_bitly_url
+    shortend_url = BITLY.shorten(self.url)
+    self.bitly_url = shortend_url.short_url
+    self.retweet   = shortend_url.global_clicks
   end
 end
