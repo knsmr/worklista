@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
       return redirect_to user_recent_path(current_user.username)
     end
 
-    @item.guess_date
     populate @item
 
     if @item.save

@@ -8,7 +8,7 @@ describe Item do
     describe "when document includes date" do
       it "should set published at from document" do
         @item.doc = '2010/09/13'
-        @item.guess_date
+        @item.save!
         @item.published_at.should == Date.parse('2010/09/13')
       end
     end
@@ -16,7 +16,7 @@ describe Item do
     describe "when document does not includes date" do
       it "should set today's date" do
         @item.doc = ''
-        @item.guess_date
+        @item.save!
         @item.published_at.should == Date.today
       end
     end
