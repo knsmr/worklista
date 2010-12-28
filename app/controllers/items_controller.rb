@@ -1,6 +1,7 @@
 
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
+  before_filter :find_item, :except => [:create]
  
   def create
     @item = @user.items.new(params[:item])
@@ -17,18 +18,14 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     flash[:notice] = "Successfully destroyed an item."
     redirect_to user_recent_path(current_user.username)
   end
 
-  def edit
-    @item = Item.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update_attributes(params[:item])
       flash[:notice] = "Successfully updated item."
       redirect_to user_recent_path(current_user.username)
@@ -48,4 +45,5 @@ private
   end
   
   def owner?; user_signed_in? && @user == current_user; end
+  def find_item; @item = Item.find(params[:id]); end
 end

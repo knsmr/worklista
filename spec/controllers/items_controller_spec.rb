@@ -96,5 +96,19 @@ describe ItemsController do
         flash[:error].should == "Timeout! Could not retrieve data from the URL!!"
       end
     end
+    
+    describe "setting item" do
+      before(:each) do
+        @item = Factory(:item)
+        sign_in :user, @user
+      end
+
+      %w{edit destroy update}.each do |action|
+        it "#{action} should have item" do
+          get action.to_sym, @params.merge(:id => @item.id )
+          assigns[:item].should_not be_nil
+        end
+      end
+    end
   end
 end
