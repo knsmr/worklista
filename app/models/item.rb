@@ -7,14 +7,13 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
-  validates :url, :format => { :with => URI::regexp(%w(http https))}
-
-  # let us do the url validation in the contorller
+  validates :url, :format => {:with => URI::regexp(%w(http https))}
 
   attr_writer :tag_names
-  after_save :assign_tags
   attr_accessor :doc
+
   before_create :guess_published_at, :set_title
+  after_save :assign_tags
   
   def load
     valid? && fetch && save!
