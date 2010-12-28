@@ -1,4 +1,3 @@
-
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner
   before_filter :find_item, :except => [:create]
@@ -23,8 +22,6 @@ class ItemsController < ApplicationController
     redirect_to user_recent_path(current_user.username)
   end
 
-  def edit; end
-
   def update
     if @item.update_attributes(params[:item])
       flash[:notice] = "Successfully updated item."
@@ -33,9 +30,7 @@ class ItemsController < ApplicationController
       render :action => 'edit'
     end
   end
-
 private
-
   def authorise_as_owner
     @user = User.find(params[:user_id])
     unless owner?
