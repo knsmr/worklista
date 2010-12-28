@@ -8,11 +8,11 @@ class ItemsController < ApplicationController
       flash[:notice] = "Created an item. Any changes?"
       redirect_to edit_user_item_path(current_user, @item)
     else
-      flash[:notice] = "Invalid URL!!"
+      flash[:error] = "Invalid URL!!"
       redirect_to user_recent_path(current_user.username)
     end
   rescue Timeout::Error
-    flash[:notice] = "Timeout! Could not retrieve data from the URL!!"
+    flash[:error] = "Timeout! Could not retrieve data from the URL!!"
     redirect_to user_recent_path(current_user.username)
   end
 
@@ -42,7 +42,7 @@ private
   def authorise_as_owner
     @user = User.find(params[:user_id])
     unless owner?
-      flash[:notice] = "Oops, something went wrong!"
+      flash[:error] = "Oops, something went wrong!"
       redirect_to users_path
     end
   end

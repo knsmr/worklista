@@ -70,7 +70,7 @@ describe ItemsController do
 
       it "should assign variables" do
         post :create, @params
-        flash[:notice].should == "Invalid URL!!"
+        flash[:error].should == "Invalid URL!!"
       end
     end
 
@@ -93,7 +93,7 @@ describe ItemsController do
 
       it "should assign variables" do
         post :create, @params
-        flash[:notice].should == "Timeout! Could not retrieve data from the URL!!"
+        flash[:error].should == "Timeout! Could not retrieve data from the URL!!"
       end
     end
   end
