@@ -23,13 +23,13 @@
 
         #login
           - if user_signed_in?
-            = p "Hi, #{current_user.username}! | "
+            =  "Hi, #{current_user.username}! | "
             = link_to 'Setting', '/edit'
-            = p " | "
+            =  " | "
             = link_to 'Logout', '/logout'
           - else
             = link_to 'Login', '/login'
-            = p " | "
+            =  " | "
             = link_to 'Sign up', '/signup'
 
       #menu-navi
