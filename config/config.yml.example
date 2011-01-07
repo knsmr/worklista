@@ -1,0 +1,10 @@
+development: &default
+  bitly:
+   username: foo
+   apikey: bar
+test:
+ <<: *default
+staging:
+ <<: *default
+production:
+ <<: *default
