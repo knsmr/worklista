@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nkf'
 require 'timeout'
-require 'resolv-replace'
+# require 'resolv-replace'
 
 class Item < ActiveRecord::Base
   belongs_to :user
