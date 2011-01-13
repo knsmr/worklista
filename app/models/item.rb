@@ -31,7 +31,8 @@ class Item < ActiveRecord::Base
   end
 
   def doc
-    @doc ||= open(url).read
+    # we need to make sure the html is a valid utf8 string
+    @doc ||= open(url).read.encode("UTF-16BE", :invalid => :replace, :undef => :replace, :replace => '?').encode("UTF-8")
   end
 
   private
