@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'nkf'
 require 'timeout'
 # require 'resolv-replace'
 
@@ -57,7 +56,7 @@ class Item < ActiveRecord::Base
     doc.match(/<title>([^<]+)<\/title>/) do |m|
       if m.size == 2
         title = m[1]
-        self.title = NKF.nkf("--utf8", title)
+        self.title = title.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => '?')
       end
     end
   end
