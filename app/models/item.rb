@@ -31,7 +31,10 @@ class Item < ActiveRecord::Base
 
   def doc
     # we need to make sure the html is a valid utf8 string
-    @doc ||= open(url).read.encode("UTF-16BE", :invalid => :replace, :undef => :replace, :replace => '?').encode("UTF-8")
+    @doc ||= open(url).read.encode("UTF-16BE",
+                                   :invalid => :replace,
+                                   :undef => :replace,
+                                   :replace => '?').encode("UTF-8")
   end
 
   private
@@ -56,7 +59,10 @@ class Item < ActiveRecord::Base
     doc.match(/<title>([^<]+)<\/title>/) do |m|
       if m.size == 2
         title = m[1]
-        self.title = title.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => '?')
+        self.title = title.encode("UTF-8",
+                                  :invalid => :replace,
+                                  :undef => :replace,
+                                  :replace => '?')
       end
     end
   end
