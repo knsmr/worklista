@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  PAGINATION = 12
+  ITEMS_PER_PAGE = 12
   before_filter :find_user, :except => [:index]
 
   def index
@@ -9,28 +9,28 @@ class UsersController < ApplicationController
   def tag
     @items = @user.items.order("published_at").reverse.find_all do |i|
       i.tag_names.split(" ").include?(params[:tag])
-    end.paginate :page => params[:page], :per_page => PAGINATION
+    end.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
 
     @select = :recent
     render "me"
   end
   
   def show
-    @items = @user.items.order("published_at").reverse.paginate :page => params[:page], :per_page => PAGINATION
+    @items = @user.items.order("published_at").reverse.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
 
     @select = :recent
     render "me"
   end
 
   def popular
-    @items = @user.items.order("hatena").reverse.paginate :page => params[:page], :per_page => PAGINATION
+    @items = @user.items.order("hatena").reverse.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
 
     @select = :popular
     render "me"
   end
 
   def pickup
-    @items = @user.items.order("published_at").reverse.find_all{|i| i.pick}.paginate :page => params[:page], :per_page => PAGINATION
+    @items = @user.items.order("published_at").reverse.find_all{|i| i.pick}.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
 
     @select = :pickup
     render "me"
