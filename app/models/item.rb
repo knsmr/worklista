@@ -75,8 +75,8 @@ class Item < ActiveRecord::Base
   end
 
   def set_retweet_and_bitly_url
-    shortend_url = BITLY.shorten(self.url)
-    self.bitly_url = shortend_url.short_url
-    self.retweet   = shortend_url.global_clicks
+    bitly = BITLY.shorten(self.url)
+    self.bitly_url = bitly.short_url
+    self.retweet   = bitly.global_clicks
   end
 end
