@@ -25,6 +25,14 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def smart_update
+    Timeout::timeout(8) do
+      hatena_smart_update
+      set_retweet_and_bitly_url
+    end
+    save!
+  end
+
   def tag_names
     @tag_names || tags.map(&:name).join(' ')
   end
@@ -67,10 +75,23 @@ class Item < ActiveRecord::Base
     end
   end
 
-  def set_hatena
+  def retrieve_hatena
     hatena_api = "http://api.b.st-hatena.com/entry.count?url="
     num = open(hatena_api+url).read
     num = 0 if num == ""
+    num.to_i
+  end
+
+  def set_hatena
+    self.hatena = retrieve_hatena
+  end
+
+  def hatena_smart_update
+    num = retrieve_hatena
+    if num <= self.hatena * 1.1 then
+      current_interval = self.interval
+      self.interval = current_interval * 2 unless current_interval > 2000000000
+    end
     self.hatena = num
   end
 
@@ -80,3 +101,4 @@ class Item < ActiveRecord::Base
     self.retweet   = bitly.global_clicks
   end
 end
+

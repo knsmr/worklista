@@ -62,4 +62,35 @@ describe Item do
       @item.retweet.should > 0
     end
   end
+
+  describe "#smart_update" do
+    before(:each) do
+      @item.url = 'http://www.google.com'
+      @item.updated_at = 1.day.ago
+      @item.interval = 180
+      @item.hatena = 1
+      @item.smart_update
+    end
+    it "should update hatena" do
+      @item.hatena.should > 10
+    end
+
+    it "should not double the interval time" do
+      @item.interval.should == 180
+    end
+
+    it "should double the interval time for the second time" do
+      @item.smart_update
+      @item.interval.should == 360
+    end
+
+    it "should set bitly_url" do
+      @item.bitly_url.should match(/bit.ly/)
+    end
+
+    it "should set retweet" do
+      @item.retweet.should > 0
+    end
+  end
+
 end
