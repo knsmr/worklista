@@ -38,11 +38,7 @@ class Item < ActiveRecord::Base
   end
 
   def doc
-    # we need to make sure the html is a valid utf8 string
-    @doc ||= open(url).read.encode("UTF-16BE",
-                                   :invalid => :replace,
-                                   :undef => :replace,
-                                   :replace => '?').encode("UTF-8")
+    @doc ||= remove_invalid_sequence(open(url).read)
   end
 
   private
@@ -67,10 +63,7 @@ class Item < ActiveRecord::Base
     doc.match(/<title>([^<]+)<\/title>/) do |m|
       if m.size == 2
         title = m[1]
-        self.title = title.encode("UTF-8",
-                                  :invalid => :replace,
-                                  :undef => :replace,
-                                  :replace => '?')
+        self.title = remove_invalid_sequence(title)
       end
     end
   end
@@ -99,6 +92,13 @@ class Item < ActiveRecord::Base
     bitly = BITLY.shorten(self.url)
     self.bitly_url = bitly.short_url
     self.retweet   = bitly.global_clicks
+  end
+
+  def remove_invalid_sequence(str)
+    str.encode("UTF-16BE",
+               :invalid => :replace,
+               :undef => :replace,
+               :replace => '?').encode("UTF-8")
   end
 end
 
