@@ -81,7 +81,7 @@ class Item < ActiveRecord::Base
 
   def hatena_smart_update
     num = retrieve_hatena
-    if num <= self.hatena * 1.1 then
+    if num <= self.hatena * 1.05 then
       current_interval = self.interval
       self.interval = current_interval * 2 unless current_interval > 2000000000
     end
