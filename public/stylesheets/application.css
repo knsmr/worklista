@@ -15,14 +15,24 @@ a {
 
 .button {
   background-color: #cbedff;
-  border: 2px #757364 solid;
+  border: 2px solid transparent;
   display: block;
   padding: 3px;
   margin: 10px;
-  font-size: 1.5em;
+  font-size: 1em;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  overflow: auto; }
+  overflow: auto;
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+  .button:hover {
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    -moz-transition: -moz-box-shadow 0.3s ease-out;
+    -o-transition: box-shadow 0.3s ease-out;
+    -webkit-transition: box-shadow 0.3s ease-out; }
 
 .pagination {
   margin-top: 1em;

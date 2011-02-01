@@ -6,8 +6,8 @@
 
   %ul{:style => "text-align: center;"}
     - unless user_signed_in?
-      %li{:class => "button"}
+      %li.button{:style => "font-size: 1.6em"}
         = link_to 'Sign up!!', '/signup'
-      %li{:class => "button"}
+      %li.button{:style => "font-size: 1.6em"}
         = link_to 'Sample page', user_recent_path("knsmr")
 
