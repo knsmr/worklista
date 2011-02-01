@@ -27,6 +27,7 @@ a {
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
   .button:hover {
+    background-color: #d5f8ff;
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
