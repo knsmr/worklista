@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
  
   def create
     @item = @user.items.new(params[:item])
+    @item.interval = 180
     if @item.load
       flash[:notice] = "Created an item. Any changes?"
       redirect_to edit_user_item_path(current_user, @item)
@@ -13,6 +14,12 @@ class ItemsController < ApplicationController
     end
   rescue Timeout::Error
     flash[:error] = "Timeout! Could not retrieve data from the URL!!"
+    redirect_to user_recent_path(current_user.username)
+  rescue SocketError
+    flash[:error] = "There's no such URL!!"
+    redirect_to user_recent_path(current_user.username)
+  rescue OpenURI::HTTPError
+    flash[:error] = "404 Not Found!!"
     redirect_to user_recent_path(current_user.username)
   end
 
@@ -30,7 +37,9 @@ class ItemsController < ApplicationController
       render :action => 'edit'
     end
   end
+
 private
+
   def authorise_as_owner
     @user = User.find(params[:user_id])
     unless owner?
@@ -41,4 +50,5 @@ private
   
   def owner?; user_signed_in? && @user == current_user; end
   def find_item; @item = Item.find(params[:id]); end
+
 end

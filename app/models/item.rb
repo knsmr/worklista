@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'timeout'
+require 'kconv'
 # require 'resolv-replace'
 
 class Item < ActiveRecord::Base
@@ -38,7 +39,7 @@ class Item < ActiveRecord::Base
   end
 
   def doc
-    @doc ||= remove_invalid_sequence(open(url).read)
+    @doc ||= set_encoding(open(url, "r:ASCII-8BIT").read)
   end
 
   private
@@ -60,11 +61,15 @@ class Item < ActiveRecord::Base
 
   def set_title
     self.title = url
-    doc.match(/<title>([^<]+)<\/title>/) do |m|
-      if m.size == 2
-        title = m[1]
-        self.title = remove_invalid_sequence(title)
+    begin
+      doc.match(/<title[^>]*>([^<]+)<\/title>/) do |m|
+        self.title = 
+          if m.size == 2
+            m[1].encode("utf-8").gsub(/\n/,'')
+          end
       end
+    rescue => e
+      puts e.message  
     end
   end
 
@@ -94,11 +99,27 @@ class Item < ActiveRecord::Base
     self.retweet   = bitly.global_clicks
   end
 
-  def remove_invalid_sequence(str)
-    str.encode("UTF-16BE",
-               :invalid => :replace,
-               :undef => :replace,
-               :replace => '?').encode("UTF-8")
+  def set_encoding(html)
+    enc = 
+      if html =~ /meta.+charset[ =]+[\"\']?([^>[\"\']]+)/i ||
+        html =~ /xml.+encoding[ =]+[\"\']?([^>[\"\']]+)/i
+        $1
+      else
+        Kconv.guess(html).to_s
+      end
+    enc = "UTF-8" if !Encoding.name_list.map(&:upcase).include?(enc.upcase)
+    
+    html.force_encoding(enc)
+
+    if !html.valid_encoding?
+      html = 
+        html.encode("UTF-16BE",
+                    :invalid => :replace,
+                    :undef => :replace,
+                    :replace => '.').encode("UTF-8")
+    end
+    html
   end
+
 end
 
