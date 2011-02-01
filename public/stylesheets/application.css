@@ -110,12 +110,12 @@ h2#entry {
       float: left; }
       #container #header h1 a {
         display: block;
-        background-image: url(/images/worlis-logo.png);
+        background-image: url(/images/worklista-logo.png);
         background-repeat: no-repeat;
         text-indent: -999em;
         padding: 0px;
         margin: 0px;
-        width: 260px;
+        width: 380px;
         height: 58px; }
     #container #header #login {
       background: white;
