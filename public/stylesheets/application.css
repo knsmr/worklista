@@ -278,20 +278,27 @@ h2#entry {
     line-height: 1.4em;
     width: 90%; }
   #pages h2 {
-    border-bottom: solid 1px black; }
+    border-bottom: solid 1px black;
+    text-shadow: 2px 2px 5px white; }
 
 #flash_notice,
 #flash_error {
   padding: 5px 8px;
-  margin: 10px 0; }
+  margin: 10px 0;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
 
 #flash_notice {
   background-color: #ccffcc;
-  border: solid 1px #66cc66; }
+  border: solid 1px #66cc66;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
 
 #flash_error {
   background-color: #ffcccc;
-  border: solid 1px #cc6666; }
+  border: solid 1px #cc6666;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
 
 .fieldWithErrors {
   display: inline; }
