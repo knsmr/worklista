@@ -40,15 +40,15 @@
   .item
     #head
       #title
-        %a{:href => i.url}
+        %a{:href => i.url, :target => "_blank" }
           = i.title
       #social
         #hatena
-          %a{ :href => link_to_hatena(i.url) }
+          %a{ :href => link_to_hatena(i.url), :target => "_blank" }
             = i.hatena.to_s + " users"
         #retweet
           - b = i.bitly_url ? i.bitly_url : ""
-          %a{ :href => b + "+"}
+          %a{ :href => b + "+", :target => "_blank" }
             = i.retweet.to_s + "retweets"
       #date= i.published_at
     #body
