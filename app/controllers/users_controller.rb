@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  ITEMS_PER_PAGE = 12
   before_filter :find_user, :except => [:index]
 
   def index
@@ -7,31 +6,40 @@ class UsersController < ApplicationController
   end
 
   def tag
-    @items = @user.items.order("published_at").reverse.find_all do |i|
+    @items = @items.select do |i|
       i.tag_names.split(" ").include?(params[:tag])
-    end.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
+    end
+    # quick fix for the time being since it's not a relation
+    @items.instance_eval <<-EVAL
+      def current_page
+        #{params[:page] || 1}
+      end
+      def num_pages
+        self.size / limit_value + 1
+      end
+      def limit_value
+        20
+      end
+    EVAL
 
-    @select = :recent
+   @select = :recent
     render "me"
   end
   
   def show
-    @items = @user.items.order("published_at").reverse.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
-
+    @items = @items.order("published_at DESC").page params[:page]
     @select = :recent
     render "me"
   end
 
   def popular
-    @items = @user.items.order("hatena").reverse.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
-
+    @items = @items.order("hatena DESC").page params[:page]
     @select = :popular
     render "me"
   end
 
   def pickup
-    @items = @user.items.order("published_at").reverse.find_all{|i| i.pick}.paginate :page => params[:page], :per_page => ITEMS_PER_PAGE
-
+    @items = @items.where({:pick => true}).page params[:page]
     @select = :pickup
     render "me"
   end
@@ -39,7 +47,9 @@ class UsersController < ApplicationController
 private
 
   def find_user
-    @user = User.find_by_username(params[:username])
+    @user  = User.where("username = ?", params[:username]).first
+    @items = Item.where({:user_id => @user.id})
+    @size  = @items.size
     redirect_to root_path if @user.nil?
   end
 

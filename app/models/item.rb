@@ -14,7 +14,9 @@ class Item < ActiveRecord::Base
 
   before_create :guess_published_at, :set_title
   after_save :assign_tags
-  
+
+  paginates_per 20
+
   def load
     valid? && fetch && save!
   end

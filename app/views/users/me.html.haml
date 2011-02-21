@@ -32,7 +32,7 @@
     %li{:id => ('selected' if @select == :pickup)}
       = link_to 'My Pickup', user_pickup_path(@user.username)
 
-- if @items.size == 0
+- if @size == 0
   .item
     %p No items
 
@@ -67,5 +67,5 @@
           - else
             = button_to "Pick", user_item_path(@user, i, :item => {:pick => true}), :method => :put
 
-= will_paginate @items
+= paginate @items
 
