@@ -6,26 +6,12 @@ class UsersController < ApplicationController
   end
 
   def tag
-    @items = @items.select do |i|
-      i.tag_names.split(" ").include?(params[:tag])
-    end
-    # quick fix for the time being since it's not a relation
-    @items.instance_eval <<-EVAL
-      def current_page
-        #{params[:page] || 1}
-      end
-      def num_pages
-        self.size / limit_value + 1
-      end
-      def limit_value
-        20
-      end
-    EVAL
+    @items.tagged(params[:tag]).page params[:page]
 
-   @select = :recent
+    @select = :recent
     render "me"
   end
-  
+
   def show
     @items = @items.order("published_at DESC").page params[:page]
     @select = :recent

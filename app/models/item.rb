@@ -17,6 +17,8 @@ class Item < ActiveRecord::Base
 
   paginates_per 20
 
+  scope :tagged, lambda {|tag| joins(:tags).merge(Tag.where :name => tag) }
+
   def load
     valid? && fetch && save!
   end
