@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def tag
-    @items.tagged(params[:tag]).page params[:page]
-
+    @items = @items.tagged(params[:tag]).page params[:page]
     @select = :recent
     render "me"
   end
