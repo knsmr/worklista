@@ -264,6 +264,11 @@ h2#entry {
         float: right;
         color: #888888;
         font-size: 0.8em; }
+      .settings #left-settings .entry .forgot {
+        width: 65%;
+        padding-top: 20px;
+        float: right;
+        font-size: 0.9em; }
 
 #pages {
   background: #eeeeee;
