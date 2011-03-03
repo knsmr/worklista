@@ -66,7 +66,7 @@ class Item < ActiveRecord::Base
   def set_title
     self.title = url
     begin
-      doc.match(/<title[^>]*>([^<]+)<\/title>/) do |m|
+      doc.match(/<title[^>]*>([^<]+)<\/title>/i) do |m|
         self.title = 
           if m.size == 2
             m[1].encode("utf-8").gsub(/\n/,'')
