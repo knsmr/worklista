@@ -91,8 +91,11 @@ class Item < ActiveRecord::Base
   def hatena_smart_update
     num = retrieve_hatena
     if num <= self.hatena * 1.05 then
+      # reduce the api access more eagerly when the number of
+      # bookmarks isn't growing at all
+      delay_rate = num == self.hatena ? 16:2
       current_interval = self.interval
-      self.interval = current_interval * 2 unless current_interval > 2000000000
+      self.interval = current_interval * delay_rate unless current_interval > 2000000000
     end
     self.hatena = num
   end
