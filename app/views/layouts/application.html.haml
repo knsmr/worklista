@@ -3,7 +3,7 @@
   
   %head
     %title
-      = h(yield(:title) || "Untitled")
+      = "Worklista - #{yield :title}"
     %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = stylesheet_link_tag 'application'
