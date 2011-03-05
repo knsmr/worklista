@@ -54,7 +54,7 @@
       #date= i.published_at
     #body
       #tags
-        - if i.tags
+        - if !i.tags.empty?
           - i.tags.each do |tag|
             %a{:href => user_tag_path(:tag => tag.name)}
               = tag.name
