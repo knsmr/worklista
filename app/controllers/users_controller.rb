@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def tag
     @items = @items.tagged(params[:tag]).page params[:page]
+    @size = @items.size
     @select = :recent
     render "me"
   end
