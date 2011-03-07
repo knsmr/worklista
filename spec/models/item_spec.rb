@@ -79,9 +79,9 @@ describe Item do
       @item.interval.should == 180
     end
 
-    it "should double the interval time for the second time" do
+    it "should quadruple the interval time for the second time" do
       @item.smart_update
-      @item.interval.should == 360
+      @item.interval.should == 180 * 16
     end
 
     it "should set bitly_url" do
