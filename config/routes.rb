@@ -5,6 +5,7 @@ Worklista::Application.routes.draw do
   match "users/:username" => "users#show", :as => "user_recent", :via => "get"
   match "users/:username/tag/:tag" => "users#tag", :as => "user_tag", :via => "get"
 #  match "tag/:tag" => "users#show_tag", :as => "user_tag", :via => "get"
+  match "items/" => "items#index", :as => "item_index", :via => "get"
 
   devise_for :users, :path => 'account' do
     get "login",  :to => "devise/sessions#new"

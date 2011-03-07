@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_filter :authorise_as_owner
-  before_filter :find_item, :except => [:create]
+  before_filter :authorise_as_owner, :except => [:index]
+  before_filter :find_item, :except => [:create, :index]
  
   def create
     @item = @user.items.new(params[:item])
@@ -36,6 +36,10 @@ class ItemsController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def index
+    @items = Item.order("published_at DESC").page params[:page]
   end
 
 private
