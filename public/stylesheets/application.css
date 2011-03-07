@@ -225,7 +225,6 @@ h2#entry {
       color: #111111;
       font-size: 0.8em; }
   .item #body {
-    clear: both;
     padding-top: 0.1em;
     padding-left: 0.5em; }
     .item #body #tags {
