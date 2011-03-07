@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   before_create :guess_published_at, :set_title
   after_save :assign_tags
 
-  paginates_per 20
+  paginates_per 15
 
   scope :tagged, lambda {|tag| joins(:tags).merge(Tag.where :name => tag) }
 
