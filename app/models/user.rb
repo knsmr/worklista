@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   :photo, :invite_code
   attr_accessor :invite_code
 
-  validates_length_of :name, :within => 3..30
+  validates_length_of :name, :within => 3..30, :allow_nil => true
 
   validates_uniqueness_of :username
   validates_length_of :username,    :within  => 3..24
