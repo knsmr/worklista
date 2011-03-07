@@ -59,7 +59,7 @@
             %a{:href => user_tag_path(:tag => tag.name)}
               = tag.name
 
-      #description
+      #edit-buttons
         - if user_signed_in? && current_user.id == @user.id
           = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete
           = button_to "Edit", edit_user_item_path(@user, i), :method => :get

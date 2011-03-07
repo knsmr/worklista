@@ -237,8 +237,10 @@ h2#entry {
         color: #999999; }
         .item #body #tags a:hover {
           color: #333333; }
-    .item #body #description form {
-      float: right; }
+    .item #body #edit-buttons {
+      clear: both; }
+      .item #body #edit-buttons form {
+        float: right; }
 
 .settings {
   -moz-border-radius: 5px;
