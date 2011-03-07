@@ -23,15 +23,6 @@
       #tags
         - if !i.tags.empty?
           - i.tags.each do |tag|
-            = tag.name
-
-      #description
-        - if user_signed_in? && current_user.id == @user.id
-          = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete
-          = button_to "Edit", edit_user_item_path(@user, i), :method => :get
-          - if i.pick?
-            = button_to "Unpick", user_item_path(@user, i, :item => {:pick => false}), :method => :put
-          - else
-            = button_to "Pick", user_item_path(@user, i, :item => {:pick => true}), :method => :put
+            = link_to tag.name, tag_path(tag.name)
 
 = paginate @items

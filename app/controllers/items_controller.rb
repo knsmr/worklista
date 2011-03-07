@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_filter :authorise_as_owner, :except => [:index]
-  before_filter :find_item, :except => [:create, :index]
+  before_filter :authorise_as_owner, :except => [:index, :tag]
+  before_filter :find_item, :except => [:create, :index, :tag]
  
   def create
     @item = @user.items.new(params[:item])
@@ -40,6 +40,11 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order("published_at DESC").page params[:page]
+  end
+
+  def tag
+    @items = Item.tagged(params[:tag]).page params[:page]
+    render "index"
   end
 
 private
