@@ -154,8 +154,8 @@ h2#entry {
   border-radius: 5px; }
   .profile .head {
     float: left;
-    margin: 3px;
-    padding: 3px 0 0 0;
+    margin: 2px;
+    padding: 2px 0 0 0;
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: #dddddd;
@@ -163,7 +163,7 @@ h2#entry {
     overflow: auto; }
     .profile .head .photo {
       float: left;
-      margin: 5px 10px 5px 6px; }
+      margin: 3px 10px 1px 5px; }
     .profile .head .name {
       font-size: 1.3em;
       font-weight: bold; }
