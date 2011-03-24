@@ -114,6 +114,8 @@ class Item < ActiveRecord::Base
       else
         Kconv.guess(html).to_s
       end
+    # to handle the obsolete charset name, which should've been extinct...
+    enc = "Shift_JIS" if enc.downcase == "x-sjis" 
     enc = "UTF-8" if !Encoding.name_list.map(&:upcase).include?(enc.upcase)
     
     html.force_encoding(enc)
