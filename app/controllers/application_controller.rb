@@ -1,17 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # redirect when logged-in overriding a devise method. 
-  def sign_in_and_redirect(resource_or_scope, resource=nil)
-    if user_signed_in?
-      redirect_to user_recent_path(current_user.username)
+  # redirect when a user logs in
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User) # && resource.can_publish?
+      user_recent_path(current_user.username)
     else
-      redirect_to users_path
+      super
     end
   end
 
-
-private
+  private
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
