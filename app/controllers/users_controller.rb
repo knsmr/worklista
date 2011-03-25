@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   def show
     @items = @items.order("published_at DESC").page params[:page]
     @select = :recent
-    render "me"
+    respond_to do |format|
+      format.html { render "me"}
+      format.atom
+    end
   end
 
   def popular
