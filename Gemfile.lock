@@ -95,6 +95,9 @@ GEM
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.5.0)
+    jquery-rails (0.2.7)
+      rails (~> 3.0)
+      thor (~> 0.14.4)
     json (1.4.6)
     json_pure (1.4.6)
     kaminari (0.10.1)
@@ -180,6 +183,7 @@ DEPENDENCIES
   haml
   haml-rails
   hpricot
+  jquery-rails
   kaminari
   launchy
   paperclip!
