@@ -39,7 +39,7 @@
     %p No items
 
 - @items.each do |i|
-  .item
+  = div_for(i) do
     #head
       #title
         %a{:href => i.url, :target => "_blank" }
@@ -62,7 +62,7 @@
 
       #edit-buttons
         - if user_signed_in? && current_user.id == @user.id
-          = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete
+          = button_to "Delete", user_item_path(@user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true
           = button_to "Edit", edit_user_item_path(@user, i), :method => :get
           - if i.pick?
             = button_to "Unpick", user_item_path(@user, i, :item => {:pick => false}), :method => :put

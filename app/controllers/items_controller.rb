@@ -25,8 +25,14 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    flash[:notice] = "Successfully destroyed an item."
-    redirect_to user_recent_path(current_user.username)
+
+    respond_to do |format|
+      format.html do
+        flash[:notice] = "Successfully destroyed an item."
+        redirect_to user_recent_path(current_user.username)
+      end
+      format.js
+    end
   end
 
   def update
