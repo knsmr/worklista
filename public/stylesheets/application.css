@@ -233,7 +233,6 @@ h2#entry {
     padding-top: 0.1em;
     padding-left: 0.5em; }
     .item #body #tags {
-      height: 1.5em;
       float: left;
       font-size: 0.9em; }
       .item #body #tags a {
@@ -243,6 +242,8 @@ h2#entry {
         .item #body #tags a:hover {
           color: #333333; }
     .item #body #edit-buttons {
+      overflow-y: hidden;
+      overflow-x: hidden;
       clear: both; }
       .item #body #edit-buttons form {
         float: right; }
