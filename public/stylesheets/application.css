@@ -103,11 +103,11 @@ h2#entry {
   -moz-border-radius: 3px;
   border-radius: 3px;
   background: #eeeeee;
-  float: left;
   font-weight: bold; }
   #item-tab #url-form form input {
-    padding: 4px 5px;
     font-size: 1.3em;
+    padding: 4px 5px; }
+  #item-tab #url-form form input#item_url {
     background-color: #ffffdd; }
 
 #container {
