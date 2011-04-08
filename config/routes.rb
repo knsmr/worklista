@@ -8,7 +8,7 @@ Worklista::Application.routes.draw do
   match "items/" => "items#index", :as => "item_index", :via => "get"
   match "tag/:tag" => "items#tag", :as => "tag", :via => "get"
 
-  devise_for :users, :path => 'account' do
+  devise_for :users, :path => 'account', :controllers => {:registrations => "registrations"} do
     get "login",  :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"
     get "signup", :to => "devise/registrations#new"

@@ -20,11 +20,6 @@ class User < ActiveRecord::Base
 
   validates_length_of :description, :maximum => 120
 
-  validates_each :invite_code, :on => :create do |record, attr, value|
-    record.errors.add attr, "#{value} was invalid" unless
-      (value && value == "dummy_code")
-  end
-
   has_attached_file :photo,
                     :styles => { :medium => "240x240", :thumb => "80x80",
                                  :original => "300x300"}, 

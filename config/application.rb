@@ -38,5 +38,9 @@ module Worklista
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Reacaptcha (sample, need 2 keys)
+    config.middleware.use Rack::Recaptcha, :public_key => 'KEY', :private_key => 'KEY'
+
   end
 end

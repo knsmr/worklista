@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def recaptcha_valid?
+    request.env['recaptcha.valid']
+  end
+
   private
 
   # Overwriting the sign_out redirect path method

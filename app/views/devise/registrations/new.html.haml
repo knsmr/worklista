@@ -31,9 +31,8 @@
 
       .entry
         .property
-          Invite code
         .field
-          = f.text_field :invite_code
+          = raw recaptcha_tag(:challenge)
 
       .entry
         .property

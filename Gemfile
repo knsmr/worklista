@@ -15,6 +15,7 @@ gem 'hpricot'
 gem 'ruby_parser'
 gem 'bitly'
 gem "escape_utils"
+gem 'rack-recaptcha', :require => 'rack/recaptcha'
 
 group :test, :development do
    gem "rspec-rails", "~> 2.0.1"
