@@ -38,9 +38,9 @@
           %li.button
             = link_to 'About', '/about'
           %li.button
-            = link_to 'All Items', '/items'
+            = link_to 'Items', '/items'
           %li.button
-            = link_to 'All Users', '/users'
+            = link_to 'Users', '/users'
           - if user_signed_in?
             %li.button
               = link_to 'Me', "/users/#{current_user.username}"
