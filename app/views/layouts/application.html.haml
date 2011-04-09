@@ -23,15 +23,7 @@
             = link_to 'worklista', '/'
 
         #login
-          - if user_signed_in?
-            =  "Hi, #{current_user.username}! | "
-            = link_to 'Setting', '/edit'
-            =  " | "
-            = link_to 'Logout', '/logout'
-          - else
-            = link_to 'Login', '/login'
-            =  " | "
-            = link_to 'Sign up', '/signup'
+          = raw login_link
 
       #menu-navi
         %ul

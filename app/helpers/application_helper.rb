@@ -5,6 +5,17 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def login_link
+    if user_signed_in?
+      "Hi, #{current_user.username}! | " +
+        "#{link_to 'Setting', '/edit'} | " +
+        "#{link_to 'Logout', '/logout'}"
+    else
+      "#{link_to 'Login', '/login'} | " +
+        "#{link_to 'Sign up', '/signup'}"
+    end
+  end
+
   def link_to_hatena(url)
     base_url = "http://b.hatena.ne.jp/entry/"
     if url =~ /^(http:\/\/)(.+)/
