@@ -298,7 +298,8 @@ h2#entry {
     text-shadow: 2px 2px 5px white; }
 
 #flash_notice,
-#flash_error {
+#flash_error,
+#flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
   -moz-border-radius: 5px;
@@ -310,7 +311,8 @@ h2#entry {
   -moz-border-radius: 5px;
   border-radius: 5px; }
 
-#flash_error {
+#flash_error,
+#flash_alert {
   background-color: #ffcccc;
   border: solid 1px #cc6666;
   -moz-border-radius: 5px;
