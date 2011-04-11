@@ -42,21 +42,21 @@
 
 - @items.each do |i|
   = div_for(i) do
-    #head
-      #title
+    .head
+      .title
         %a{:href => i.url, :target => "_blank" }
           = i.title
-      #social
-        #hatena
+      .social
+        .hatena
           %a{ :href => link_to_hatena(i.url), :target => "_blank" }
             = i.hatena.to_s + " users"
-        #retweet
+        .retweet
           - b = i.bitly_url ? i.bitly_url : ""
           %a{ :href => b + "+", :target => "_blank" }
             = i.retweet.to_s + "retweets"
-      #date= i.published_at
-    #body
-      #tags
+      .date= i.published_at
+    .body
+      .tags
         - if !i.tags.empty?
           - i.tags.each do |tag|
             %a{:href => user_tag_path(:tag => tag.name)}
