@@ -196,6 +196,9 @@ h2#entry {
   background-color: #f3ffff;
   padding: 1px 5px 1px 5px;
   overflow: auto; }
+  .item #icon {
+    float: left;
+    margin: 2px 5px 0px 0px; }
   .item .head {
     margin: 3px; }
     .item .head .title {
