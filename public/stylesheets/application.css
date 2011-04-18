@@ -77,6 +77,18 @@ h2#entry {
       color: white;
       background: #cbedff; }
 
+#url-form {
+  padding: 6px 15px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #eeeeee;
+  font-weight: bold; }
+  #url-form form input {
+    font-size: 1.3em;
+    padding: 4px 5px; }
+  #url-form form input#item_url {
+    background-color: #ffffdd; }
+
 #item-tab ul {
   margin: 10px 0px 8px 0px;
   list-style: none;
@@ -98,17 +110,6 @@ h2#entry {
         color: #cbedff; }
   #item-tab ul #selected {
     background: #eeeeee; }
-#item-tab #url-form {
-  padding: 6px 15px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background: #eeeeee;
-  font-weight: bold; }
-  #item-tab #url-form form input {
-    font-size: 1.3em;
-    padding: 4px 5px; }
-  #item-tab #url-form form input#item_url {
-    background-color: #ffffdd; }
 
 #container {
   width: 75%;

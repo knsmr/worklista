@@ -21,13 +21,14 @@
 
 %hr
 
+- if user_signed_in? && current_user.id == @user.id
+  #url-form
+    = form_for([@user, @user.items.build]) do |f|
+      URL:
+      = f.text_field :url, :size => 60
+      = f.submit "Add"
+
 #item-tab
-  - if user_signed_in? && current_user.id == @user.id
-    #url-form
-      = form_for([@user, @user.items.build]) do |f|
-        URL:
-        = f.text_field :url, :size => 60
-        = f.submit "Add"
   %ul
     %li{:id => ('selected' if @select == :recent)}
       = link_to 'Recent', user_path(@user.username)
