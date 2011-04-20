@@ -1,5 +1,8 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
 $(function() {
     $('#url-form form input[type=text]').focus();
+
+    $('.item').hover(
+	function(){$(this).css('background', '#dfffff')},
+	function(){$(this).css('background', '#f3ffff')}
+    );
 });
