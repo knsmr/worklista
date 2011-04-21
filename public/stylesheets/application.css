@@ -82,12 +82,22 @@ h2#entry {
   -moz-border-radius: 3px;
   border-radius: 3px;
   background: #eeeeee;
+  overflow: auto;
   font-weight: bold; }
   #url-form form input {
     font-size: 1.3em;
     padding: 4px 5px; }
   #url-form form input#item_url {
     background-color: #ffffdd; }
+    #url-form form input#item_url:focus {
+      -moz-box-shadow: 0 0 5px rgba(10, 100, 255, 0.9);
+      -webkit-box-shadow: 0 0 5px rgba(10, 100, 255, 0.9);
+      box-shadow: 0 0 5px rgba(10, 100, 255, 0.9);
+      -moz-transition: -moz-box-shadow 0.1s ease-out;
+      -o-transition: box-shadow 0.1s ease-out;
+      -webkit-transition: box-shadow 0.1s ease-out; }
+  #url-form form input#item_submit {
+    padding: 5px 5px; }
 
 #item-tab ul {
   margin: 10px 0px 8px 0px;
@@ -112,7 +122,7 @@ h2#entry {
     background: #eeeeee; }
 
 #container {
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
   background: white;
   padding: 20px 40px;

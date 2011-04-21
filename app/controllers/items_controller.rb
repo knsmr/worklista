@@ -1,26 +1,45 @@
 class ItemsController < ApplicationController
   before_filter :authorise_as_owner, :except => [:index, :tag]
   before_filter :find_item, :except => [:create, :index, :tag]
- 
+  respond_to :html, :xml, :json
+
   def create
     @item = @user.items.new(params[:item])
     @item.interval = 180
+    success = false
+    error = ""
     if @item.load
-      flash[:notice] = "Created an item. Any changes?"
-      redirect_to edit_user_item_path(current_user, @item)
+      success = true
+      respond_to do |format|
+        format.html do
+          if request.xhr?
+            render :partial => "users/item", :locals => {:i => @item, :user => @user}, :layout => false, :status => :created
+          else
+            redirect_to edit_user_item_path(current_user, @item)
+          end
+        end
+      end
     else
-      flash[:error] = "Invalid URL!!"
-      redirect_to user_recent_path(current_user.username)
+      error = "Invalid URL!"
     end
   rescue Timeout::Error
-    flash[:error] = "Timeout! Could not retrieve data from the URL!!"
-    redirect_to user_recent_path(current_user.username)
+    error = "Timeout! Could not retrieve data from the URL!!"
   rescue SocketError
-    flash[:error] = "There's no such URL!!"
-    redirect_to user_recent_path(current_user.username)
+    error = "There's no such URL!!"
   rescue OpenURI::HTTPError
-    flash[:error] = "404 Not Found!!"
-    redirect_to user_recent_path(current_user.username)
+    error = "Couldn't find the page!!"
+  ensure
+    unless success
+      respond_with do |format|
+        format.html do
+          if request.xhr?
+            render :text => error, :status => 404
+          else
+            redirect_to user_recent_path(current_user.username)
+          end
+        end
+      end
+    end
   end
 
   def destroy
