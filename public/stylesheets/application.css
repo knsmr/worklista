@@ -55,27 +55,25 @@ h2#entry {
 
 #menu-navi {
   clear: both;
-  background-color: #d9aa81;
-  border: 2px #757364 solid;
-  display: block;
+  background-color: #cccccc;
+  border: 1px solid #6b8c66;
+  overflow: hidden;
   -moz-border-radius: 5px;
+<<<<<<< HEAD
   border-radius: 5px;
   overflow: auto; }
+=======
+  border-radius: 5px; }
+>>>>>>> c8a185f... use jquery-ui for menu navigation buttons
   #menu-navi ul {
     margin: 0px;
     padding: 0px;
-    padding-left: 10px;
+    padding-right: 0.3em;
     list-style: none; }
     #menu-navi ul li {
+      font-size: 1em;
       float: right;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      display: inline;
-      margin: 2px;
-      padding: 0.3em 0.5em;
-      text-decoration: none;
-      color: white;
-      background: #cbedff; }
+      padding: 0.3em 0.5em; }
 
 #url-form {
   padding: 6px 15px;

@@ -8,6 +8,7 @@ $(function() {
 	    $(this).css('background', '#f3ffff')
 	});
 
+    $('#menu-navi ul li a').button();
 
     var showEditbuttons = function(){
 	$('#edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
