@@ -41,4 +41,7 @@ $(function() {
 		    .css('padding', '15px 10px');
 	    }
 	});
+
+    $('#item_published_at').datepicker({dateFormat: 'yy-mm-dd'});
+
 });

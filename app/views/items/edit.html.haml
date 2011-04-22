@@ -13,7 +13,8 @@
       Tags
       = f.text_field :tag_names
     %p
-      = f.date_select :published_at
+      Date
+      = f.text_field :published_at
     %p= f.submit "Update"
 
 = link_to "Back", :back
