@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def tag
-    @items = Item.tagged(params[:tag]).page params[:page]
+    @items = Item.order("published_at DESC").tagged(params[:tag]).page params[:page]
     render "index"
   end
 

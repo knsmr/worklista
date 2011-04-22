@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def tag
-    @items = @items.tagged(params[:tag]).page params[:page]
+    @items = @items.tagged(params[:tag]).order("published_at DESC").page params[:page]
     @size = @items.size
     @select = :recent
     render "me"
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def pickup
-    @items = @items.where({:pick => true}).page params[:page]
+    @items = @items.where({:pick => true}).order("published_at DESC").page params[:page]
     @select = :pickup
     render "me"
   end
