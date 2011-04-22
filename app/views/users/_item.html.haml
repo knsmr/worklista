@@ -20,9 +20,9 @@
             = tag.name
     #edit-buttons
       - if user_signed_in? && current_user.id == user.id
-        = button_to "Delete", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true
-        = button_to "Edit", edit_user_item_path(user, i), :method => :get
+        = link_to "del", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'
+        = link_to "edit", edit_user_item_path(user, i), :method => :get, :class => 'item_edit'
         - if i.pick?
-          = button_to "Unpick", user_item_path(user, i, :item => {:pick => false}), :method => :put
+          = link_to "Unpick", user_item_path(user, i, :item => {:pick => false}), :method => :put, :class => 'item_unpick'
         - else
-          = button_to "Pick", user_item_path(user, i, :item => {:pick => true}), :method => :put
+          = link_to "pick", user_item_path(user, i, :item => {:pick => true}), :method => :put, :class => 'item_pick'

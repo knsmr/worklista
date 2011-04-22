@@ -8,6 +8,16 @@ $(function() {
 	    $(this).css('background', '#f3ffff')
 	});
 
+
+    var showEditbuttons = function(){
+	$('#edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
+	$('#edit-buttons .item_edit').button({icons:{primary:'ui-icon-pencil'}});
+	$('#edit-buttons .item_pick').button({icons:{primary:'ui-icon-star'}});
+	$('#edit-buttons .item_unpick').button({icons:{primary:'ui-icon-close'}});
+    };
+
+    showEditbuttons();
+
     $('#url_form')
 	.live("ajax:beforeSend", function(evt, xhr, settings){
 	    if (($('input[type=text]').val() == "http://...") ||
@@ -20,6 +30,7 @@ $(function() {
 	.live("ajax:success", function(evt, data, status, xhr){
 	    $("#new_item").remove();
 	    $(".item:first").before(xhr.responseText);
+	    showEditbuttons();
 	    $('input[type=text]').val("");
 	})
     	.live('ajax:complete', function(evn, xhr, status){

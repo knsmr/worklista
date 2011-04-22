@@ -255,9 +255,10 @@ h2#entry {
     .item .body #edit-buttons {
       overflow-y: hidden;
       overflow-x: hidden;
-      clear: both; }
-      .item .body #edit-buttons form {
-        float: right; }
+      clear: both;
+      float: right; }
+      .item .body #edit-buttons a {
+        font-size: 0.6em; }
 
 .settings {
   -moz-border-radius: 5px;
