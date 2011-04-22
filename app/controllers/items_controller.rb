@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
       respond_to do |format|
         format.html do
           if request.xhr?
-            render :partial => "users/item", :locals => {:i => @item, :user => @user}, :layout => false, :status => :created
+            render :partial => "users/item", :locals => {:i => @item, :user => @user}, :layout => false, :status => :ok
           else
             redirect_to edit_user_item_path(current_user, @item)
           end
