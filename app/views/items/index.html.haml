@@ -16,7 +16,7 @@
         .retweet
           - b = i.bitly_url ? i.bitly_url : ""
           %a{ :href => b + "+", :target => "_blank" }
-            = i.retweet.to_s + "retweets"
+            = i.retweet.to_s + "clicks"
       .date= i.published_at
     .body
       .tags
