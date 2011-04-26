@@ -11,12 +11,25 @@ $(function() {
     $('#menu-navi ul li a').button();
 
     var showEditbuttons = function(){
-	$('#edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
-	$('#edit-buttons .item_edit').button({icons:{primary:'ui-icon-pencil'}});
-	$('#edit-buttons .item_pick').button({icons:{primary:'ui-icon-star'}});
-	$('#edit-buttons .item_unpick').button({icons:{primary:'ui-icon-close'}});
-    };
+	$('.edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
+	$('.edit-buttons .item_edit').button({icons:{primary:'ui-icon-pencil'}});
+	$('.edit-buttons .item_pick').button({icons:{primary:'ui-icon-star'}});
+	$('.edit-buttons .item_unpick').button({icons:{primary:'ui-icon-close'}});
 
+	$('.edit-buttons').find('#item_published_at').datepicker({dateFormat: 'yy-mm-dd'});
+	$('.edit-buttons').each(function(){
+	    var $editButton = $(this).find('.item_edit');
+	    var $form = $(this).find('form');
+	    $form.css('display', 'none');
+	    $editButton.click(function(){
+		$form.dialog({
+		    modal: true,
+		    title: 'Edit item',
+		    width: 'auto'
+		});
+	    });
+	});
+    };
     showEditbuttons();
 
     $('#url_form')
@@ -24,7 +37,7 @@ $(function() {
 	    if (($('input[type=text]').val() == "http://...") ||
 		($('input[type=text]').val() == "")) { return false; };
 
-	    $('input[name=commit]').attr('disabled', 'disabled');
+ 	    $('input[name=commit]').attr('disabled', 'disabled');
 	    $('input[type=text]').css('color', '#888888').attr('disabled', 'disabled');
 	    $(".item:first").before('<div class="item" id="new_item"><img src="/images/ajax-loader.gif"></div>');
 	})
@@ -32,7 +45,7 @@ $(function() {
 	    $("#new_item").remove();
 	    $(".item:first").before(xhr.responseText);
 	    showEditbuttons();
-	    $('input[type=text]').val("");
+	    $('#url-form input[type=text]').val("");
 	})
     	.live('ajax:complete', function(evn, xhr, status){
 	    $('input[name=commit]').removeAttr('disabled');
@@ -53,7 +66,5 @@ $(function() {
 		    .css('padding', '15px 10px');
 	    }
 	});
-
-    $('#item_published_at').datepicker({dateFormat: 'yy-mm-dd'});
 
 });

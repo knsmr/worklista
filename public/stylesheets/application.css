@@ -250,13 +250,12 @@ h2#entry {
         color: #999999; }
         .item .body .tags a:hover {
           color: #333333; }
-    .item .body #edit-buttons {
+    .item .body .edit-buttons {
       overflow-y: hidden;
       overflow-x: hidden;
       clear: both;
-      float: right; }
-      .item .body #edit-buttons a {
-        font-size: 0.6em; }
+      float: right;
+      font-size: 0.6em; }
 
 .settings {
   -moz-border-radius: 5px;

@@ -18,10 +18,11 @@
         - i.tags.each do |tag|
           %a{:href => user_tag_path(:tag => tag.name)}
             = tag.name
-    #edit-buttons
+    .edit-buttons
       - if user_signed_in? && current_user.id == user.id
         = link_to "del", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'
-        = link_to "edit", edit_user_item_path(user, i), :method => :get, :class => 'item_edit'
+        .item_edit edit
+        = render :partial => "users/edit", :locals => {:item => i, :user => @user}
         - if i.pick?
           = link_to "Unpick", user_item_path(user, i, :item => {:pick => false}), :method => :put, :class => 'item_unpick'
         - else

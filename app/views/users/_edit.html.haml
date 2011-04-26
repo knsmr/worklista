@@ -1,0 +1,15 @@
+= form_for(item, :url => "/users/#{user.id}/items/#{item.id}") do |f|
+  .inline-edit
+    %p
+      Title
+      = f.text_field :title, :size => 80
+    %p
+      URL
+      = f.text_field :url, :size => 80
+    %p
+      Tags
+      = f.text_field :tag_names
+    %p
+      Date
+      = f.text_field :published_at
+    %p= f.submit "Update"
