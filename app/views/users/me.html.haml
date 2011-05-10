@@ -36,7 +36,7 @@
     %li{:class => ('selected' if @select == :popular)}
       = link_to 'Popular', user_popular_path(@user.username)
     %li{:class => ('selected' if @select == :pickup)}
-      = link_to 'My Pickup', user_pickup_path(@user.username)
+      = link_to 'Pickup', user_pickup_path(@user.username)
 
 - if @size == 0
   .item

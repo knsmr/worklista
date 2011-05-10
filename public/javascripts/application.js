@@ -9,6 +9,8 @@ $(function() {
 	});
 
     $('#menu-navi ul li a').button();
+    $('#item-tab ul li a').button();
+    $('#item-tab .selected a').css('background', '#f3ffff').css('border-bottom', 'none');
 
     var showEditbuttons = function(){
 	$('.edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
