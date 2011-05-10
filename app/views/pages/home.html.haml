@@ -1,13 +1,19 @@
 - title "Welcome"
-#pages
+#pages{:style => 'background: white; border: 1px solid grey'}
+  #home
+    .left
+      .welcome-message
+        3 easy steps:
+        %ol
+          %li Create
+          %li Publish
+          %li List
+      - unless user_signed_in?
+        .button
+          = link_to 'Sign up!!', '/signup'
+        .button
+          = link_to 'Sample page', user_recent_path("knsmr")
+    .howitworks
+      %img{ :src => "images/howitworks.png", :width => 450}
+      %p Do you publish your work such as articles, photos, software programs, anything that has a URL? Would you like to maintain a decent URL list of them? If so, Worklista may help you a lot!
 
-  %img{ :src => "images/howitworks.png", :width => 450, :style => "float: right; margin-left: 50px" }
-
-  %p Do you publish your work such as articles, photos, software programs, anything that has a URL? Would you like to maintain a decent URL list of them? If so, Worklista may help you a lot!
-
-  %ul{:style => "list-style: none;"}
-    - unless user_signed_in?
-      %li.button
-        = link_to 'Sign up!!', '/signup'
-      %li.button
-        = link_to 'Sample page', user_recent_path("knsmr")

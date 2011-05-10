@@ -260,7 +260,7 @@ h2#entry {
 
 #pages {
   background: #eeeeee;
-  width: 85%;
+  width: 90%;
   padding: 0.5em 3em;
   margin: 2em auto;
   -moz-border-radius: 5px;
@@ -274,6 +274,22 @@ h2#entry {
   #pages h2 {
     border-bottom: solid 1px black;
     text-shadow: 2px 2px 5px white; }
+  #pages #home {
+    width: 740px; }
+    #pages #home .left {
+      float: left;
+      width: 260px; }
+      #pages #home .left .welcome-message {
+        margin: 40px 5px 60px 0;
+        font-size: 36px;
+        color: green;
+        text-shadow: white 1px 1px; }
+      #pages #home .left .button {
+        margin: 0.5em;
+        font-size: 24px; }
+    #pages #home .howitworks {
+      width: 480px;
+      float: left; }
 
 #flash_notice,
 #flash_error,
