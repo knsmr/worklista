@@ -8,6 +8,8 @@ $(function() {
 	    $(this).css('background', '#f3ffff')
 	});
 
+    $('ul li.button').button().css({'background': '#cbedff', 'font-size': '1.4em'});
+    $('ul li.button').button();
     $('#menu-navi ul li a').button();
     $('#item-tab ul li a').button();
     $('#item-tab .selected a').css('background', '#f3ffff').css('border-bottom', 'none');
