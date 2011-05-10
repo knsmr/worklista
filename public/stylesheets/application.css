@@ -83,8 +83,8 @@ h2#entry {
   overflow: auto;
   font-weight: bold; }
   #url-form form input {
-    font-size: 1.3em;
-    padding: 4px 5px; }
+    font-size: 1.4em;
+    padding: 6px 4px; }
   #url-form form input#item_url {
     background-color: #ffffdd; }
     #url-form form input#item_url:focus {

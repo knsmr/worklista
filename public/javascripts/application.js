@@ -63,7 +63,7 @@ $(function() {
 	.click(function(){
 	    if($(this).val() == "http://...") {
 		$(this).css('color', 'black').val("")
-		    .css('padding', '15px 10px');
+		    .css('padding', '30px 15px');
 	    }
 	});
 
