@@ -116,7 +116,7 @@ h2#entry {
       text-shadow: 1px 1px black; }
       #item-tab ul li a:hover {
         color: #cbedff; }
-  #item-tab ul #selected {
+  #item-tab ul .selected {
     background: #eeeeee; }
 
 #container {
