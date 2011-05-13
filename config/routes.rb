@@ -19,6 +19,7 @@ Worklista::Application.routes.draw do
     resources :items
   end
 
+  match "/users/:user_id/items/:id/toggle" => "items#toggle_pick", :as => "toggle_pick", :via => "put"
   match "/users" => "users#index"
 
   root :to => "pages#home"

@@ -28,6 +28,6 @@
         .item_edit edit
         = render :partial => "users/edit", :locals => {:item => i, :user => @user}
         - if i.pick?
-          = link_to "Unpick", user_item_path(user, i, :item => {:pick => false}), :method => :put, :class => 'item_unpick'
+          = link_to "Unpick", toggle_pick_path(user, i), :method => :put, :class => 'item_unpick'
         - else
-          = link_to "pick", user_item_path(user, i, :item => {:pick => true}), :method => :put, :class => 'item_pick'
+          = link_to "pick", toggle_pick_path(user, i), :method => :put, :class => 'item_pick'

@@ -48,7 +48,21 @@ class Item < ActiveRecord::Base
     @doc ||= set_encoding(open(url, "r:ASCII-8BIT").read)
   end
 
-  private
+  def toggle_pick_if_the_number_of_picks_doesnt_exceed_the_limit
+    if self.pick == false
+      if number_of_picks >= 10
+        return false
+      else
+        self.pick = true
+      end
+    else
+      self.pick = false
+    end
+    self.save!
+  end
+
+private
+
   def assign_tags
     if @tag_names
       self.tags = @tag_names.split(/[\s,]+/).map do |name|
@@ -132,5 +146,8 @@ class Item < ActiveRecord::Base
     html
   end
 
+  def number_of_picks
+    user_id = self.user_id
+    Item.where(:user_id => user_id, :pick => true).size
+  end
 end
-

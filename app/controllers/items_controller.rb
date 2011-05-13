@@ -63,6 +63,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def toggle_pick
+    if @item.toggle_pick_if_the_number_of_picks_doesnt_exceed_the_limit
+      pick_state = @item.pick? ? "picked" : "unpicked"
+      flash[:notice] = "Successfully #{pick_state} item."
+    else
+      flash[:error] = "Can't pick more than 10 items."
+    end
+    redirect_to user_pickup_path(current_user.username)
+  end
+
   def index
     @items = Item.order("published_at DESC").page params[:page]
   end
