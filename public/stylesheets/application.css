@@ -226,6 +226,8 @@ h2#entry {
       clear: both;
       float: right;
       font-size: 0.6em; }
+      .item .body .edit-buttons form {
+        display: none; }
 
 .settings {
   -moz-border-radius: 5px;
