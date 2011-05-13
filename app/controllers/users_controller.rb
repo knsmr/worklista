@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def pickup
     @items = @items.where({:pick => true}).order("published_at DESC").page params[:page]
+    @size = @items.size
     @select = :pickup
     render "me"
   end
