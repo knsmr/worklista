@@ -12,6 +12,7 @@ $(function() {
     $('#menu-navi ul li a').button();
     $('#item-tab ul li a').button();
     $('#item-tab .selected a').css('background', '#ccffff').css('border-bottom', 'none');
+    $('.tag_link').button();
 
     var showEditbuttons = function(){
 	$('.edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});

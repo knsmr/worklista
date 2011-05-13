@@ -29,6 +29,10 @@
       = f.submit "Add"
     #error-message
 
+- if @tag
+  .tag_link
+    = link_to "Tagged as #{@tag} by everyone", tag_path(@tag)
+
 #item-tab
   %ul
     %li{:class => ('selected' if @select == :recent)}

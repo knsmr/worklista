@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def tag
-    @items = @items.tagged(params[:tag]).order("published_at DESC").page params[:page]
+    @tag = params[:tag]
+    @items = @items.tagged(@tag).order("published_at DESC").page params[:page]
     @size = @items.size
     @select = :recent
     render "me"
