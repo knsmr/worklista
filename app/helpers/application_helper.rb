@@ -26,6 +26,20 @@ module ApplicationHelper
     base_url + target 
    end
 
+  def truncstr(str, size)
+    # Considering the width of the displayed string since a Japanese
+    # character takes twice the width as alphanumeric.
+    return str if str.size <= size
+    truncated = str[0, size]
+    non_alphanum = truncated.gsub(/[\w\s\d]/, '')
+    extra_space = (truncated.size - non_alphanum.size) / 2
+    if str.size <= size + extra_space
+      str
+    else
+      str[0,size + extra_space] + "..."
+    end
+  end
+
   # We need this for atom_feed since an item doesn't have its
   # correspoding show page
   def item_url(item)

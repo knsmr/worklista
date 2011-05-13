@@ -8,7 +8,7 @@
     .head
       .title
         %a{:href => i.url, :target => "_blank" }
-          = i.title
+          = truncstr(i.title, 36)
       .social
         .hatena
           %a{ :href => link_to_hatena(i.url), :target => "_blank" }
