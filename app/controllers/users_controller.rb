@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :find_user, :except => [:index]
 
   def index
-    @users = User.all
+    @users = User.order("last_sign_in_at DESC")
   end
 
   def tag
