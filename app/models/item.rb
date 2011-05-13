@@ -8,6 +8,8 @@ class Item < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
   validates :url, :format => {:with => URI::regexp(%w(http https))}
+  validates_length_of :title, :maximum => 200
+  validates_length_of :summary, :maximum => 150
 
   attr_writer :tag_names
   attr_accessor :doc

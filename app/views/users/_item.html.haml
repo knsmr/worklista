@@ -12,12 +12,16 @@
         %a{ :href => b + "+", :target => "_blank" }
           = i.retweet.to_s + "clicks"
     .date= i.published_at
+
   .body
     .tags
       - if !i.tags.empty?
         - i.tags.each do |tag|
           %a{:href => user_tag_path(:tag => tag.name)}
             = tag.name
+    - if i.summary
+      .summary
+        = truncstr(i.summary, 100)
     .edit-buttons
       - if user_signed_in? && current_user.id == user.id
         = link_to "del", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'

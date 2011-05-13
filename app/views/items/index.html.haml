@@ -23,5 +23,9 @@
         - if !i.tags.empty?
           - i.tags.each do |tag|
             = link_to tag.name, tag_path(tag.name)
+      - if i.summary
+        .summary
+          = truncstr(i.summary, 100)
+
 
 = paginate @items
