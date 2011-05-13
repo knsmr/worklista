@@ -3,9 +3,8 @@
     %p
       Title
       = f.text_field :title, :size => 80
-    %p
-      URL
-      = f.text_field :url, :size => 80
+    %p{:style => 'font-size: 0.8em; color: grey'}
+      = item.url
     %p
       Tags
       = f.text_field :tag_names
