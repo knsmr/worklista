@@ -28,6 +28,7 @@ $(function() {
 	    $editButton.click(function(){
 		$form.dialog({
 		    modal: true,
+		    show: "fade",
 		    title: 'Edit item',
 		    width: 'auto'
 		});
