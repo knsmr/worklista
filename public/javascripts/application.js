@@ -24,7 +24,6 @@ $(function() {
 	$('.edit-buttons').each(function(){
 	    var $editButton = $(this).find('.item_edit');
 	    var $form = $(this).find('form');
-	    $form.css('display', 'none');
 	    $editButton.click(function(){
 		$form.dialog({
 		    modal: true,
