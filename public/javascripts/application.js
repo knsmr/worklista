@@ -31,6 +31,26 @@ $(function() {
 		    title: 'Edit item',
 		    width: 'auto'
 		});
+		var $textarea = $form.find('.inline-edit textarea');
+		var $counter = $textarea.next();
+		var $submit = $form.find('#item_submit');
+		var $counterColor = $counter.css('color');
+		var $update_count = function(){
+		    var $charLength = $textarea.val().length;
+		    $counter.text($charLength+'/400');
+		    if ($charLength > 400) {
+			$counter.css('color', 'red');
+			$submit.attr('disabled', 'disabled');
+		    } else {
+			$counter.css('color', $counterColor);
+			$submit.removeAttr('disabled');
+		    }
+		}
+		$update_count();
+		$textarea.focus();
+		$textarea.keyup(function(){
+		    $update_count();
+		});
 	    });
 	});
     };
