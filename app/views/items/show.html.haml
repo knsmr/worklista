@@ -1,0 +1,40 @@
+- title @item.title
+.item
+  .head
+    .title
+      %a{:href => @item.url, :target => "_blank" }
+        = truncstr(@item.title, 100)
+    .social
+      .hatena
+        %a{ :href => link_to_hatena(@item.url), :target => "_blank" }
+          = @item.hatena.to_s + " users"
+      .retweet
+        - b = @item.bitly_url ? @item.bitly_url : ""
+        %a{ :href => b + "+", :target => "_blank" }
+          = @item.retweet.to_s + "clicks"
+    .date= @item.published_at
+
+  .body
+    .tags
+      - if !@item.tags.empty?
+        - @item.tags.each do |tag|
+          %a{:href => user_tag_path(:username => @user.username, :tag => tag.name)}
+            = tag.name
+    - if @item.summary
+      .summary
+        = @item.summary
+    .edit-buttons
+      - if user_signed_in? && current_user.id == @user.id
+        = link_to "del", user_item_path(@user, @item), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'
+        .item_edit edit
+        = render :partial => "users/edit", :locals => {:item => @item, :user => @user}
+        - if @item.pick?
+          = link_to "Unpick", toggle_pick_path(@user, @item), :method => :put, :class => 'item_unpick'
+        - else
+          = link_to "pick", toggle_pick_path(@user, @item), :method => :put, :class => 'item_pick'
+    #author
+      %a{:href => "/users/#{@user.username}"}
+        = image_tag @user.photo.url(:thumb), :size => "24x24"
+        = @user.username
+%hr
+

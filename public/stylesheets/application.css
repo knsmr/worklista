@@ -226,8 +226,12 @@ h2#entry {
       margin-left: 1em;
       padding-left: 0.5em;
       border-left: solid #cccccc 2px;
-      color: #222222;
       max-width: 40em; }
+      .item .body .summary a {
+        text-decoration: none;
+        color: #444444; }
+        .item .body .summary a:hover {
+          color: black; }
     .item .body .edit-buttons {
       overflow-y: hidden;
       overflow-x: hidden;

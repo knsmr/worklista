@@ -21,7 +21,7 @@
             = tag.name
     - if i.summary
       .summary
-        = truncstr(i.summary, 100)
+        = link_to truncstr(i.summary, 100), user_item_path(@user, i)
     .edit-buttons
       - if user_signed_in? && current_user.id == user.id
         = link_to "del", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'

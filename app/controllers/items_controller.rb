@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :authorise_as_owner, :except => [:index, :tag]
+  before_filter :authorise_as_owner, :except => [:index, :show, :tag]
   before_filter :find_item, :except => [:create, :index, :tag]
   respond_to :html, :xml, :json
 
@@ -40,6 +40,10 @@ class ItemsController < ApplicationController
         end
       end
     end
+  end
+
+  def show
+    @user = User.find(params[:user_id])
   end
 
   def destroy

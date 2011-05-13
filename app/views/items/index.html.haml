@@ -25,7 +25,6 @@
             = link_to tag.name, tag_path(tag.name)
       - if i.summary
         .summary
-          = truncstr(i.summary, 100)
-
+          = link_to truncstr(i.summary, 100), user_item_path(i.user, i)
 
 = paginate @items
