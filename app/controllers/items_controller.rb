@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   def update
     if @item.fetch && @item.update_attributes(params[:item]) 
       flash[:notice] = "Successfully updated item."
-      redirect_to user_recent_path(current_user.username)
+      redirect_to :back
     else
       render :action => 'edit'
     end
@@ -97,6 +97,12 @@ private
   end
   
   def owner?; user_signed_in? && @user == current_user; end
-  def find_item; @item = Item.find(params[:id]); end
-
+  def find_item; @item = Item.find(params[:id])
+    if @item.user_id != params[:user_id].to_i
+      raise ActiveRecord::RecordNotFound
+    end
+  rescue ActiveRecord::RecordNotFound
+    # need to create 404 page
+    render :text => "Not found"
+  end
 end

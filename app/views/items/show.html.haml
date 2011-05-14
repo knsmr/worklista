@@ -25,7 +25,7 @@
         = @item.summary
     .edit-buttons
       - if user_signed_in? && current_user.id == @user.id
-        = link_to "del", user_item_path(@user, @item), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'
+        = link_to "del", user_item_path(@user, @item), :confirm => "Are you sure?", :method => :delete, :class => 'item_delete'
         .item_edit edit
         = render :partial => "users/edit", :locals => {:item => @item, :user => @user}
         - if @item.pick?
