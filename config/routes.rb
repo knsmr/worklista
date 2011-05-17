@@ -12,7 +12,7 @@ Worklista::Application.routes.draw do
     get "login",  :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"
     get "signup", :to => "devise/registrations#new"
-    get "edit",   :to => "devise/registrations#edit"
+    get "account",   :to => "devise/registrations#edit"
   end
   
   resources :users do

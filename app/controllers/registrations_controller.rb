@@ -9,4 +9,14 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to "/signup"
     end
   end
+
+  def update
+    if resource.update_with_password(params[resource_name])
+      set_flash_message :notice, :updated
+    else
+      clean_up_passwords(resource)
+      flash[:error] = resource.errors.full_messages.join(", ")
+    end
+    redirect_to after_update_path_for(resource)
+  end
 end

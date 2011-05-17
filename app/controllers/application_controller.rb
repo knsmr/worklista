@@ -22,6 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_update_path_for(resource)
-    user_recent_path(current_user.username)
+    '/account'
   end
 end

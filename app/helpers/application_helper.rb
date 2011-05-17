@@ -8,7 +8,7 @@ module ApplicationHelper
   def login_link
     if user_signed_in?
       "Hi, #{current_user.username}! | " +
-        "#{link_to 'Setting', '/edit'} | " +
+        "#{link_to 'Setting', '/account'} | " +
         "#{link_to 'Logout', '/logout'}"
     else
       "#{link_to 'Login', '/login'} | " +
