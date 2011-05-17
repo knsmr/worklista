@@ -4,6 +4,8 @@ Worklista::Application.routes.draw do
   match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
   match "users/:username" => "users#show", :as => "user_recent", :via => "get"
   match "users/:username/tag/:tag" => "users#tag", :as => "user_tag", :via => "get"
+  match "/users/:username/export" => "users#export_xml"
+
 #  match "tag/:tag" => "users#show_tag", :as => "user_tag", :via => "get"
   match "items/" => "items#index", :as => "item_index", :via => "get"
   match "tag/:tag" => "items#tag", :as => "tag", :via => "get"
@@ -25,6 +27,8 @@ Worklista::Application.routes.draw do
   root :to => "pages#home"
   match "/about" => "pages#about"
   match "/faq" => "pages#faq"
+
+  match '*a', :to => 'errors#routing'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

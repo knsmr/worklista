@@ -83,5 +83,5 @@
           = f.submit "Update"
 
 %p{:style => "font-size: 0.9em;"}
-  #{link_to "Deactivate my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-
+  #{link_to "Deactivate my account", registration_path(resource_name), :confirm => "Deactivating your account will delete all items you listed as well. Are you sure?", :method => :delete}.
+  #{link_to "Export the list(xml)", "/users/#{@user.username}/export"}

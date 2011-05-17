@@ -35,6 +35,17 @@ class UsersController < ApplicationController
     render "me"
   end
 
+  def export_xml
+    @list = @items.map do |i|
+      {title: i.title,
+        url: i.url,
+        tags: i.tag_names,
+        summary: i.summary,
+        date: i.published_at}
+    end
+    render :xml => @list.to_xml
+  end
+
 private
 
   def find_user
