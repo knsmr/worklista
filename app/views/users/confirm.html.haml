@@ -1,0 +1,24 @@
+- title "Confirmation"
+%h2 Create an account?
+.profile
+  .head
+    .photo= photo_tag user
+    .name= user.name
+    .username= user.username
+  .body
+.confirm
+  .yes
+    = form_for(user) do |f|
+      = f.hidden_field :name
+      = f.hidden_field :email
+      = f.hidden_field :password
+      = f.hidden_field :username
+      = f.hidden_field :twitter_id
+      = f.hidden_field :website
+      = f.hidden_field :description
+      = f.hidden_field :provider
+      = f.hidden_field :uid
+      = f.hidden_field :remote_photo_url
+      = f.submit "Yes!", :class => "mybutton"
+  .no
+    = link_to "No, thanks.", '/', :class => "mybutton"

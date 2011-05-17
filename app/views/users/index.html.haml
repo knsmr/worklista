@@ -3,7 +3,7 @@
   .profile
     .head
       .photo
-        = link_to raw("#{image_tag user.photo.url(:thumb)}"), "/users/#{user.username}"
+        = link_to photo_tag(user, :size => :normal), "/users/#{user.username}"
       .name
         = user.name
       .username

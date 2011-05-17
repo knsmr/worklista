@@ -1,19 +1,12 @@
+require 'uri'
+
 module ApplicationHelper
   include Rack::Recaptcha::Helpers
 
+  ICON_SIZE = {small:"24x24", normal:"73x73", big:"240x240"}
+
   def title(page_title)
     content_for(:title) { page_title }
-  end
-
-  def login_link
-    if user_signed_in?
-      "Hi, #{current_user.username}! | " +
-        "#{link_to 'Setting', '/account'} | " +
-        "#{link_to 'Logout', '/logout'}"
-    else
-      "#{link_to 'Login', '/login'} | " +
-        "#{link_to 'Sign up', '/signup'}"
-    end
   end
 
   def link_to_hatena(url)
@@ -24,7 +17,44 @@ module ApplicationHelper
       target = ""
     end
     base_url + target 
-   end
+  end
+  
+  def photo_tag(user, options = {:size => :normal})
+    twitter_icon_path = lambda do |path, suffix|
+      u     = URI.parse(path)
+      ext   = File.extname(u.path)
+      path.gsub(ext, suffix + ext)
+    end
+
+    icon_size = ICON_SIZE[options[:size]]
+    raise "Invalid size option for photo_url" if icon_size.nil?
+ 
+    photo_url = 
+      if user.remote_photo_url
+        case options[:size]
+        when :small
+          twitter_icon_path.call(user.remote_photo_url, "_normal")
+        when :normal
+          twitter_icon_path.call(user.remote_photo_url, "_bigger")
+        when :big
+          user.remote_photo_url
+        else
+          raise "Invalid size option for photo_url"
+        end
+      else
+        case options[:size]
+        when :small
+          user.photo.url(:thumb)
+        when :normal
+          user.photo.url(:thumb)
+        when :big
+          user.photo.url(:medium)
+        else
+          raise "Invalid size option for photo_url"
+        end
+      end
+    image_tag photo_url, :size => icon_size
+  end
 
   def truncstr(str, size)
     # Considering the width of the displayed string since a Japanese
@@ -49,5 +79,9 @@ module ApplicationHelper
   def feed_tag
     url_options = Rails.env.production? ? {:host => "worklista.com"} : {:host => "localhost:3000"}
     content_for(:feed) { auto_discovery_link_tag(:atom, user_path(params[:username]) + ".atom", url_options) }
+  end
+
+  def oauthed?
+    !current_user.provider.nil?
   end
 end

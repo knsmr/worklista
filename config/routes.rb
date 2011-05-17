@@ -1,4 +1,6 @@
 Worklista::Application.routes.draw do
+
+  match "auth/:provider/callback" => "authentications#callback_handler"
   
   match "users/:username/popular" => "users#popular", :as => "user_popular", :via => "get"
   match "users/:username/pickup" => "users#pickup", :as => "user_pickup", :via => "get"
@@ -13,7 +15,7 @@ Worklista::Application.routes.draw do
   devise_for :users, :path => 'account', :controllers => {:registrations => "registrations"} do
     get "login",  :to => "devise/sessions#new"
     get "logout", :to => "devise/sessions#destroy"
-    get "signup", :to => "devise/registrations#new"
+#    get "signup", :to => "devise/registrations#new"
     get "account",   :to => "devise/registrations#edit"
   end
   

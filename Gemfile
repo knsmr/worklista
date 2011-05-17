@@ -16,6 +16,7 @@ gem 'ruby_parser'
 gem 'bitly'
 gem "escape_utils"
 gem 'rack-recaptcha', :require => 'rack/recaptcha'
+gem 'omniauth'
 
 group :test, :development do
    gem "rspec-rails", "~> 2.0.1"

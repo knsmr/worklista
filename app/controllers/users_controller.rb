@@ -1,5 +1,7 @@
+require 'open-uri'
+
 class UsersController < ApplicationController
-  before_filter :find_user, :except => [:index]
+  before_filter :find_user, :except => [:index, :create]
 
   def index
     @users = User.order("last_sign_in_at DESC")
@@ -33,6 +35,18 @@ class UsersController < ApplicationController
     @size = @items.size
     @select = :pickup
     render "me"
+  end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:notice] = "Welcome #{@user.username} ! Any changes here? Click on Me button to start adding your items!"
+      sign_in @user
+      redirect_to '/account'
+    else
+      flash[:error] = "Something went wrong with Twitter login..."
+      redirect_to '/'
+    end
   end
 
   def export_xml

@@ -3,8 +3,8 @@
 .profile
   .head
     .photo
-      %a{:href => "#{@user.photo.url(:medium)}"}
-        = image_tag @user.photo.url(:thumb)
+      %a{:href => "/users/#{@user.username}"}
+        = photo_tag(@user, options = {:size => :normal})
     .name= @user.name
     .username
       = link_to @user.username, "/users/#{@user.username}"

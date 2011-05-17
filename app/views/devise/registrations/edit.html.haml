@@ -21,14 +21,15 @@
           %br/
           Your public work list: http://worklista.com/users/USERNAME. Please use only alphabets and numbers. No spaces allowed. 
 
-      .entry
-        .property
-          Email
-        .field
-          = f.text_field :email
-          %br/
-          Your email address will not be publicly displayed or linked. 
-
+      - unless oauthed?
+        .entry
+          .property
+            Email
+          .field
+            = f.text_field :email
+            %br/
+            Your email address will not be publicly displayed or linked. 
+  
       .entry
         .property
           Web site
@@ -49,11 +50,13 @@
         .property
           Picture
         .field
-          %a{:href => "#{@user.photo.url(:medium)}", :style => "float:left; margin-right: 10px;"}
-            = image_tag @user.photo.url(:thumb)
-          = f.file_field :photo
-          %br/
-          Up to 1MB, JPG, GIF and PNG. 
+          = photo_tag @user, :size => :normal
+          - if oauthed?
+            = link_to 'Refresh photo with Twitter profile', '/auth/twitter'
+          - else
+            = f.file_field :photo
+            %br/
+            Up to 1MB, JPG, GIF and PNG. 
 
       .entry
         .property
@@ -61,22 +64,23 @@
         .field
           = f.text_area :description, :cols => 45, :rows => 5
           %br/
-          What do you do? What are your interests? (max: 120 characters)
+          What do you do? What are your interests? (max: 160 characters)
 
-      .entry
-        .property
-          Password
-        .field
-          = f.password_field :password
-          %br/
-          %i (leave blank if you don't want to change it)
-
-      .entry
-        .property
-          Password Confirmation
-        .field
-          = f.password_field :password_confirmation
-
+      - unless oauthed?
+        .entry
+          .property
+            Password
+          .field
+            = f.password_field :password
+            %br/
+            %i (leave blank if you don't want to change it)
+  
+        .entry
+          .property
+            Password Confirmation
+          .field
+            = f.password_field :password_confirmation
+  
       .entry
         .property
         .field

@@ -26,7 +26,14 @@
         #motto What you publish online is your resume.
 
         #login
-          = raw login_link
+          - if user_signed_in?
+            = "Hi, #{current_user.username}! | "
+            = link_to 'Setting', '/account'
+            |
+            = link_to('Logout', '/logout')
+          - else
+            %a{:href => '/auth/twitter/'}
+              = image_tag('sign-in-with-twitter.png')
 
       #menu-navi
         %ul
@@ -46,3 +53,5 @@
   #footer
     &copy; 2010 Worklista. This service is currently in private beta. Contact:
     %a{:href => "http://twitter.com/knsmr"} @knsmr
+    | 
+    %a{:href => '/login'} old user login

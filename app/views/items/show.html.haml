@@ -34,7 +34,7 @@
           = link_to "pick", toggle_pick_path(@user, @item), :method => :put, :class => 'item_pick'
     #author
       %a{:href => "/users/#{@user.username}"}
-        = image_tag @user.photo.url(:thumb), :size => "24x24"
+        = photo_tag @user, :size => :small
         = @user.username
 %hr
 

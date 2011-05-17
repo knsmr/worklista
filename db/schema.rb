@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101227015544) do
+ActiveRecord::Schema.define(:version => 20110614120254) do
 
   create_table "items", :force => true do |t|
     t.string   "url"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20101227015544) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "remote_photo_url"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

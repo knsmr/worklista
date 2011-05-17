@@ -4,7 +4,7 @@
   .item
     #icon
       %a{:href => "/users/#{i.user.username}"}
-        = image_tag i.user.photo.url(:thumb), :size => "24x24"
+        = photo_tag i.user, :size => :small
     .head
       .title
         %a{:href => i.url, :target => "_blank" }

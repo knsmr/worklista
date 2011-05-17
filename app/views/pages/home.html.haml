@@ -9,7 +9,7 @@
           %li Publish
           %li List
       - unless user_signed_in?
-        = link_to 'Sign up!!', '/signup', :class => "mybutton"
+        = link_to 'Sign in with Twitter', '/auth/twitter', :class => "mybutton"
         %p
         = link_to 'Sample page', user_recent_path("knsmr"), :class => "mybutton"
     .howitworks
