@@ -39,9 +39,12 @@ private
 
   def find_user
     @user  = User.where("username = ?", params[:username]).first
-    @items = Item.where({:user_id => @user.id})
-    @size  = @items.size
-    redirect_to root_path if @user.nil?
+    if @user.nil?
+      redirect_to root_path 
+    else
+      @items = Item.where({:user_id => @user.id})
+      @size  = @items.size
+    end
   end
 
 end
