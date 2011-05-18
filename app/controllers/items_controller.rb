@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   def update
     if @item.fetch && @item.update_attributes(params[:item]) 
       flash[:notice] = "Successfully updated item."
-      redirect_to :back
+      redirect_to user_item_path(@user, @item)
     else
       render :action => 'edit'
     end
