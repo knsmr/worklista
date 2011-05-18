@@ -14,13 +14,19 @@ $(function() {
     $('#item-tab .selected a').css('background', '#ccffff').css('border-bottom', 'none');
     $('.tag_link').button();
 
+// This isn't working correctly. We need to insert the form for each
+// item for this to work. 
+//    $('input').filter('.datepicker').datepicker(
+//	{dateFormat: 'yy-mm-dd'});
+//		     startDate: '01/01/1970',
+//		     endDate: (new Date()).asString()});
+
     var showEditbuttons = function(){
 	$('.edit-buttons .item_delete').button({icons:{primary:'ui-icon-trash'}});
 	$('.edit-buttons .item_edit').button({icons:{primary:'ui-icon-pencil'}});
 	$('.edit-buttons .item_pick').button({icons:{primary:'ui-icon-star'}});
 	$('.edit-buttons .item_unpick').button({icons:{primary:'ui-icon-close'}});
 
-	$('.edit-buttons').find('#item_published_at').datepicker({dateFormat: 'yy-mm-dd'});
 	$('.edit-buttons').each(function(){
 	    var $editButton = $(this).find('.item_edit');
 	    var $form = $(this).find('form');
@@ -31,6 +37,7 @@ $(function() {
 		    title: 'Edit item',
 		    width: 'auto'
 		});
+
 		var $textarea = $form.find('.inline-edit textarea');
 		var $counter = $textarea.next();
 		var $submit = $form.find('#item_submit');
