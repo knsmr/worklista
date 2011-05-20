@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'open-uri'
 require 'timeout'
 require 'kconv'
@@ -72,11 +73,17 @@ private
   end
 
   def guess_published_at
-    self.published_at = if doc =~ /(20\d{2}\/[01]?\d\/[012]?\d)/
-      Date.strptime($1, "%Y/%m/%d")
-    else
-      Date.today
-    end
+    self.published_at = 
+      case doc
+      when /(20\d{2}\/[01]?\d\/[012]?\d)/
+        Date.strptime($1, "%Y/%m/%d")
+      when /(20\d{2}年[01]?\d月[012]?\d日)/
+        Date.strptime($1, "%Y年%m月%d日")
+      when /(20\d{2}-[01]?\d-[012]?\d-)/
+        Date.strptime($1, "%Y-%m-%d-")
+      else
+        Date.today
+      end
   end
 
   def set_title
