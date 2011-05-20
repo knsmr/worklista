@@ -39,6 +39,7 @@ $(function() {
 		});
 
 		var $textarea = $form.find('.inline-edit textarea');
+		var $tags = $form.find('.inline-edit #item_tag_names');
 		var $counter = $textarea.next();
 		var $submit = $form.find('#item_submit');
 		var $counterColor = $counter.css('color');
@@ -54,7 +55,7 @@ $(function() {
 		    }
 		}
 		$update_count();
-		$textarea.focus();
+		$tags.focus();
 		$textarea.keyup(function(){
 		    $update_count();
 		});
@@ -81,6 +82,7 @@ $(function() {
     	.live('ajax:complete', function(evn, xhr, status){
 	    $('input[name=commit]').removeAttr('disabled');
 	    $('input[type=text]').removeAttr('disabled').css('color', 'black');
+	    $('.edit-buttons').first().find('.item_edit').click();
 	})
 	.live('ajax:error', function(evn, xhr, status, error){    
 	    $("#new_item").hide(500, function(){$(this).remove();});
