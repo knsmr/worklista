@@ -1,6 +1,5 @@
 = form_for(item, :url => "/users/#{user.id}/items/#{item.id}") do |f|
   .inline-edit
-    %p Added an item. Hit escape key if there is nothing to change. 
     %p
       Title
       = f.text_field :title, :size => 80
@@ -19,3 +18,4 @@
       = f.text_area :summary, :cols => 60, :rows => 8
       %span{:style => 'font-size: 0.8em; color: grey'} 100
     %p= f.submit "Update"
+    %p (Hit escape key if there is nothing to change)
