@@ -82,7 +82,9 @@ $(function() {
     	.live('ajax:complete', function(evn, xhr, status){
 	    $('input[name=commit]').removeAttr('disabled');
 	    $('input[type=text]').removeAttr('disabled').css('color', 'black');
-	    $('.edit-buttons').first().find('.item_edit').click();
+	    setTimeout(function(){
+		$('.edit-buttons').first().find('.item_edit').click();
+	    }, 500);
 	})
 	.live('ajax:error', function(evn, xhr, status, error){    
 	    $("#new_item").hide(500, function(){$(this).remove();});
