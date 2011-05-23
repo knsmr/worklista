@@ -142,15 +142,10 @@ private
     enc = "UTF-8" if !Encoding.name_list.map(&:upcase).include?(enc.upcase)
     
     html.force_encoding(enc)
-
-    if !html.valid_encoding?
-      html = 
-        html.encode("UTF-16BE",
-                    :invalid => :replace,
-                    :undef => :replace,
-                    :replace => '.').encode("UTF-8")
-    end
-    html
+    html.encode("UTF-16BE",
+                :invalid => :replace,
+                :undef => :replace,
+                :replace => '.').encode("UTF-8")
   end
 
   def number_of_picks
