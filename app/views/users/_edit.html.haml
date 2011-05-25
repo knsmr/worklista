@@ -4,7 +4,7 @@
       Title
       = f.text_field :title, :size => 80
     %p{:style => 'font-size: 0.8em; color: grey'}
-      = item.url
+      = truncstr(item.url, 40)
       %a{:href => item.url, :target => "_blank" } (open in other window)
     %p
       Tags
