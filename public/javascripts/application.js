@@ -83,6 +83,10 @@ $(function() {
 	    $('input[name=commit]').removeAttr('disabled');
 	    $('input[type=text]').removeAttr('disabled').css('color', 'black');
 	    if(status == "success"){
+		$('.item').each(function(){
+		    $(this).find("p:contains('No items')").remove();
+		});
+
 		setTimeout(function(){
 		    $('.edit-buttons').first().find('.item_edit').click();
 		}, 500);
