@@ -79,8 +79,8 @@ private
         Date.strptime($1, "%Y/%m/%d")
       when /(20\d{2}年[01]?\d月[0123]?\d日)/
         Date.strptime($1, "%Y年%m月%d日")
-      when /(20\d{2}-[01]?\d-[0123]?\d-)/
-        Date.strptime($1, "%Y-%m-%d-")
+      when /(20\d{2}-[01]?\d-[0123]?\d)/
+        Date.strptime($1, "%Y-%m-%d")
       else
         Date.today
       end
