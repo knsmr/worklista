@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe Item do
@@ -6,10 +7,22 @@ describe Item do
   end
   describe "published_at" do
     describe "when document includes date" do
-      it "should set published at from document" do
+      it "should set published at from document (1)" do
         @item.doc = '2010/09/13'
         @item.save!
         @item.published_at.should == Date.parse('2010/09/13')
+      end
+
+      it "should set published at from document (2)" do
+        @item.doc = '2011-09-30'
+        @item.save!
+        @item.published_at.should == Date.parse('2011/09/30')
+      end
+
+      it "should set published at from document (3)" do
+        @item.doc = '2010年9月3日'
+        @item.save!
+        @item.published_at.should == Date.parse('2010/09/03')
       end
     end
 
@@ -81,7 +94,7 @@ describe Item do
 
     it "should quadruple the interval time for the second time" do
       @item.smart_update
-      @item.interval.should == 180 * 16
+      @item.interval.should == 180 * 8
     end
 
     it "should set bitly_url" do
