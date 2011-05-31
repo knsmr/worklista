@@ -37,10 +37,34 @@ describe Item do
 
   describe "title" do
     describe "when document includes title" do
-      it "should set published at from document" do
+      it "should set title from document" do
         @item.doc = '<title>Hello</title>'
         @item.save!
         @item.title.should == 'Hello'
+      end
+    end
+
+    describe "when title includes safe entity reference: raquo" do
+      it "should set title from document" do
+        @item.doc = '<title>&raquo; Hello &laquo;</title>'
+        @item.save!
+        @item.title.should == '» Hello «'
+      end
+    end
+
+    describe "when title includes safe entity reference: rsquo" do
+      it "should set title from document" do
+        @item.doc = '<title>&lsquo; Hello &rsquo;</title>'
+        @item.save!
+        @item.title.should == '‘ Hello ’'
+      end
+    end
+
+    describe "when title includes safe entity reference: quot" do
+      it "should set title from document" do
+        @item.doc = '<title>&quot; Hello &quot;</title>'
+        @item.save!
+        @item.title.should == '\' Hello \''
       end
     end
 

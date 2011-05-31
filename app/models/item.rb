@@ -92,7 +92,13 @@ private
       doc.match(/<title[^>]*>([^<]+)<\/title>/i) do |m|
         self.title = 
           if m.size == 2
-            m[1].encode("utf-8").gsub(/\n/,'')
+            m[1].encode("utf-8")
+              .gsub(/\n/,'')
+              .gsub(/&quot;/,'\'')
+              .gsub(/&raquo;/,'»')
+              .gsub(/&laquo;/,'«')
+              .gsub(/&lsquo;/,'‘')
+              .gsub(/&rsquo;/,'’')
           end
       end
     rescue => e
