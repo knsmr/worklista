@@ -31,7 +31,7 @@
 
 - if @tag
   .tag_link
-    = link_to "Tagged as #{@tag} by everyone", tag_path(@tag)
+    %a{:href => tag_path(@tag)} Items tagged as <strong>#{@tag}</strong> by everyone
 
 #item-tab
   %ul
