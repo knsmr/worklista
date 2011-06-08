@@ -48,6 +48,6 @@ module ApplicationHelper
 
   def feed_tag
     url_options = Rails.env.production? ? {:host => "worklista.com"} : {:host => "localhost:3000"}
-    content_for(:feed) { auto_discovery_link_tag(:atom, url_options) }
+    content_for(:feed) { auto_discovery_link_tag(:atom, user_path(params[:username]) + ".atom", url_options) }
   end
 end
