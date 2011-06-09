@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_length_of :username,    :within  => 3..24
   validates_format_of :username,    :with    => /\A[_a-zA-Z0-9]+\Z/
   validates_format_of :twitter_id,  :with    => /\A[_a-zA-Z0-9]+\Z/, :allow_nil => true, :allow_blank => true
-  validates :website, :format => {:with => URI::regexp(%w(http https))}
+  validates :website, :format => {:with => URI::regexp(%w(http https))}, :allow_nil => true, :allow_blank => true
   validates_length_of :description, :maximum => 120
 
   # Plugins
