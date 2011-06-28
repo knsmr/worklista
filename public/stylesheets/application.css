@@ -147,10 +147,17 @@ h2#entry {
     #container #header #login {
       background: white;
       float: right;
-      margin: 4px 8px;
+      margin: 0px 8px;
       padding: 4px;
       font-weight: bold;
       font-size: 0.9em; }
+      #container #header #login img {
+        margin: 0 0 -10px 0; }
+      #container #header #login a {
+        text-decoration: none;
+        color: #cccccc; }
+        #container #header #login a:hover {
+          color: #6666ff; }
 
 #footer {
   width: 75%;

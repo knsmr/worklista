@@ -20,26 +20,37 @@ module ApplicationHelper
   end
   
   def photo_tag(user, options = {:size => :normal})
-    twitter_icon_path = lambda do |path, suffix|
+    icon_path = lambda do |path, suffix|
       u     = URI.parse(path)
       ext   = File.extname(u.path)
       path.gsub(ext, suffix + ext)
     end
 
     icon_size = ICON_SIZE[options[:size]]
-    raise "Invalid size option for photo_url" if icon_size.nil?
+    raise "Invalid size option for photo_tag" if icon_size.nil?
  
     photo_url = 
-      if user.remote_photo_url
+      if user.remote_photo_url && user.provider == "twitter"
         case options[:size]
         when :small
-          twitter_icon_path.call(user.remote_photo_url, "_normal")
+          icon_path.call(user.remote_photo_url, "_normal")
         when :normal
-          twitter_icon_path.call(user.remote_photo_url, "_bigger")
+          icon_path.call(user.remote_photo_url, "_bigger")
         when :big
           user.remote_photo_url
         else
-          raise "Invalid size option for photo_url"
+          raise "Invalid size option for photo_tag"
+        end
+      elsif user.remote_photo_url && user.provider == "facebook"
+        case options[:size]
+        when :small
+          icon_path.call(user.remote_photo_url, "_q")
+        when :normal
+          icon_path.call(user.remote_photo_url, "_s")
+        when :big
+          icon_path.call(user.remote_photo_url, "_b")
+        else
+          raise "Invalid size option for photo_tag"
         end
       else
         case options[:size]

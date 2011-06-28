@@ -4,15 +4,15 @@ class AuthenticationsController < ApplicationController
   attr_accessor :auth
 
   def callback_handler
+    @auth = request.env['omniauth.auth']
     if already_signedin_using_oauth?
-      update_info
+      update_photo
     else
       create_new_user_with_auth
     end
   end
 
   def create_new_user_with_auth
-    @auth = request.env['omniauth.auth']
     user = User.where(:provider => @auth['provider'],
                       :uid      => @auth['uid']).first
     if user
@@ -28,9 +28,10 @@ class AuthenticationsController < ApplicationController
 
 private
 
-  def update_info
+  def update_photo
     user = current_user
-    user.remote_photo_url = @auth['user_info']['image'].gsub(/_normal/,'')
+    user.remote_photo_url = @auth['user_info']['image']
+    user.normalize_photo_url
     if user.save
       flash[:notice] = "Updated account info!"
       redirect_to '/account'

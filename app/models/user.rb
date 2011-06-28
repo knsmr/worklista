@@ -48,19 +48,44 @@ class User < ActiveRecord::Base
 
   def self.auth_new(auth)
     info = auth['user_info']
-    username = User.available_name(info['nickname'])
+    nickname = info['nickname'].gsub(/\./,'') || info['name'].gsub(/\. /,'')
+    username = User.available_name(nickname)
+    remote_photo_url = info['image']
+    case auth['provider']
+    when "twitter"
+      description      = info['description']
+      twitter_id       = info['nickname']
+      website          = info['urls']['Website']
+    when "facebook"
+      description      = ''
+      twitter_id       = ''
+      website          = info['urls']['Website'] || info['urls']['Facebook']
+    end
     user = User.new(:name => info['name'],
                     :username => username,
                     # dirty password and email strings to comply with devise
                     :password => "hogehoge",
-                    :email => username + Time.now.strftime("%Y%m%d%H%M%S") +\
-                    "@worklista.com",
-                    :description => info['description'],
-                    :remote_photo_url => info['image'].gsub(/_normal/,''),
-                    :twitter_id => info['nickname'],
-                    :website => info['urls']['Website'],
+                    :email => username + Time.now.strftime("%Y%m%d%H%M%S") + "@worklista.com",
+                    :description => description,
+                    :remote_photo_url => remote_photo_url,
+                    :twitter_id => twitter_id,
+                    :website => website,
                     :provider => auth['provider'],
                     :uid => auth['uid'])
+    user.normalize_photo_url
+    user
+  end
+
+  def normalize_photo_url
+    case self.provider
+    when "twitter"
+      self.remote_photo_url = self.remote_photo_url.gsub(/_normal/,'')
+    when "facebook"
+      url = URI.parse(self.remote_photo_url.gsub(/\?type.+/,''))
+      req = Net::HTTP::Get.new(url.path)
+      res = Net::HTTP.start(url.host, url.port){|http| http.request(req)}
+      self.remote_photo_url = res.response['location'].gsub(/_q/,'')
+    end
   end
 
   def self.available_name(nickname)

@@ -52,7 +52,7 @@
         .field
           = photo_tag @user, :size => :normal
           - if oauthed?
-            = link_to 'Refresh photo with Twitter profile', '/auth/twitter'
+            = link_to "Refresh photo with #{@user.provider.capitalize}", "/auth/#{@user.provider}"
           - else
             = f.file_field :photo
             %br/

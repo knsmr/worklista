@@ -32,8 +32,13 @@
             |
             = link_to('Logout', '/logout')
           - else
+            Sign in with: 
+            %a{:href => '/auth/facebook/'}
+              = image_tag('facebook_32.png', :size => "32x32")
+              Facebook
             %a{:href => '/auth/twitter/'}
-              = image_tag('sign-in-with-twitter.png')
+              = image_tag('twitter_32.png', :size => "32x32")
+              Twitter
 
       #menu-navi
         %ul
