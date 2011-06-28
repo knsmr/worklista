@@ -10,8 +10,15 @@ $blue: #cbedff
   -moz-border-radius: 5px
   border-radius: 5px
 
+=grey-gradient-background
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #eee), color-stop(1, #aaa) )
+  background: -moz-linear-gradient(center top, #eee 5%, #aaa 100% )
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#aaa')
+
 body
-  background-color: $darkgreen
+  background-color: white
+  +grey-gradient-background
+
   font:
     family: Verdana, Helvetica, Arial
     size: 14px
@@ -75,9 +82,9 @@ h2#entry
 #menu-navi
   clear: both
   background-color: #cccccc
-  border: 1px solid $darkgreen
   overflow: hidden
   +round-corner
+  +grey-gradient-background
   ul
     margin: 0px
     padding: 0px
@@ -129,7 +136,6 @@ h2#entry
   margin: 0 auto
   background: white
   padding: 20px 40px
-  border: solid 1px black
   margin-top: 20px
   +round-corner
   #header
@@ -146,11 +152,12 @@ h2#entry
         margin: 0px
         width: 275px
         height: 45px
+  
     #motto
       float: left
       margin: 0 0 0 20px
       padding: 18px 0 0 0
-      font-size: 1em
+      font-size: 0.9em
       font-family: 'Carter One' arial serif
       color: grey
 
@@ -161,6 +168,7 @@ h2#entry
       padding: 4px
       font-weight: bold
       font-size: 0.9em
+      padding: 0 0 10px 0
       img
         margin: 0 0 -10px 0
       a

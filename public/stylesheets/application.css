@@ -1,5 +1,8 @@
 body {
-  background-color: #6b8c66;
+  background-color: white;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eeeeee), color-stop(1, #aaaaaa));
+  background: -moz-linear-gradient(center top, #eeeeee 5%, #aaaaaa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#aaa');
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px; }
 
@@ -63,15 +66,11 @@ h2#entry {
 #menu-navi {
   clear: both;
   background-color: #cccccc;
-  border: 1px solid #6b8c66;
   overflow: hidden;
   -moz-border-radius: 5px;
-<<<<<<< HEAD
   border-radius: 5px;
   overflow: auto; }
-=======
-  border-radius: 5px; }
->>>>>>> c8a185f... use jquery-ui for menu navigation buttons
+
   #menu-navi ul {
     margin: 0px;
     padding: 0px;
@@ -119,7 +118,6 @@ h2#entry {
   margin: 0 auto;
   background: white;
   padding: 20px 40px;
-  border: solid 1px black;
   margin-top: 20px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
@@ -141,7 +139,7 @@ h2#entry {
       float: left;
       margin: 0 0 0 20px;
       padding: 18px 0 0 0;
-      font-size: 1em;
+      font-size: 0.9em;
       font-family: "Carter One" arial serif;
       color: grey; }
     #container #header #login {
@@ -150,7 +148,8 @@ h2#entry {
       margin: 0px 8px;
       padding: 4px;
       font-weight: bold;
-      font-size: 0.9em; }
+      font-size: 0.9em;
+      padding: 0 0 10px 0; }
       #container #header #login img {
         margin: 0 0 -10px 0; }
       #container #header #login a {
