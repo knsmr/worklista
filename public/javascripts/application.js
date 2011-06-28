@@ -2,10 +2,10 @@ $(function() {
 
     $('.item')
 	.live('mouseenter', function(){
-	    $(this).css('background', '#ccffff')
+	    $(this).css('background', '#eeffff')
 	})
 	.live("mouseleave", function(){
-	    $(this).css('background', '#eeffff')
+	    $(this).css('background', '#ffffff')
 	});
 
     $('.button').button();
