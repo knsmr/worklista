@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   :photo, :invite_code, :remote_photo_url, :provider, :uid
   attr_accessor :invite_code
 
+  paginates_per 8
+
   # Validations
 
   validates_length_of :name, :within => 3..30, :allow_nil => true

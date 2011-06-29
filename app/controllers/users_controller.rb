@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :find_user, :except => [:index, :create]
 
   def index
-    @users = User.order("last_sign_in_at DESC")
+    @users = User.order("last_sign_in_at DESC").page params[:page]
   end
 
   def tag
