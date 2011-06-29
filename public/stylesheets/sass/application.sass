@@ -15,6 +15,11 @@ $blue: #cbedff
   background: -moz-linear-gradient(center top, #eee 5%, #aaa 100% )
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#aaa')
 
+=box-shadow
+  -moz-box-shadow: 0 0 8px #888
+  -webkit-box-shadow: 0 0 8px #888
+  box-shadow: 0 0 8px #888
+
 body
   background-color: white
   +grey-gradient-background
@@ -138,6 +143,7 @@ h2#entry
   padding: 20px 40px
   margin-top: 20px
   +round-corner
+  +box-shadow
   #header
     height: 48px
     h1
@@ -164,7 +170,7 @@ h2#entry
     #login
       background: white
       float: right
-      margin: 0px 8px
+      margin: 4px 4px
       padding: 4px
       font-weight: bold
       font-size: 0.9em
@@ -192,6 +198,7 @@ h2#entry
   background-color: #eeeeee
   overflow: auto
   +round-corner
+  +box-shadow
   .head
     float: left
     margin: 2px

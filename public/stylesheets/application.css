@@ -120,7 +120,10 @@ h2#entry {
   padding: 20px 40px;
   margin-top: 20px;
   -moz-border-radius: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 8px #888888;
+  -webkit-box-shadow: 0 0 8px #888888;
+  box-shadow: 0 0 8px #888888; }
   #container #header {
     height: 48px; }
     #container #header h1 {
@@ -145,7 +148,7 @@ h2#entry {
     #container #header #login {
       background: white;
       float: right;
-      margin: 0px 8px;
+      margin: 4px 4px;
       padding: 4px;
       font-weight: bold;
       font-size: 0.9em;
@@ -173,7 +176,10 @@ h2#entry {
   background-color: #eeeeee;
   overflow: auto;
   -moz-border-radius: 5px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 8px #888888;
+  -webkit-box-shadow: 0 0 8px #888888;
+  box-shadow: 0 0 8px #888888; }
   .profile .head {
     float: left;
     margin: 2px;
