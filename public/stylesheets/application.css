@@ -200,8 +200,8 @@ h2#entry {
     float: left;
     width: 53%; }
     .profile .body .description {
-      margin: 3px;
-      padding: 10px;
+      margin: 1px;
+      padding: 1px;
       -moz-border-radius: 5px;
       border-radius: 5px;
       font-size: 0.9em; }
