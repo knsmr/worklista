@@ -114,9 +114,9 @@ h2#entry {
     display: inline; }
 
 #container {
+  background: url("/images/body-bg.png") repeat-x 0 0 white;
   width: 85%;
   margin: 0 auto;
-  background: white;
   padding: 20px 40px;
   margin-top: 20px;
   -moz-border-radius: 5px;
@@ -146,7 +146,7 @@ h2#entry {
       font-family: "Carter One" arial serif;
       color: grey; }
     #container #header #login {
-      background: white;
+      background: rgba(255, 255, 255, 0);
       float: right;
       margin: 4px 4px;
       padding: 4px;
