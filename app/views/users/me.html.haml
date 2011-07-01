@@ -9,7 +9,7 @@
     .username
       = link_to @user.username, "/users/#{@user.username}"
     .twitter
-      - if @user.twitter_id
+      - unless @user.twitter_id.blank?
         = link_to(image_tag("twitter-icon.png"), "http://twitter.com/#{@user.twitter_id}")
       - if @select == :recent
         = link_to(image_tag("rss-icon.png"), "http://worklista.com/users/#{@user.username}.atom")
