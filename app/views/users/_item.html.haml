@@ -2,7 +2,7 @@
   .head
     .title
       %a{:href => i.url, :target => "_blank" }
-        = truncstr(i.title, 36)
+        = truncstr(i.title, 40)
     .social
       .hatena
         %a{ :href => link_to_hatena(i.url), :target => "_blank" }
@@ -21,7 +21,7 @@
             = tag.name
     - if i.summary
       .summary
-        = link_to truncstr(i.summary, 100), user_item_path(@user, i)
+        = link_to truncstr(i.summary, 80), user_item_path(@user, i)
     .edit-buttons
       - if user_signed_in? && current_user.id == user.id
         = link_to "del", user_item_path(user, i), :confirm => "Are you sure?", :method => :delete, :remote => :true, :class => 'item_delete'
