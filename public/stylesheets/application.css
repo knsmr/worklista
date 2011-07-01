@@ -195,6 +195,9 @@ h2#entry {
     .profile .head .name {
       font-size: 1.3em;
       font-weight: bold; }
+      .profile .head .name a {
+        text-decoration: none;
+        color: black; }
     .profile .head .username {
       font-size: 1em; }
     .profile .head .twitter {
