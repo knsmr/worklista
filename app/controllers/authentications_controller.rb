@@ -21,6 +21,7 @@ class AuthenticationsController < ApplicationController
       redirect_to "/users/#{user.username}"
     else
       user = User.auth_new(@auth)
+      logger.info "Stats: confirming registration: #{user.username} via #{user.provider} #{Time.now}"
       render 'users/confirm',
       :locals => { :user => user }
     end

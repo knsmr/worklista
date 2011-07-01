@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      logger.info "Stats: registered a new user  : #{@user.username} via #{@user.provider} #{Time.now}"
       flash[:notice] = "Welcome #{@user.username} ! Any changes here? Click on Me button to start adding your items!"
       sign_in @user
       redirect_to '/account'
