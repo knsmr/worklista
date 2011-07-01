@@ -3,7 +3,7 @@
   .head
     .title
       %a{:href => @item.url, :target => "_blank" }
-        = truncstr(@item.title, 100)
+        = truncstr(@item.title, 140)
     .social
       .hatena
         %a{ :href => link_to_hatena(@item.url), :target => "_blank" }
