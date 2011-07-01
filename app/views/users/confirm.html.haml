@@ -1,5 +1,5 @@
 - title "Confirmation"
-%h2 Create an account?
+%h2= "Create an account with #{user.provider.capitalize} ?"
 .profile
   .head
     .photo= photo_tag user
@@ -22,3 +22,7 @@
       = f.submit "Yes!", :class => "mybutton"
   .no
     = link_to "No, thanks.", '/', :class => "mybutton"
+.another_way
+  - another = user.provider == "twitter" ? "Facebook" : "Twitter"
+  = "If you already have an account, you can login with"
+  = link_to another, "/auth/#{another}"

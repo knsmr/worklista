@@ -298,6 +298,10 @@ h2#entry {
     margin: 7px;
     float: left; }
 
+.another_way {
+  font-size: 1.2em;
+  text-weight: bold; }
+
 .settings {
   -moz-border-radius: 5px;
   border-radius: 5px;
