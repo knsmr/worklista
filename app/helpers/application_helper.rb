@@ -46,7 +46,7 @@ module ApplicationHelper
         when :small
           icon_path.call(user.remote_photo_url, "_q")
         when :normal
-          icon_path.call(user.remote_photo_url, "_s")
+          icon_path.call(user.remote_photo_url, "_q")
         when :big
           icon_path.call(user.remote_photo_url, "_b")
         else
