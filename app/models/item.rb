@@ -28,8 +28,8 @@ class Item < ActiveRecord::Base
 
   def fetch
     Timeout::timeout(8) do
-      set_hatena
       set_retweet_and_bitly_url
+      set_hatena
     end
   end
 
@@ -130,7 +130,9 @@ private
   end
 
   def set_retweet_and_bitly_url
-    bitly = BITLY.shorten(self.url)
+    action = self.url !~ /http:\/\/bit\.ly/ ? :shorten : :expand
+    bitly = BITLY.__send__(action, self.url)
+    self.url       = bitly.long_url
     self.bitly_url = bitly.short_url
     self.retweet   = bitly.global_clicks
   end
