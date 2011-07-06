@@ -62,6 +62,11 @@ class Item < ActiveRecord::Base
     self.save!
   end
 
+  def url_normalize
+    self.url = "http://" + self.url if self.url !~ /^http/i
+#    self.url = self.url.gsub(/(^http:\/\/www\.amazon\.co\.jp\/[^\/]+\/)/, $1)
+  end
+
 private
 
   def assign_tags

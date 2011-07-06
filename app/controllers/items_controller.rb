@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def create
     @item = @user.items.new(params[:item])
     @item.interval = 180
-    @item.url = "http://" + @item.url if @item.url !~ /^http/i
+    @item.url_normalize
     success = false
     error = ""
     if @item.load
