@@ -66,8 +66,8 @@ class Item < ActiveRecord::Base
     if self.url !~ /^http/i
       self.url = "http://" + self.url
     end
-    self.url.sub!(/^(http:\/\/www\.amazon\.co\.jp\/).+\/(dp\/[0-9X]+).*/, '\1\2')
-    self.url.sub!(/^(http:\/\/www\.amazon\.co\.jp\/)gp\/product\/([0-9X]+).*/, '\1dp/\2')
+    self.url.sub!(/^(http:\/\/www\.amazon\.co\.jp\/).+\/(dp\/[0-9A-Z]+).*/, '\1\2')
+    self.url.sub!(/^(http:\/\/www\.amazon\.co\.jp\/)gp\/product\/([0-9A-Z]+).*/, '\1dp/\2')
   end
 
 private
