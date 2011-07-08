@@ -10,6 +10,8 @@
           %li List
       - unless user_signed_in?
         = link_to 'Sample page', user_recent_path("knsmr"), :class => "mybutton"
+        %p
+        = link_to 'FAQ', '/about', :class => "mybutton"
     .howitworks
       %img{ :src => "images/howitworks.png", :width => 450}
       %p Do you publish your work such as articles, photos, software programs, anything that has a URL? Want to maintain a decent URL list of them? Worklista can help you a lot!
