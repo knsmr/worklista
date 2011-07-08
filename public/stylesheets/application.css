@@ -262,11 +262,18 @@ h2#entry {
       float: left;
       font-size: 0.9em; }
       .item .body .tags a {
+        background: #aaddff;
+        border-right: 1px solid #667788;
+        border-bottom: 1px solid #667788;
+        margin-left: 0.5em;
+        padding-left: 0.2em;
+        padding-right: 0.2em;
         text-decoration: none;
         text-size: 0.8em;
-        color: #999999; }
+        color: black; }
         .item .body .tags a:hover {
-          color: #333333; }
+          background: #667788;
+          color: white; }
     .item .body .summary {
       clear: both;
       margin-top: 2em;
