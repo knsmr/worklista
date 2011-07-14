@@ -45,8 +45,8 @@ $(function() {
 		var $counterColor = $counter.css('color');
 		var $update_count = function(){
 		    var $charLength = $textarea.val().length;
-		    $counter.text($charLength+'/400');
-		    if ($charLength > 400) {
+		    $counter.text($charLength+'/200');
+		    if ($charLength > 200) {
 			$counter.css('color', 'red');
 			$submit.attr('disabled', 'disabled');
 		    } else {
