@@ -29,6 +29,8 @@ class ItemsController < ApplicationController
     error = "There's no such URL!!"
   rescue OpenURI::HTTPError
     error = "Couldn't find the page!!"
+  rescue
+    error = "Not valid"
   ensure
     unless success
       respond_with do |format|
