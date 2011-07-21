@@ -1,6 +1,7 @@
 atom_feed do |feed|
+  @items = @items.all   # convert the AR object to an Array
   feed.title("Worklista - #{@user.name}")
-  feed.updated(@items.first.created_at)
+  feed.updated(@items.first.created_at) unless @items.empty?
 
   @items.each do |item|
     feed.entry(item) do |entry|
