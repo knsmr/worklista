@@ -8,11 +8,11 @@ class AuthenticationsController < ApplicationController
     if already_signedin_using_oauth?
       update_photo
     else
-      create_new_user_with_auth
+      find_or_create_user_with_auth
     end
   end
 
-  def create_new_user_with_auth
+  def find_or_create_user_with_auth
     user = User.where(:provider => @auth['provider'],
                       :uid      => @auth['uid']).first
     if user
