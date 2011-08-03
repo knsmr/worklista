@@ -23,7 +23,7 @@ module ApplicationHelper
     icon_path = lambda do |path, suffix|
       u     = URI.parse(path)
       ext   = File.extname(u.path)
-      path.gsub(ext, suffix + ext)
+      path.chomp(ext) << suffix + ext
     end
 
     icon_size = ICON_SIZE[options[:size]]
