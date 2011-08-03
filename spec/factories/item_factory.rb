@@ -1,3 +1,3 @@
 Factory.define :item do |f|
-  f.url "http://google.com"
+  f.url "http://www.google.com"
 end
