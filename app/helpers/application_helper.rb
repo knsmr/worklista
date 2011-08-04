@@ -1,9 +1,7 @@
-require 'uri'
+require 'photo_url.rb'
 
 module ApplicationHelper
   include Rack::Recaptcha::Helpers
-
-  ICON_SIZE = {small:"24x24", normal:"73x73", big:"240x240"}
 
   def title(page_title)
     content_for(:title) { page_title }
@@ -20,51 +18,17 @@ module ApplicationHelper
   end
   
   def photo_tag(user, options = {:size => :normal})
-    icon_path = lambda do |path, suffix|
-      u     = URI.parse(path)
-      ext   = File.extname(u.path)
-      path.chomp(ext) << suffix + ext
+    case user.provider
+    when "twitter"
+      photo_url = TwitterPhotoUrl.new(user, options)
+    when "facebook"
+      photo_url = FacebookPhotoUrl.new(user, options)
+    else
+      photo_url = LocalPhotoUrl.new(user, options)
     end
-
-    icon_size = ICON_SIZE[options[:size]]
+    icon_size = photo_url.icon_size
     raise "Invalid size option for photo_tag" if icon_size.nil?
- 
-    photo_url = 
-      if user.remote_photo_url && user.provider == "twitter"
-        case options[:size]
-        when :small
-          icon_path.call(user.remote_photo_url, "_normal")
-        when :normal
-          icon_path.call(user.remote_photo_url, "_bigger")
-        when :big
-          user.remote_photo_url
-        else
-          raise "Invalid size option for photo_tag"
-        end
-      elsif user.remote_photo_url && user.provider == "facebook"
-        case options[:size]
-        when :small
-          icon_path.call(user.remote_photo_url, "_q")
-        when :normal
-          icon_path.call(user.remote_photo_url, "_q")
-        when :big
-          icon_path.call(user.remote_photo_url, "_b")
-        else
-          raise "Invalid size option for photo_tag"
-        end
-      else
-        case options[:size]
-        when :small
-          user.photo.url(:thumb)
-        when :normal
-          user.photo.url(:thumb)
-        when :big
-          user.photo.url(:medium)
-        else
-          raise "Invalid size option for photo_url"
-        end
-      end
-    image_tag photo_url, :size => icon_size
+    image_tag photo_url.path, :size => photo_url.icon_size
   end
 
   def truncstr(str, size)
