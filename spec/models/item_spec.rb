@@ -91,7 +91,7 @@ describe Item do
       amazon_links = { 
         'http://www.amazon.co.jp/%E3%83%A6%E3%83%8B%E3%82%B3%E3%83%BC%E3%83%89%E6%88%A6%E8%A8%98-%E2%94%80%E6%96%87%E5%AD%97%E7%AC%A6%E5%8F%B7%E3%81%AE%E5%9B%BD%E9%9A%9B%E6%A8%99%E6%BA%96%E5%8C%96%E3%83%90%E3%83%88%E3%83%AB-%E5%B0%8F%E6%9E%97%E9%BE%8D%E7%94%9F/dp/450154970X' => '450154970X',
         'http://www.amazon.co.jp/Coders-Work-%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E6%8A%80%E3%82%92%E3%82%81%E3%81%90%E3%82%8B%E6%8E%A2%E6%B1%82-Peter-Seibel/dp/4274068471/ref=pd_sim_b_1' => '4274068471',
-        'http://www.amazon.co.jp/gp/product/4873114993/ref=s9_simh_gw_p14_d0_i3?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=center-2&pf_rd_r=0HZSEGS2HN4WDGDD2FSA&pf_rd_t=101&pf_rd_p=463376756&pf_rd_i=489986' => '4873114993'
+        'http://www.amazon.co.jp/gp/product/4873114993/ref=s9_simh_gw_p14_d0_i3?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=center-2&pf_rd_r=0HZSEGS2HN4WDGDD2FSA&pf_rd_t=101&pf_rd_p=463376756&pf_rd_i=489986' => '4873114993',
         'http://www.amazon.co.jp/gp/product/4873114993/ref=s9_simh_gw_p14_d0_i3?pf_rd_m=AN1VRQENFRJN5&pf_rd_s=center-2&pf_rd_r=0HZSEGS2HN4WDGDD2FSA&pf_rd_t=101&pf_rd_p=463376756&pf_rd_i=489986' => '4873114993',
         'http://www.amazon.co.jp/%E3%82%B7%E3%82%B0%E3%83%9E-8-16mm-F4-5-5-6-HSM-%E3%83%8B%E3%82%B3%E3%83%B3%E7%94%A8/dp/B003G28AZG/ref=sr_1_13?s=electronics&ie=UTF8&qid=1310088140&sr=1-13' => 'B003G28AZG',
       }
