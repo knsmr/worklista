@@ -66,7 +66,8 @@ private
   def find_user
     @user  = User.where("username = ?", params[:username]).first
     if @user.nil?
-      redirect_to root_path 
+      flash[:error] = "The username you specified, #{params[:username]} does not exist."
+      redirect_to users_path
     else
       @items = Item.where({:user_id => @user.id})
       @size  = @items.size
