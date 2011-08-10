@@ -325,16 +325,17 @@ h2#entry {
       padding-bottom: 30px;
       overflow: auto; }
       .settings #left-settings .entry .property {
-        width: 30%;
+        width: 20%;
         float: left;
+        text-align: right;
         padding: 5px;
         padding-left: 20px;
         font-weight: bold; }
       .settings #left-settings .entry .field {
-        width: 65%;
+        width: 75%;
         float: right;
         color: #888888;
-        font-size: 0.8em; }
+        font-size: 0.9em; }
       .settings #left-settings .entry .forgot {
         width: 65%;
         padding-top: 20px;
