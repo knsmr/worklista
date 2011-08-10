@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     error = ""
     if @item.load
       success = true
+      @user.last_item_updated_at = Time.now; @user.save
       respond_to do |format|
         format.html do
           if request.xhr?
