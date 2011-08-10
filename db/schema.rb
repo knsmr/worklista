@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110614120254) do
+ActiveRecord::Schema.define(:version => 20110810070441) do
 
   create_table "items", :force => true do |t|
     t.string   "url"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110614120254) do
     t.datetime "updated_at"
     t.boolean  "pick",         :default => false
     t.integer  "interval",     :default => 180
+    t.boolean  "curated",      :default => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -43,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20110614120254) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",                    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",                    :null => false
+    t.string   "password_salt",                       :default => "",                    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20110614120254) do
     t.string   "remote_photo_url"
     t.string   "provider"
     t.string   "uid"
+    t.datetime "last_item_updated_at",                :default => '2010-08-10 07:05:37'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
