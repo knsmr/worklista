@@ -18,17 +18,10 @@ module ApplicationHelper
   end
   
   def photo_tag(user, options = {:size => :normal})
-    case user.provider
-    when "twitter"
-      photo_url = TwitterPhotoUrl.new(user, options)
-    when "facebook"
-      photo_url = FacebookPhotoUrl.new(user, options)
-    else
-      photo_url = LocalPhotoUrl.new(user, options)
-    end
-    icon_size = photo_url.icon_size
-    raise "Invalid size option for photo_tag" if icon_size.nil?
-    image_tag photo_url.path, :size => photo_url.icon_size
+    photo = PhotoUrl.generate(user, options)
+    size  = photo.icon_size
+    raise "Invalid size option for photo_tag" if size.nil?
+    image_tag photo.path, :size => size
   end
 
   def truncstr(str, size)

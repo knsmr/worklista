@@ -1,15 +1,26 @@
 require 'uri'
 
 class PhotoUrl
+  icon_size = {small:"24x24", normal:"73x73", big:"240x240"}
 
-  ICON_SIZE = {small:"24x24", normal:"73x73", big:"240x240"}
+  def PhotoUrl.generate(user, options)
+    # You need to name classes like so: ProviderPhotoUrl
+    provider = user.provider
+    klass =
+      if provider
+        provider.capitalize + "PhotoUrl"
+      else
+        "LocalPhotoUrl"
+      end
+    Kernel.const_get(klass).new(user, options)
+  end
 
   def initialize(user, options)
     @user, @options = user, options
   end
 
-  def icon_size
-    ICON_SIZE[@options[:size]]
+  define_method(:icon_size) do
+    icon_size[@options[:size]]
   end
 
   def add_suffix_to_path(path, suffix)
