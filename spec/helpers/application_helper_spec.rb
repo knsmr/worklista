@@ -13,6 +13,18 @@ describe ApplicationHelper do
   end
 
   describe "#photo_tag" do
+    describe "for paperclip users" do
+      before(:each) do
+        @user.remote_photo_url = ""
+        @user.provider = nil
+      end
+
+      it "returns a proper link to the missing icon image" do
+        photo_tag(@user).should match /^<img.+src=\"\/images\/missing-thumb.png/
+        photo_tag(@user).should match /height=\"73\"/
+      end
+    end
+
     describe "for twitter users" do
       before(:each) do
         @user.remote_photo_url = "http://a2.twimg.com/profile_images/425846032/ken-sushi.jpg"
