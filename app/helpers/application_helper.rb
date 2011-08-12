@@ -18,7 +18,7 @@ module ApplicationHelper
   end
   
   def photo_tag(user, options = {:size => :normal})
-    photo = PhotoUrl.generate(user, options)
+    photo = PhotoUrl::Base.generate(user, options)
     size  = photo.icon_size
     raise "Invalid size option for photo_tag" if size.nil?
     image_tag photo.path, :size => size
