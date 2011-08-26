@@ -71,11 +71,11 @@ $(function() {
 
  	    $('input[name=commit]').attr('disabled', 'disabled');
 	    $('input[type=text]').css('color', '#888888').attr('disabled', 'disabled');
-	    $(".item:first").before('<div class="item" id="new_item"><img src="/images/ajax-loader.gif"></div>');
+	    $("#item-tab").after('<div class="item" id="new_item"><img src="/images/ajax-loader.gif"></div>');
 	})
 	.live("ajax:success", function(evt, data, status, xhr){
 	    $("#new_item").remove();
-	    $(".item:first").before(xhr.responseText);
+	    $("#item-tab").after(xhr.responseText);
 	    showEditbuttons();
 	    $('#url-form input[type=text]').val("");
 	})
