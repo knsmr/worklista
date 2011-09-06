@@ -21,6 +21,10 @@ class AuthenticationsController < ApplicationController
       redirect_to "/users/#{user.username}"
     else
       user = User.auth_new(@auth)
+      File.open(cache_path(user), "wb") do |f|
+        photo = PhotoUrl::Base.generate(user, {:size => :normal})
+        f.write(open(photo.path).read)
+      end
       logger.info "Stats: confirming registration: #{user.username} via #{user.provider} #{Time.now}"
       render 'users/confirm',
       :locals => { :user => user }
@@ -28,6 +32,10 @@ class AuthenticationsController < ApplicationController
   end
 
 private
+
+  def cache_path(user)
+    File.join(Rails.root, 'public', 'images', 'cache', user.provider+user.uid)
+  end
 
   def update_photo
     user = current_user

@@ -2,7 +2,7 @@
 %h2= "Create an account with #{user.provider.capitalize} ?"
 .profile
   .head
-    .photo= photo_tag user
+    .photo= image_tag "cache/" + user.provider + user.uid
     .name= user.name
     .username= user.username
   .body
