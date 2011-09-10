@@ -24,6 +24,12 @@ describe Item do
         @item.save!
         @item.published_at.should == Date.parse('2010/09/03')
       end
+
+      it "should set published at from document (4)" do
+        @item.doc = '2011.09.03'
+        @item.save!
+        @item.published_at.should == Date.parse('2011/09/03')
+      end
     end
 
     describe "when document does not includes date" do
