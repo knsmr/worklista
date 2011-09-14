@@ -10,9 +10,13 @@ class UsersController < ApplicationController
   def tag
     @tag = params[:tag]
     @items = @items.tagged(@tag).order("published_at DESC").page params[:page]
-    @size = @items.size
-    @select = :recent
-    render "me"
+    if (@size = @items.size).zero?
+      flash[:error] = "Tag you specified: #{params[:tag]} does not exist."
+      redirect_to user_recent_path
+    else
+      @select = :recent
+      render "me"
+    end
   end
 
   def show

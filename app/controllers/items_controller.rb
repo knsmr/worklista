@@ -87,7 +87,12 @@ class ItemsController < ApplicationController
 
   def tag
     @items = Item.order("published_at DESC").tagged(params[:tag]).page params[:page]
-    render "index"
+    if @items.empty?
+      flash[:error] = "Tag you specified: #{params[:tag]} does not exist."
+      redirect_to item_index_path
+    else
+      render "index"
+    end
   end
 
 private
