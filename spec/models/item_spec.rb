@@ -84,7 +84,18 @@ describe Item do
     end
   end
 
-  describe "#url_normalize" do
+  describe "#url_normalize", :normalize => true do
+    context "when the url points to a twitter account:", :twitter => true do
+      it "should omit shebang" do
+        @item.url = 'http://twitter.com/#!/knsmr'
+        @item.url_normalize
+        @item.url.should == 'http://twitter.com/knsmr'
+        @item.url = 'https://twitter.com/#!/knsmr'
+        @item.url_normalize
+        @item.url.should == 'https://twitter.com/knsmr'
+      end
+    end
+
     context "when the url is missing http:" do
       it "should add http" do
         @item.url = 'www.google.com'
