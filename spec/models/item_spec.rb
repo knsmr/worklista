@@ -5,7 +5,7 @@ describe Item do
   before(:each) do
     @item = Factory.build(:item)
   end
-  describe "published_at" do
+  describe "published_at", :published_at => true do
     describe "when document includes date" do
       it "should set published at from document (1)" do
         @item.doc = '2010/09/13'
@@ -14,9 +14,9 @@ describe Item do
       end
 
       it "should set published at from document (2)" do
-        @item.doc = '2011-09-30'
+        @item.doc = '2011-08-30'
         @item.save!
-        @item.published_at.should == Date.parse('2011/09/30')
+        @item.published_at.should == Date.parse('2011/08/30')
       end
 
       it "should set published at from document (3)" do
@@ -29,6 +29,14 @@ describe Item do
         @item.doc = '2011.09.03'
         @item.save!
         @item.published_at.should == Date.parse('2011/09/03')
+      end
+    end
+
+    describe "when document includes a future date" do
+      it "should set today's date" do
+        @item.doc = '2015.09.03'
+        @item.save!
+        @item.published_at.should == Date.today
       end
     end
 

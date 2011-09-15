@@ -95,6 +95,9 @@ private
       else
         Date.today
       end
+    if self.published_at > Date.today
+      self.published_at = Date.today
+    end
   end
 
   def set_title
