@@ -2,7 +2,7 @@ $(function() {
 
     $('.item')
 	.live('mouseenter', function(){
-	    $(this).css('background', '#eeffff')
+	    $(this).css('background', '#ffeeee')
 	})
 	.live("mouseleave", function(){
 	    $(this).css('background', '#ffffff')
@@ -76,6 +76,12 @@ $(function() {
 	.live("ajax:success", function(evt, data, status, xhr){
 	    $("#new_item").remove();
 	    $("#item-tab").after(xhr.responseText);
+	    // We need to reload scripts(from the local cache) to
+	    // dynamically generate social buttons using inserted tags
+	    // with ajax.
+	    $.ajax({url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+	    $.ajax({url: '//connect.facebook.net/en_US/all.js#appId=194914263914113&xfbml=1', dataType: 'script', cache:true});
+
 	    showEditbuttons();
 	    $('#url-form input[type=text]').val("");
 	})

@@ -230,32 +230,19 @@ h2#entry {
     .item .head .title {
       float: left;
       font-size: 1.1em; }
-    .item .head .social {
-      float: left;
-      font-size: 0.8em;
-      font-weight: bold;
-      margin-left: 10px; }
-      .item .head .social .hatena {
-        float: left;
-        margin: 0.2em;
-        padding: 0 0.4em;
-        background-color: #ffcccc;
-        color: red; }
-        .item .head .social .hatena a {
-          color: red; }
-      .item .head .social .retweet {
-        float: left;
-        margin: 0.2em;
-        background-color: #ccffcc;
-        padding: 0 0.4em;
-        color: #00aa00; }
-        .item .head .social .retweet a {
-          color: green; }
+      .item .head .title a {
+        float: left; }
     .item .head .date {
       float: right;
       color: #111111;
       font-size: 0.8em; }
+    .item .head .social {
+      float: right;
+      margin-left: 10px; }
+      .item .head .social .fb_edge_widget_with_comment {
+        vertical-align: top; }
   .item .body {
+    clear: both;
     padding-top: 0.1em;
     padding-left: 0.5em; }
     .item .body .tags {
@@ -287,6 +274,7 @@ h2#entry {
         .item .body .summary a:hover {
           color: black; }
     .item .body .edit-buttons {
+      margin: 0.8em;
       overflow-y: hidden;
       overflow-x: hidden;
       clear: both;

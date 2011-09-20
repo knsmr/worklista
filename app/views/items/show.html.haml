@@ -5,13 +5,7 @@
       %a{:href => @item.url, :target => "_blank" }
         = truncstr(@item.title, 140)
     .social
-      .hatena
-        %a{ :href => link_to_hatena(@item.url), :target => "_blank" }
-          = @item.hatena.to_s + " users"
-      .retweet
-        - b = @item.bitly_url ? @item.bitly_url : ""
-        %a{ :href => b + "+", :target => "_blank" }
-          = @item.retweet.to_s + "clicks"
+      = raw(social_buttons({:url => @item.url, :title => @item.title, :user => @user}))
     .date= @item.published_at
 
   .body

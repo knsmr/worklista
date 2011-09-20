@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'photo_url.rb'
 
 module ApplicationHelper
@@ -16,7 +17,21 @@ module ApplicationHelper
     end
     base_url + target 
   end
-  
+
+  def social_buttons(options = {})
+    return unless options[:url]
+    hatena = <<-EOSTR
+     <a href=\"http://b.hatena.ne.jp/entry/#{options[:url]}\" class=\"hatena-bookmark-button\" data-hatena-bookmark-title=\"#{options[:title]}\" data-hatena-bookmark-layout=\"standard\" title=\"このエントリーをはてなブックマークに追加\"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+    EOSTR
+    twitter = <<-EOSTR
+      <a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"#{options[:url]}\" data-text=\"#{options[:title]}\" data-count=\"horizontal\" data-via=\"#{options[:user].twitter_id}\">Tweet</a>
+    EOSTR
+    facebook = <<-EOSTR
+      <div class=\"fb-like\" data-href=\"#{options[:url]}\" data-send=\"false\" data-layout=\"button_count\" data-width=\"110\" data-show-faces=\"false\" data-colorscheme=\"light\"></div>
+    EOSTR
+    hatena + twitter + facebook
+  end
+
   def photo_tag(user, options = {:size => :normal})
     photo = PhotoUrl::Base.generate(user, options)
     size  = photo.icon_size
