@@ -183,4 +183,24 @@ describe Item do
     end
   end
 
+  describe "assing_tags", :tag => true do
+    describe "when tags are given" do
+      it "should set tag names" do
+        @item.tag_names = "tag1 tag2 tag3"
+        @item.save!
+        @item.tags.map do |t|
+          t.should be_an_instance_of Tag
+        end
+        @item.tags.map(&:name).should == %w(tag1 tag2 tag3)
+      end
+    end
+
+    describe "when tags include slashes" do
+      it "should set tag names without slashes" do
+        @item.tag_names = 'I/O /etc A/B/C'
+        @item.save!
+        @item.tags.map(&:name).should == %w(IO etc ABC)
+      end
+    end
+  end
 end
