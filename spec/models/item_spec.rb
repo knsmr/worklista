@@ -6,7 +6,7 @@ describe Item do
     @item = Factory.build(:item)
   end
   describe "published_at", :published_at => true do
-    describe "when document includes date" do
+    context "when document includes date" do
       it "should set published at from document (1)" do
         @item.doc = '2010/09/13'
         @item.save!
@@ -32,7 +32,7 @@ describe Item do
       end
     end
 
-    describe "when document includes a future date" do
+    context "when document includes a future date" do
       it "should set today's date" do
         @item.doc = '2015.09.03'
         @item.save!
@@ -40,7 +40,7 @@ describe Item do
       end
     end
 
-    describe "when document does not includes date" do
+    context "when document does not includes date" do
       it "should set today's date" do
         @item.doc = ''
         @item.save!
@@ -50,7 +50,7 @@ describe Item do
   end
 
   describe "title" do
-    describe "when document includes title" do
+    context "when document includes title" do
       it "should set title from document" do
         @item.doc = '<title>Hello</title>'
         @item.save!
@@ -58,7 +58,7 @@ describe Item do
       end
     end
 
-    describe "when title includes safe entity reference: raquo" do
+    context "when title includes safe entity reference: raquo" do
       it "should set title from document" do
         @item.doc = '<title>&raquo; Hello &laquo;</title>'
         @item.save!
@@ -66,7 +66,7 @@ describe Item do
       end
     end
 
-    describe "when title includes safe entity reference: rsquo" do
+    context "when title includes safe entity reference: rsquo" do
       it "should set title from document" do
         @item.doc = '<title>&lsquo; Hello &rsquo;</title>'
         @item.save!
@@ -74,7 +74,7 @@ describe Item do
       end
     end
 
-    describe "when title includes safe entity reference: quot" do
+    context "when title includes safe entity reference: quot" do
       it "should set title from document" do
         @item.doc = '<title>&quot; Hello &quot;</title>'
         @item.save!
@@ -82,7 +82,7 @@ describe Item do
       end
     end
 
-    describe "when document does not includes title" do
+    context "when document does not includes title" do
       it "should set url" do
         @item.url = 'http://www.google.com'
         @item.doc = 'no title'
@@ -184,7 +184,7 @@ describe Item do
   end
 
   describe "assing_tags", :tag => true do
-    describe "when tags are given" do
+    context "when tags are given" do
       it "should set tag names" do
         @item.tag_names = "tag1 tag2 tag3"
         @item.save!
@@ -195,7 +195,7 @@ describe Item do
       end
     end
 
-    describe "when tags include slashes" do
+    context "when tags include slashes" do
       it "should set tag names without slashes" do
         @item.tag_names = 'I/O /etc A/B/C'
         @item.save!
